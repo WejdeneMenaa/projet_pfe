@@ -6,13 +6,17 @@ import { AppComponent } from './app.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { TicketComponent } from './ticket/ticket.component';
 import { CreerticketComponent } from './ticket/creerticket/creerticket.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AccueilComponent,
     TicketComponent,
-    CreerticketComponent
+    CreerticketComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
