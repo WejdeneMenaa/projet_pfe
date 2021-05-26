@@ -4,19 +4,27 @@ import {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AccueilComponent } from './accueil/accueil.component';
-import { TicketComponent } from './ticket/ticket.component';
 import { CreerticketComponent } from './ticket/creerticket/creerticket.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { ModifierticketComponent } from './ticket/modifierticket/modifierticket.component';
+import { CreerutilisateurComponent } from './utilisateur/creerutilisateur/creerutilisateur.component';
+import { ModifierutilisateurComponent } from './utilisateur/modifierutilisateur/modifierutilisateur.component';
+import { AfficherticketComponent } from './ticket/afficherticket/afficherticket.component';
+import { AfficherutilisateurComponent } from './utilisateur/afficherutilisateur/afficherutilisateur.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AccueilComponent,
-    TicketComponent,
     CreerticketComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ModifierticketComponent,
+    CreerutilisateurComponent,
+    ModifierutilisateurComponent,
+    AfficherticketComponent,
+    AfficherutilisateurComponent
   ],
   imports: [
     BrowserModule,
