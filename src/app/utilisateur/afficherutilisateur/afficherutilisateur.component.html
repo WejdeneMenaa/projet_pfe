@@ -47,41 +47,20 @@
                                     <tr>
                                         <th rowspan="1" colspan="1">Name</th>
                                         <th rowspan="1" colspan="1">Position</th>
-                                        <th rowspan="1" colspan="1">Office</th>
+                                      <!--  <th rowspan="1" colspan="1">Office</th>
                                         <th rowspan="1" colspan="1">Age</th>
                                         <th rowspan="1" colspan="1">Start date</th>
-                                        <th rowspan="1" colspan="1">Salary</th>
+                                        <th rowspan="1" colspan="1">Salary</th>-->
                                         <th rowspan="1" colspan="1"></th>
                                         <th rowspan="1" colspan="1"></th>
                                     </tr>
                                 </tfoot>
-
                                 <tbody>
-                                <tr role="row" class="odd">
-                                        <td class="sorting_1">Airi Satou</td>
-                                        <td>Accountant</td>
-                                        <td>Tokyo</td>
-                                        <td>33</td>
-                                        <td>2008/11/28</td>
-                                        <td>$162,700</td>
-                                        <td><a class="btn btn-primary" routerLink ="/modifierticket" routerLinkActive="active">Modifier</a></td>
-                                        <td><a class="btn btn-primary" routerLink ="/ticket" routerLinkActive="active">Supprimer</a></td>
-                                    </tr><tr role="row" class="even">
-                                        <td class="sorting_1">Angelica Ramos</td>
-                                        <td>Chief Executive Officer (CEO)</td>
-                                        <td>London</td>
-                                        <td>47</td>
-                                        <td>2009/10/09</td>
-                                        <td>$1,200,000</td>
-                                        <td><a class="btn btn-primary" routerLink ="/modifierticket" routerLinkActive="active">Modifier</a></td>
-                                        <td><a class="btn btn-primary" routerLink ="/ticket" routerLinkActive="active">Supprimer</a></td>
-                                    </tr><tr role="row" class="odd">
-                                        <td class="sorting_1">Ashton Cox</td>
-                                        <td>Junior Technical Author</td>
-                                        <td>San Francisco</td>
-                                        <td>66</td>
-                                        <td>2009/01/12</td>
-                                        <td>$86,000</td>
+                                <tr role="row" class="odd" *ngFor="let account of accounts">
+                                        <!--<td class="sorting_1">Airi Satou</td>-->
+                                        <td>{{account.username}}</td>
+                                        <td>{{account.email}}</td>
+                                       
                                         <td><a class="btn btn-primary" routerLink ="/modifierticket" routerLinkActive="active">Modifier</a></td>
                                         <td><a class="btn btn-primary" routerLink ="/ticket" routerLinkActive="active">Supprimer</a></td>
                                     </tr>

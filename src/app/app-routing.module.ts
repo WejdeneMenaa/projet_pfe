@@ -10,11 +10,6 @@ import { CreerutilisateurComponent } from './utilisateur/creerutilisateur/creeru
 import { AfficherutilisateurComponent } from './utilisateur/afficherutilisateur/afficherutilisateur.component';
 
 
-
-
-
-
-
 const routes: Routes = [
     {path: '', component:AccueilComponent},
     {path: 'ticket', component:AfficherticketComponent},

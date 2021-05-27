@@ -19,10 +19,15 @@
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="name">Description</div>
+                                    <div class="name" for="name" >Description</div>
                                     <div class="value">
                                         <div class="input-group">
-                                            <input class="input--style-5" type="email" name="email">
+                                            <input class="input--style-5" type="text"
+                                            class="form-control"
+                                            id="name"
+                                            required
+                                            [(ngModel)]="utilisateur.name"
+                                            name="name">
                                         </div>
                                     </div>
                                 </div>
@@ -187,7 +192,7 @@
                                 </div>
                                 
                                 <div>
-                                    <button class="btn btn--radius-2 btn--red" type="submit">Ajouter</button>
+                                    <button class="btn btn--radius-2 btn--red"  (click)="newProduct()" >Ajouter</button>
                                 </div>
                         
                             </div>

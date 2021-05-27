@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -12,6 +13,7 @@ import { CreerutilisateurComponent } from './utilisateur/creerutilisateur/creeru
 import { ModifierutilisateurComponent } from './utilisateur/modifierutilisateur/modifierutilisateur.component';
 import { AfficherticketComponent } from './ticket/afficherticket/afficherticket.component';
 import { AfficherutilisateurComponent } from './utilisateur/afficherutilisateur/afficherutilisateur.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { AfficherutilisateurComponent } from './utilisateur/afficherutilisateur/
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
