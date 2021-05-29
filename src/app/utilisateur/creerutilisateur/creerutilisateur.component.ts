@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UtilisateurService } from 'src/services/utilisateur.service';
+import { UtilisateurService } from 'src/app/_service/utilisateur.service';
 
 @Component({
   selector: 'app-creerutilisateur',
@@ -19,31 +19,7 @@ export class CreerutilisateurComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  createProduct(): void {
-    const data = {
-      name: this.utilisateur.name,
-      description: this.utilisateur.description
-    };
-
-    this.UtilisateurService.create(data)
-      .subscribe(
-        response => {
-          console.log(response);
-          this.submitted = true;
-        },
-        error => {
-          console.log(error);
-        });
-  }
-
-  newProduct(): void {
-    this.submitted = false;
-    this.utilisateur = {
-      name: '',
-      description: '',
-      available: false
-    };
-  }
+  
 
 }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AccountService } from 'src/app/_service/account.service';
+import { UtilisateurService } from 'src/app/_service/utilisateur.service';
 
 @Component({
   selector: 'app-afficherutilisateur',
@@ -7,16 +7,16 @@ import { AccountService } from 'src/app/_service/account.service';
   styleUrls: ['./afficherutilisateur.component.css']
 })
 export class AfficherutilisateurComponent implements OnInit {
-accounts:any;
+users:any;
   constructor(
-    private accountservice: AccountService
+    private utilisateurservice: UtilisateurService
   )
   
   { }
 
   ngOnInit(): void {
-    this.accountservice.getAccounts().subscribe((data)=> {
-this.accounts = data
+    this.utilisateurservice.getUtilisateurs().subscribe((data)=> {
+this.users = data
     })
 
   }

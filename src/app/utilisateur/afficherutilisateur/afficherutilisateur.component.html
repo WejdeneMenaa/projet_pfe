@@ -56,10 +56,10 @@
                                     </tr>
                                 </tfoot>
                                 <tbody>
-                                <tr role="row" class="odd" *ngFor="let account of accounts">
+                                <tr role="row" class="odd" *ngFor="let utilisateur of users">
                                         <!--<td class="sorting_1">Airi Satou</td>-->
-                                        <td>{{account.username}}</td>
-                                        <td>{{account.email}}</td>
+                                        <td>{{utilisateur.username}}</td>
+                                        <td>{{utilisateur.email}}</td>
                                        
                                         <td><a class="btn btn-primary" routerLink ="/modifierticket" routerLinkActive="active">Modifier</a></td>
                                         <td><a class="btn btn-primary" routerLink ="/ticket" routerLinkActive="active">Supprimer</a></td>

@@ -4,12 +4,12 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class AccountService {
+export class UtilisateurService {
 
   constructor(private http: HttpClient) { }
 
-  getAccounts(){
-    return this.http.get("/api/account")
+  getUtilisateurs(){
+    return this.http.get("/api/utilisateur")
   }
 
 }

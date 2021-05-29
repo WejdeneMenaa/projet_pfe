@@ -20,7 +20,6 @@ const routes: Routes = [
     {path: 'adduser', component:CreerutilisateurComponent},
     {path: 'users', component:AfficherutilisateurComponent},
     
-    
   ];
 
 @NgModule({
