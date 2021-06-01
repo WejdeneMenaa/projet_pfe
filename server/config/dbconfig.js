@@ -1,9 +1,13 @@
-const { Pool } = require('pg')
-const pool = new Pool({
-  user: 'postgres',
-  host: '127.0.0.1',
-  database: 'projet_pfe',
-  password: 'postgres',
-  port: 5432,
-})
-exports.pool = pool;
+module.exports = {
+  HOST: "127.0.0.1",
+  USER: "postgres",
+  PASSWORD: "postgres",
+  DB: "projet_pfe",
+  dialect: "postgres",
+  pool: {
+    max: 5,
+    min: 0,
+    acquire: 30000,
+    idle: 10000
+  }
+};

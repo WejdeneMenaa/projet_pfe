@@ -1,9 +1,32 @@
-const express = require('express');
-//const path = require('path');
-const app = express();
-const pool = require("./dbconfig");
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
 
-app.use(express.json())
-app.listen(4600, (req,res)=> {
+const app = express();
+
+var corsOptions = {
+  origin: "http://localhost:8081"
+};
+
+app.use(cors(corsOptions));
+
+// parse requests of content-type - application/json
+app.use(bodyParser.json());
+
+// parse requests of content-type - application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// simple route
+app.get("/", (req, res) => {
+  res.json({ message: "Welcome to bezkoder application." });
+});
+
+const db = require("./server/models");
+db.sequelize.sync();
+
+require("./server/routes/utilisateur.routes")(app);
+
+// set port, listen for requests
+app.listen(4200, (req,res)=> {
   console.log('RUNNING');
 });
