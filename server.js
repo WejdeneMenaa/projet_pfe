@@ -25,6 +25,7 @@ const db = require("./server/models");
 db.sequelize.sync();
 
 require("./server/routes/utilisateur.routes")(app);
+require("./server/routes/auth.routes")(app);
 
 // set port, listen for requests
 app.listen(3000, (req,res)=> {
