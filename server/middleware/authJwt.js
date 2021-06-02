@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const config = require("../config/auth.config.js");
 const db = require("../models");
-const User = db.user;
+const User = db.utilisateur;
 
 verifyToken = (req, res, next) => {
   let token = req.headers["x-access-token"];
@@ -18,14 +18,14 @@ verifyToken = (req, res, next) => {
         message: "Unauthorized!"
       });
     }
-    req.userId = decoded.id;
+    req.user_id = decoded.id;
     next();
   });
 };
 
 isAdmin = (req, res, next) => {
-  User.findByPk(req.userId).then(user => {
-    user.getRoles().then(roles => {
+  User.findByPk(req.user_id).then(utilisateur => {
+    utilisateur.getRoles().then(roles => {
       for (let i = 0; i < roles.length; i++) {
         if (roles[i].name === "admin") {
           next();
@@ -42,8 +42,8 @@ isAdmin = (req, res, next) => {
 };
 
 isModerator = (req, res, next) => {
-  User.findByPk(req.userId).then(user => {
-    user.getRoles().then(roles => {
+  User.findByPk(req.user_id).then(utilisateur => {
+    utilisateur.getRoles().then(roles => {
       for (let i = 0; i < roles.length; i++) {
         if (roles[i].name === "moderator") {
           next();
@@ -59,8 +59,8 @@ isModerator = (req, res, next) => {
 };
 
 isModeratorOrAdmin = (req, res, next) => {
-  User.findByPk(req.userId).then(user => {
-    user.getRoles().then(roles => {
+  User.findByPk(req.user_id).then(utilisateur => {
+    utilisateur.getRoles().then(roles => {
       for (let i = 0; i < roles.length; i++) {
         if (roles[i].name === "moderator") {
           next();

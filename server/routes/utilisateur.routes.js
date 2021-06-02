@@ -4,15 +4,6 @@ const controller = require("../controllers/utilisateur.controller");
 
 module.exports = function(app) {
 
-  var router = require("express").Router();
-  
-  // Create a new Tutorial
-  router.post("/", controller.create);
-  //find all 
-  router.get("/", controller.findAll);
-  router.put("/:user_id", controller.update);
-  router.delete("/:user_id", controller.delete);
-
   app.use(function(req, res, next) {
     res.header(
       "Access-Control-Allow-Headers",
@@ -41,6 +32,21 @@ module.exports = function(app) {
     controller.adminBoard
     );
 
+    var router = require("express").Router();
+  
+    // Create a new Tutorial
+    router.post("/", controller.create);
+    //find all 
+    router.get("/", controller.findAll);
+    router.put("/:user_id", controller.update);
+    router.delete("/:user_id", controller.delete); var router = require("express").Router();
+  
+  // Create a new Tutorial
+  router.post("/", controller.create);
+  //find all 
+  router.get("/", controller.findAll);
+  router.put("/:user_id", controller.update);
+  router.delete("/:user_id", controller.delete);
 
     app.use('/api/utilisateur', router);
 
