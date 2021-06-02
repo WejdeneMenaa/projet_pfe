@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UtilisateurService } from 'src/app/_service/utilisateur.service';
 
 @Component({
@@ -8,17 +9,34 @@ import { UtilisateurService } from 'src/app/_service/utilisateur.service';
 })
 export class AfficherutilisateurComponent implements OnInit {
 users:any;
-  constructor(
-    private utilisateurservice: UtilisateurService
-  )
+currentutilisateur = null ;
+
+constructor(
+    private utilisateurservice: UtilisateurService,
+     private route: ActivatedRoute,
+    private router: Router) { }
   
-  { }
+  
 
   ngOnInit(): void {
-    this.utilisateurservice.getUtilisateurs().subscribe((data)=> {
+    this.utilisateurservice.getAll().subscribe((data)=> {
 this.users = data
     })
 
   }
 
+  deleteTutorial(): void {
+    this.utilisateurservice.delete(this.users.user_id)
+      .subscribe(
+        response => {
+          console.log(response);
+          this.router.navigate(['/utilisateur']);
+        },
+        error => {
+          console.log(error);
+        });
+  }
+  
 }
+
+  
