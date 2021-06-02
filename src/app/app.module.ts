@@ -15,6 +15,7 @@ import { AfficherticketComponent } from './ticket/afficherticket/afficherticket.
 import { AfficherutilisateurComponent } from './utilisateur/afficherutilisateur/afficherutilisateur.component';
 import { CommonModule } from '@angular/common';
 
+
 @NgModule({
   declarations: [
     AppComponent,

@@ -20,11 +20,7 @@ module.exports = function(app) {
     controller.userBoard
   );
 
-  app.get(
-    "/api/test/mod",
-    [authJwt.verifyToken, authJwt.isModerator],
-    controller.moderatorBoard
-  );
+  app.get("/api/test/mod", [authJwt.verifyToken, authJwt.isModerator], controller.moderatorBoard );
 
   app.get(
     "/api/test/admin",
@@ -39,15 +35,9 @@ module.exports = function(app) {
     //find all 
     router.get("/", controller.findAll);
     router.put("/:user_id", controller.update);
-    router.delete("/:user_id", controller.delete); var router = require("express").Router();
-  
-  // Create a new Tutorial
-  router.post("/", controller.create);
-  //find all 
-  router.get("/", controller.findAll);
-  router.put("/:user_id", controller.update);
-  router.delete("/:user_id", controller.delete);
-
+    router.delete("/:user_id", controller.delete); 
+    
+    
     app.use('/api/utilisateur', router);
 
 };

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UtilisateurService } from 'src/app/_service/utilisateur.service';
-
+import { AuthService } from 'src/app/_service/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -8,19 +8,21 @@ import { UtilisateurService } from 'src/app/_service/utilisateur.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  utilisateur = {
-    username: '',
-    email: '',
-    password: ''
-  };
-  submitted = false;
-  constructor( private UtilisateurService: UtilisateurService) { }
 
+  utilisateur: any = {};
+  isSuccessful = false;
+  isSignUpFailed = false;
+  errorMessage = '';
+
+ 
+  submitted = false;
+
+  constructor(private authService: AuthService) { }
   ngOnInit(): void {
   }
 
   
-  saveTutorial(): void {
+  /*saveTutorial(): void {
     const data = {
       username: this.utilisateur.username,
       email: this.utilisateur.email,
@@ -46,6 +48,20 @@ export class RegisterComponent implements OnInit {
       password:''
     };
   }
+*/
 
+  onSubmit() {
+    this.authService.register(this.utilisateur).subscribe(
+      data => {
+        console.log(data);
+        this.isSuccessful = true;
+        this.isSignUpFailed = false;
+      },
+      err => {
+        this.errorMessage = err.error.message;
+        this.isSignUpFailed = true;
+      }
+    );
+  }
 }
 
