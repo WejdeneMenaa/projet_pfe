@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 
 
 const AUTH_API = 'http://localhost:4200/api/auth/';
-
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -14,6 +13,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthService {
+  link = 'http://localhost:4200';
 
   constructor(private http: HttpClient) { }
 
