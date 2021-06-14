@@ -1,1 +1,40 @@
-<p>modifierutilisateur works!</p>
+<div *ngIf="utilisateur" class="edit-form">
+    <h4>modifier les coordonnées de l'utilisateur :</h4>
+    <form>
+      <div class="form-group">
+        <label for="username">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="username"
+          [(ngModel)]="utilisateur.username"
+          name="username"
+        />
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="text"
+          class="form-control"
+          id="email"
+          [(ngModel)]="utilisateur.email"
+          name="email"
+        />
+      </div>
+  
+    </form>
+  
+    <button class="badge badge-danger mr-2" >
+      Delete
+    </button>
+  
+    <button type="submit" class="badge badge-success"  (click)="updateTutorial()">
+      Update
+    </button>
+   
+  </div>
+  
+  <div *ngIf="!utilisateur">
+    <br />
+    <p>Cannot access this user...</p>
+  </div>

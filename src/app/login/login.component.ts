@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.authService.login(this.utilisateur).subscribe(
       data => {
-        const link =[''];
+        const link =['/user'];
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
 

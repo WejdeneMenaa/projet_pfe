@@ -14,6 +14,9 @@ import { ModifierutilisateurComponent } from './utilisateur/modifierutilisateur/
 import { AfficherticketComponent } from './ticket/afficherticket/afficherticket.component';
 import { AfficherutilisateurComponent } from './utilisateur/afficherutilisateur/afficherutilisateur.component';
 import { CommonModule } from '@angular/common';
+import { AdminboardComponent } from './dashboard/adminboard/adminboard.component';
+import { UtilisateurboardComponent } from './dashboard/utilisateurboard/utilisateurboard.component';
+import { ModifierprofileComponent } from './dashboard/utilisateurboard/modifierprofile/modifierprofile.component';
 
 
 @NgModule({
@@ -27,7 +30,10 @@ import { CommonModule } from '@angular/common';
     CreerutilisateurComponent,
     ModifierutilisateurComponent,
     AfficherticketComponent,
-    AfficherutilisateurComponent
+    AfficherutilisateurComponent,
+    AdminboardComponent,
+    UtilisateurboardComponent,
+    ModifierprofileComponent
   ],
   imports: [
     BrowserModule,

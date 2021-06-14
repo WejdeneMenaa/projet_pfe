@@ -43,9 +43,8 @@
                                         <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 145px;">Name</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 230px;">Email</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 108px;">Mot de passe</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 108px;">Role</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 44px;"></th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 96px;"></th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 44px;">Modifer</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 96px;">Supprimer</th>
                                 </thead>
 
                                
@@ -54,8 +53,10 @@
                                         <td>{{utilisateur.username}}</td>
                                         <td>{{utilisateur.email}}</td>
                                         <td>{{utilisateur.password}}</td>
-                                        <td><a class="btn btn-primary" routerLink ="/modifierticket" routerLinkActive="active">Modifier</a></td>
-                                        <td><a class="btn btn-primary" routerLink ="/users" routerLinkActive="active" (click)="deleteTutorial()">Supprimer</a></td>
+                                        <td><a class="btn btn-primary"  routerLink ="/updateuser/{{ utilisateur.user_id }}" routerLinkActive="active" >
+        Edit
+      </a></td>
+                                        <td><a class="btn btn-primary" routerLink ="/users" routerLinkActive="active" >Supprimer</a></td>
                                     </tr>
                                 </tbody>
                             </table>

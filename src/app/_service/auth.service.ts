@@ -13,7 +13,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthService {
-  link = 'http://localhost:4200';
+  link = 'http://localhost:4200/user';
 
   constructor(private http: HttpClient) { }
 

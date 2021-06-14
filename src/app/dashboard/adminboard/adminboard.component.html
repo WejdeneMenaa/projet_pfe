@@ -1,0 +1,124 @@
+<body class="sb-nav-fixed">
+  <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+      <img class="navbar-brand" src="assets/img/wimbee.png" />
+      <!-- Navbar Search-->
+      <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+          <div class="input-group">
+              <input class="form-control" type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
+              <div class="input-group-append">
+                  <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
+              </div>
+          </div>
+      </form>
+      <!-- Navbar-->
+      <ul class="navbar-nav ml-auto ml-md-0">
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="userDropdown" href="#!" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+          </li>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+              <a class="dropdown-item" href="#!">Settings</a>
+              <a class="dropdown-item" href="#!">Activity Log</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="login.html">Logout</a>
+          </div>
+      </ul>
+  </nav>
+  <div id="layoutSidenav">
+      <div id="layoutSidenav_nav">
+          <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+              <div class="sb-sidenav-menu">
+                  <div class="nav">
+                      <a class="nav-link" href="index.html">
+                          <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                          Accueil
+                      </a>
+                      <div class="sb-sidenav-menu-heading">Interface</div>
+                      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                          <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                          Assistance
+                          <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                      </a>
+                      <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                          <nav class="sb-sidenav-menu-nested nav">
+                              <a routerLink ="/ticket" routerLinkActive="active" class="nav-link" >List des tickets</a>
+                             
+                          </nav>
+                      </div>
+                      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAdministration" aria-expanded="false" aria-controls="collapsePages">
+                          <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                          Administration
+                          <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                      </a>
+                      <div class="collapse" id="collapseAdministration" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                          <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                              <a class="nav-link collapsed" routerLink ="/users" routerLinkActive="active" data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                  La liste des utilisateurs
+                              </a>
+                          </nav>
+                      </div>
+                      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseParc" aria-expanded="false" aria-controls="collapsePages">
+                          <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                          Parc
+                          <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                      </a>
+                      <div class="collapse" id="collapseParc" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                          <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                  Ordinatueurs
+                              </a>
+                          </nav>
+                      </div>
+                      <div class="collapse" id="collapseParc" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                          <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                  Logiciels
+                              </a>
+                          </nav>
+                      </div>
+                      <div class="collapse" id="collapseParc" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                          <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                  Imprimantes
+                              </a>
+                          </nav>
+                      </div>
+                      <div class="collapse" id="collapseParc" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                          <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                  Périphériiques
+                              </a>
+                          </nav>
+                      </div>
+                      <div class="collapse" id="collapseParc" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                          <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                  Matériels réseaux
+                              </a>
+                          </nav>
+                      </div>
+                  </div>
+              </div>
+              <div class="sb-sidenav-footer">
+                  Wimbeetech
+              </div>
+          </nav>
+      </div>
+      <div id="layoutSidenav_content">
+          <main>
+              <router-outlet></router-outlet>
+          </main>
+          <footer class="py-4 bg-light mt-auto">
+              <div class="container-fluid">
+                  <div class="d-flex align-items-center justify-content-between small">
+                      <div class="text-muted">Copyright &copy; Your Website 2021</div>
+                      <div>
+                          <a href="#">Privacy Policy</a>
+                          &middot;
+                          <a href="#">Terms &amp; Conditions</a>
+                      </div>
+                  </div>
+              </div>
+          </footer>
+      </div>
+  </div>
+</body>

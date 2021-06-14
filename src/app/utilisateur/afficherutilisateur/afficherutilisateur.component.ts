@@ -8,8 +8,8 @@ import { UtilisateurService } from 'src/app/_service/utilisateur.service';
   styleUrls: ['./afficherutilisateur.component.css']
 })
 export class AfficherutilisateurComponent implements OnInit {
-users:any;
-currentutilisateur = null ;
+users=null;
+utilisateur = null ;
 
 constructor(
     private utilisateurservice: UtilisateurService,
@@ -25,8 +25,11 @@ this.users = data
 
   }
 
+
+
   deleteTutorial(): void {
-    this.utilisateurservice.delete(this.users.user_id)
+    
+    this.utilisateurservice.delete(this.utilisateur.user_id)
       .subscribe(
         response => {
           console.log(response);
