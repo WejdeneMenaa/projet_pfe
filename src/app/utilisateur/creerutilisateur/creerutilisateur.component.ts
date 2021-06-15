@@ -4,10 +4,10 @@ import { AuthService } from 'src/app/_service/auth.service';
 
 @Component({
   selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  templateUrl: './creerutilisateur.component.html',
+  styleUrls: ['./creerutilisateur.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class CreerutilisateurComponent implements OnInit {
 
   utilisateur: any = {};
   isSuccessful = false;
@@ -21,34 +21,6 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  
-  /*saveTutorial(): void {
-    const data = {
-      username: this.utilisateur.username,
-      email: this.utilisateur.email,
-      password: this.utilisateur.password
-    };
-
-    this.UtilisateurService.create(data)
-      .subscribe(
-        (        response: any) => {
-          console.log(response);
-          this.submitted = true;
-        },
-        (        error: any) => {
-          console.log(error);
-        });
-  }
-
-  newTutorial(): void {
-    this.submitted = false;
-    this.utilisateur = {
-      username: '',
-      email: '',
-      password:''
-    };
-  }
-*/
 
   onSubmit() {
     this.authService.register(this.utilisateur).subscribe(

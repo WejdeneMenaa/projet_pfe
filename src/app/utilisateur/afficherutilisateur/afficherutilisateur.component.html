@@ -55,7 +55,19 @@
                                                     <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
                                                         rowspan="1" colspan="1" aria-sort="ascending"
                                                         aria-label="Name: activate to sort column descending"
-                                                        style="width: 145px;">Name</th>
+                                                        style="width: 145px;">Nom</th>
+                                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
+                                                        rowspan="1" colspan="1" aria-sort="ascending"
+                                                        aria-label="Name: activate to sort column descending"
+                                                        style="width: 145px;">Prénom</th>
+                                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
+                                                        rowspan="1" colspan="1" aria-sort="ascending"
+                                                        aria-label="Name: activate to sort column descending"
+                                                        style="width: 145px;">Phone</th>
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
+                                                        rowspan="1" colspan="1" aria-sort="ascending"
+                                                        aria-label="Name: activate to sort column descending"
+                                                        style="width: 145px;">Username</th>
                                                     <th class="sorting" tabindex="0" aria-controls="dataTable"
                                                         rowspan="1" colspan="1"
                                                         aria-label="Position: activate to sort column ascending"
@@ -63,7 +75,11 @@
                                                     <th class="sorting" tabindex="0" aria-controls="dataTable"
                                                         rowspan="1" colspan="1"
                                                         aria-label="Office: activate to sort column ascending"
-                                                        style="width: 108px;">Mot de passe</th>
+                                                        style="width: 108px;">Gender</th>
+                                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
+                                                        rowspan="1" colspan="1" aria-sort="ascending"
+                                                        aria-label="Name: activate to sort column descending"
+                                                        style="width: 145px;">Status</th>
                                                     <th class="sorting" tabindex="0" aria-controls="dataTable"
                                                         rowspan="1" colspan="1"
                                                         aria-label="Age: activate to sort column ascending"
@@ -77,9 +93,13 @@
 
                                             <tbody>
                                                 <tr role="row" class="odd" *ngFor="let utilisateur of users">
+                                                    <td>{{utilisateur.nom}}</td>
+                                                    <td>{{utilisateur.prenom}}</td>
+                                                    <td>{{utilisateur.phone}}</td>
                                                     <td>{{utilisateur.username}}</td>
                                                     <td>{{utilisateur.email}}</td>
-                                                    <td>{{utilisateur.password}}</td>
+                                                    <td>{{utilisateur.gender}}</td>
+                                                    <td>{{utilisateur.status}}</td>
                                                     <td><button routerLink="/updateuser/{{ utilisateur.user_id }}"
                                                             routerLinkActive="active"
                                                             class="btn btn-sm btn-danger btn-delete-user">

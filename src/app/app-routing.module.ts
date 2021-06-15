@@ -4,7 +4,7 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { AfficherticketComponent } from './ticket/afficherticket/afficherticket.component';
 import { CreerticketComponent } from './ticket/creerticket/creerticket.component';
 import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { CreerutilisateurComponent } from './utilisateur/creerutilisateur/creerutilisateur.component';
 import { ModifierticketComponent } from './ticket/modifierticket/modifierticket.component';
 import { AfficherutilisateurComponent } from './utilisateur/afficherutilisateur/afficherutilisateur.component';
 import { AdminboardComponent } from './dashboard/adminboard/adminboard.component';
@@ -16,20 +16,21 @@ import { ModifierutilisateurComponent } from './utilisateur/modifierutilisateur/
 
 
 const routes: Routes = [
-    {path: '', component:AccueilComponent},
+  {path: 'login', component:LoginComponent},
+    {path: '', component:AccueilComponent,
+    children: [
     {path: 'ticket', component:AfficherticketComponent},
     {path: 'creerticket', component:CreerticketComponent},
-    {path: 'login', component:LoginComponent},
-    {path: 'register', component:RegisterComponent},
+    {path: 'adduser', component:CreerutilisateurComponent},
     {path: 'modifierticket', component:ModifierticketComponent},
     {path: 'users', component:AfficherutilisateurComponent},
     {path: 'admin', component:AdminboardComponent},
     {path: 'user', component:UtilisateurboardComponent},
     {path: 'updateprofil', component:ModifierprofileComponent},
     {path: 'updateuser/:id', component:ModifierutilisateurComponent},
-    
-  ];
-
+  ]
+}
+];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

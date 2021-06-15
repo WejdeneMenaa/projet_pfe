@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { CreerticketComponent } from './ticket/creerticket/creerticket.component';
 import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { CreerutilisateurComponent } from './utilisateur/creerutilisateur/creerutilisateur.component';
 import { ModifierticketComponent } from './ticket/modifierticket/modifierticket.component';
 import { ModifierutilisateurComponent } from './utilisateur/modifierutilisateur/modifierutilisateur.component';
 import { AfficherticketComponent } from './ticket/afficherticket/afficherticket.component';
@@ -24,7 +24,7 @@ import { ModifierprofileComponent } from './dashboard/utilisateurboard/modifierp
     AccueilComponent,
     CreerticketComponent,
     LoginComponent,
-    RegisterComponent,
+    CreerutilisateurComponent,
     ModifierticketComponent,
     ModifierutilisateurComponent,
     AfficherticketComponent,

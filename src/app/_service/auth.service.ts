@@ -24,11 +24,16 @@ export class AuthService {
     }, httpOptions);
   }
 
-  register(utilisateur: { username: any; email: any; password: any; }): Observable<any> {
+  register(utilisateur: { username: any; email: any; password: any; nom: any; prenom: any; phone: any; gender: any; status: any; }): Observable<any> {
     return this.http.post(AUTH_API + 'signup', {
       username: utilisateur.username,
       email: utilisateur.email,
-      password: utilisateur.password
+      password: utilisateur.password,
+      nom: utilisateur.nom,
+      prenom: utilisateur.prenom,
+      phone: utilisateur.phone,
+      gender: utilisateur.gender,
+      status: utilisateur.status
     }, httpOptions);
   }
 }
