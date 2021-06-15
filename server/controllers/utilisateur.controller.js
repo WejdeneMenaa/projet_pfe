@@ -49,6 +49,22 @@ exports.create = (req, res) => {
       });
   };
 
+//findone
+  exports.findOne = (req, res) => {
+    const user_id = req.params.user_id;
+  
+    Utilisateur.findByPk(user_id)
+      .then(data => {
+        res.send(data);
+      })
+      .catch(err => {
+        res.status(500).send({
+          message: "Error retrieving Tutorial with id=" + user_id
+        });
+      });
+  };
+
+
   //update user 
   exports.update = (req, res) => {
     const user_id = req.params.user_id;

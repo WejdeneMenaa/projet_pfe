@@ -6,7 +6,6 @@ import { CreerticketComponent } from './ticket/creerticket/creerticket.component
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ModifierticketComponent } from './ticket/modifierticket/modifierticket.component';
-import { CreerutilisateurComponent } from './utilisateur/creerutilisateur/creerutilisateur.component';
 import { AfficherutilisateurComponent } from './utilisateur/afficherutilisateur/afficherutilisateur.component';
 import { AdminboardComponent } from './dashboard/adminboard/adminboard.component';
 import { UtilisateurboardComponent } from './dashboard/utilisateurboard/utilisateurboard.component';
@@ -23,12 +22,11 @@ const routes: Routes = [
     {path: 'login', component:LoginComponent},
     {path: 'register', component:RegisterComponent},
     {path: 'modifierticket', component:ModifierticketComponent},
-    {path: 'adduser', component:CreerutilisateurComponent},
     {path: 'users', component:AfficherutilisateurComponent},
     {path: 'admin', component:AdminboardComponent},
     {path: 'user', component:UtilisateurboardComponent},
     {path: 'updateprofil', component:ModifierprofileComponent},
-    {path: 'updateuser/:user_id', component:ModifierutilisateurComponent},
+    {path: 'updateuser/:id', component:ModifierutilisateurComponent},
     
   ];
 

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -9,7 +9,6 @@ import { CreerticketComponent } from './ticket/creerticket/creerticket.component
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ModifierticketComponent } from './ticket/modifierticket/modifierticket.component';
-import { CreerutilisateurComponent } from './utilisateur/creerutilisateur/creerutilisateur.component';
 import { ModifierutilisateurComponent } from './utilisateur/modifierutilisateur/modifierutilisateur.component';
 import { AfficherticketComponent } from './ticket/afficherticket/afficherticket.component';
 import { AfficherutilisateurComponent } from './utilisateur/afficherutilisateur/afficherutilisateur.component';
@@ -27,7 +26,6 @@ import { ModifierprofileComponent } from './dashboard/utilisateurboard/modifierp
     LoginComponent,
     RegisterComponent,
     ModifierticketComponent,
-    CreerutilisateurComponent,
     ModifierutilisateurComponent,
     AfficherticketComponent,
     AfficherutilisateurComponent,
@@ -40,7 +38,9 @@ import { ModifierprofileComponent } from './dashboard/utilisateurboard/modifierp
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { first } from 'rxjs/operators';
 import { UtilisateurService } from 'src/app/_service/utilisateur.service';
 
 @Component({
@@ -25,20 +26,15 @@ this.users = data
 
   }
 
+  deleteUser(user_id: string) {
+    console.log("oussama"+user_id)
+    const user = this.users.find(x => x.id === user_id);
+    this.utilisateurservice.delete(user_id)
+        .pipe(first())
+        .subscribe(() => this.users = this.users.filter(x => x.id !== user_id));
+        this.ngOnInit();
+}
 
-
-  deleteTutorial(): void {
-    
-    this.utilisateurservice.delete(this.utilisateur.user_id)
-      .subscribe(
-        response => {
-          console.log(response);
-          this.router.navigate(['/utilisateur']);
-        },
-        error => {
-          console.log(error);
-        });
-  }
   
 }
 

@@ -36,8 +36,7 @@ module.exports = function(app) {
     router.get("/", controller.findAll);
     router.put("/:user_id", controller.update);
     router.delete("/:user_id", controller.delete); 
-    
-    
+    router.get("/:user_id", controller.findOne);
     app.use('/api/utilisateur', router);
 
 };
