@@ -16,6 +16,11 @@ import { CommonModule } from '@angular/common';
 import { AdminboardComponent } from './dashboard/adminboard/adminboard.component';
 import { UtilisateurboardComponent } from './dashboard/utilisateurboard/utilisateurboard.component';
 import { ModifierprofileComponent } from './dashboard/utilisateurboard/modifierprofile/modifierprofile.component';
+import { BoardAdminComponent } from './board-admin/board-admin.component';
+import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
+import { BoardUserComponent } from './board-user/board-user.component';
+import { ProfileComponent } from './profile/profile.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -31,7 +36,12 @@ import { ModifierprofileComponent } from './dashboard/utilisateurboard/modifierp
     AfficherutilisateurComponent,
     AdminboardComponent,
     UtilisateurboardComponent,
-    ModifierprofileComponent
+    ModifierprofileComponent,
+    BoardAdminComponent,
+    BoardModeratorComponent,
+    BoardUserComponent,
+    ProfileComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

@@ -13,6 +13,7 @@ export class AdminboardComponent implements OnInit {
   constructor(private UtilisateurService: UtilisateurService) { }
 
   ngOnInit() {
+    
     this.UtilisateurService.getAdminBoard().subscribe(
       data => {
         this.content = data;

@@ -11,11 +11,20 @@ import { AdminboardComponent } from './dashboard/adminboard/adminboard.component
 import { UtilisateurboardComponent } from './dashboard/utilisateurboard/utilisateurboard.component';
 import { ModifierprofileComponent } from './dashboard/utilisateurboard/modifierprofile/modifierprofile.component';
 import { ModifierutilisateurComponent } from './utilisateur/modifierutilisateur/modifierutilisateur.component';
-
+import { HomeComponent } from './home/home.component';
+import { ProfileComponent } from './profile/profile.component';
+import { BoardUserComponent } from './board-user/board-user.component';
+import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
+import { BoardAdminComponent } from './board-admin/board-admin.component';
 
 
 
 const routes: Routes = [
+  { path: 'profile', component: ProfileComponent },
+  { path: 'user', component: BoardUserComponent },
+  { path: 'mod', component: BoardModeratorComponent },
+  { path: 'admin', component: BoardAdminComponent },
+  { path: 'home', component: HomeComponent },
   {path: 'login', component:LoginComponent},
     {path: '', component:AccueilComponent,
     children: [
@@ -24,10 +33,13 @@ const routes: Routes = [
     {path: 'adduser', component:CreerutilisateurComponent},
     {path: 'modifierticket', component:ModifierticketComponent},
     {path: 'users', component:AfficherutilisateurComponent},
-    {path: 'admin', component:AdminboardComponent},
-    {path: 'user', component:UtilisateurboardComponent},
+    {path: 'adminn', component:AdminboardComponent},
+    {path: 'userr', component:UtilisateurboardComponent},
     {path: 'updateprofil', component:ModifierprofileComponent},
     {path: 'updateuser/:id', component:ModifierutilisateurComponent},
+    
+   
+
   ]
 }
 ];
