@@ -14,7 +14,7 @@ export class CreerutilisateurComponent implements OnInit {
   isSignUpFailed = false;
   errorMessage = '';
 
- 
+
   submitted = false;
 
   constructor(private authService: AuthService) { }
@@ -28,6 +28,7 @@ export class CreerutilisateurComponent implements OnInit {
         console.log(data);
         this.isSuccessful = true;
         this.isSignUpFailed = false;
+
       },
       err => {
         this.errorMessage = err.error.message;

@@ -1,5 +1,4 @@
 <body>
-    <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid">
                 <h1 class="mt-4">Utilisateurs</h1>
@@ -56,11 +55,11 @@
                                                         rowspan="1" colspan="1" aria-sort="ascending"
                                                         aria-label="Name: activate to sort column descending"
                                                         style="width: 145px;">Nom</th>
-                                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
                                                         rowspan="1" colspan="1" aria-sort="ascending"
                                                         aria-label="Name: activate to sort column descending"
                                                         style="width: 145px;">Prénom</th>
-                                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
                                                         rowspan="1" colspan="1" aria-sort="ascending"
                                                         aria-label="Name: activate to sort column descending"
                                                         style="width: 145px;">Phone</th>
@@ -76,7 +75,7 @@
                                                         rowspan="1" colspan="1"
                                                         aria-label="Office: activate to sort column ascending"
                                                         style="width: 108px;">Gender</th>
-                                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
                                                         rowspan="1" colspan="1" aria-sort="ascending"
                                                         aria-label="Name: activate to sort column descending"
                                                         style="width: 145px;">Status</th>
@@ -99,7 +98,7 @@
                                                     <td>{{utilisateur.username}}</td>
                                                     <td>{{utilisateur.email}}</td>
                                                     <td>{{utilisateur.gender}}</td>
-                                                    <td>{{utilisateur.status}}</td>
+                                                    <td>{{utilisateur.status ? "true" : "false"}}</td>
                                                     <td><button routerLink="/updateuser/{{ utilisateur.user_id }}"
                                                             routerLinkActive="active"
                                                             class="btn btn-sm btn-danger btn-delete-user">
@@ -114,6 +113,16 @@
                                                                 class="spinner-border spinner-border-sm"></span>
                                                             <span *ngIf="!utilisateur.isDeleting">Supprimer</span>
                                                         </button></td>
+                                                    <td> <button class="btn btn-sm btn-danger btn-delete-user"
+                                                            *ngIf="utilisateur.status" (click)="updateStatus(false,utilisateur)">
+                                                            Désactiver
+                                                        </button>
+                                                        <button *ngIf="!utilisateur.status"
+                                                            class="btn btn-sm btn-danger btn-delete-user"
+                                                            (click)="updateStatus(true,utilisateur)">
+                                                            Activer
+                                                        </button>
+                                                    </td>
 
                                                 </tr>
                                             </tbody>
@@ -126,5 +135,4 @@
                 </div>
             </div>
         </main>
-    </div>
 </body>

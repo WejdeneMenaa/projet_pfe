@@ -14,6 +14,8 @@ const httpOptions = {
 })
 export class AuthService {
   link = 'http://localhost:4200/user';
+  status = false;
+
 
   constructor(private http: HttpClient) { }
 
@@ -33,7 +35,12 @@ export class AuthService {
       prenom: utilisateur.prenom,
       phone: utilisateur.phone,
       gender: utilisateur.gender,
-      status: utilisateur.status
+      status: false
     }, httpOptions);
+  }
+
+
+  loggedIn() {
+    return !!localStorage.getItem('token')    
   }
 }

@@ -16,6 +16,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { BoardUserComponent } from './board-user/board-user.component';
 import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
+import { AuthGuard } from './auth.guard';
 
 
 
@@ -25,23 +26,24 @@ const routes: Routes = [
   { path: 'mod', component: BoardModeratorComponent },
   { path: 'admin', component: BoardAdminComponent },
   { path: 'home', component: HomeComponent },
-  {path: 'login', component:LoginComponent},
-    {path: '', component:AccueilComponent,
+  { path: 'login', component: LoginComponent },
+  {
+    path: '', component: AccueilComponent,
     children: [
-    {path: 'ticket', component:AfficherticketComponent},
-    {path: 'creerticket', component:CreerticketComponent},
-    {path: 'adduser', component:CreerutilisateurComponent},
-    {path: 'modifierticket', component:ModifierticketComponent},
-    {path: 'users', component:AfficherutilisateurComponent},
-    {path: 'adminn', component:AdminboardComponent},
-    {path: 'userr', component:UtilisateurboardComponent},
-    {path: 'updateprofil', component:ModifierprofileComponent},
-    {path: 'updateuser/:id', component:ModifierutilisateurComponent},
-    
-   
+      { path: 'ticket', component: AfficherticketComponent },
+      { path: 'creerticket', component: CreerticketComponent },
+      { path: 'adduser', component: CreerutilisateurComponent },
+      { path: 'modifierticket', component: ModifierticketComponent },
+      { path: 'users', component: AfficherutilisateurComponent, canActivate: [AuthGuard], },
+      { path: 'adminn', component: AdminboardComponent },
+      { path: 'userr', component: UtilisateurboardComponent },
+      { path: 'updateprofil', component: ModifierprofileComponent },
+      { path: 'updateuser/:id', component: ModifierutilisateurComponent },
 
-  ]
-}
+
+
+    ]
+  }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

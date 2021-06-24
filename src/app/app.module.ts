@@ -21,6 +21,8 @@ import { BoardModeratorComponent } from './board-moderator/board-moderator.compo
 import { BoardUserComponent } from './board-user/board-user.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from './home/home.component';
+import { AuthGuard } from './auth.guard';
+import { AuthService } from './_service/auth.service';
 
 
 @NgModule({
@@ -52,7 +54,7 @@ import { HomeComponent } from './home/home.component';
     ReactiveFormsModule,
 
   ],
-  providers: [],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

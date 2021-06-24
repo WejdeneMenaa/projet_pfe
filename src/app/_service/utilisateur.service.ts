@@ -44,6 +44,7 @@ export class UtilisateurService {
   update(user_id, params) {
     return this.http.put(`${baseUrl}/${user_id}`, params)
         .pipe(map(x => {
+          console.log("**"+JSON.stringify(x))
             // update stored user if the logged in user updated their own record
             if (user_id == this.userValue.id) {
                 // update local storage
@@ -53,7 +54,9 @@ export class UtilisateurService {
                 // publish updated user to subscribers
                 this.userSubject.next(user);
             }
+          
             return x;
+            
         }));
 }
 

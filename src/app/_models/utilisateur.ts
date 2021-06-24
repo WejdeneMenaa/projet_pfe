@@ -4,7 +4,7 @@
     prenom:string;
     phone:string;
     gender : String;
-    status : String;
+    status : boolean;
 
     username: string;
     password: string;
