@@ -47,7 +47,7 @@ export class AfficherutilisateurComponent implements OnInit {
 
 
   deleteUser(user_id: string) {
-    console.log("oussama" + user_id)
+    console.log("sahar" + user_id)
     const user = this.users.find(x => x.id === user_id);
     this.utilisateurservice.delete(user_id)
       .pipe(first())

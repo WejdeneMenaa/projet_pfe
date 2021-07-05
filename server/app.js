@@ -42,40 +42,4 @@ app.listen(3000, (req, res) => {
 });
 
 
-
-/*router.post("/sendmail", (req, res) => {
-  console.log("request came");
-  let utilisateur = req.body;
-  sendMail(utilisateur, info => {
-    console.log(`The mail has beed send 😃 and the id is ${info.messageId}`);
-    res.send(info);
-  });
-});
-
-async function sendMail(utilisateur, callback) {
-  // create reusable transporter object using the default SMTP transport
-  let transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 587,
-    secure: false, // true for 465, false for other ports
-    auth: {
-      utilisateur: "saharmansouri789@gmail.com",
-      pass: "Saharsami123"
-    }
-  });
-
-  let mailOptions = {
-    from: '<saharmansouri789@gmail.com>', // sender address
-    to: utilisateur.email, // list of receivers
-    subject: "Wellcome to Wimbee !", // Subject line
-    html: `<h1>Hi ${utilisateur.name}</h1><br>
-    <h4>Thanks for joining us</h4>`
-  };
-
-  // send mail with defined transport object
-  let info = await transporter.sendMail(mailOptions);
-
-  callback(info);
-}*/
-
 module.exports = app;

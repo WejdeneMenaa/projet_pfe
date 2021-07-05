@@ -15,7 +15,7 @@ export class BoardUserComponent implements OnInit {
   private roles: string[];
   isLoggedIn = false;
   username: string;
-
+  id: string;
 
   constructor(private tokenStorageService: TokenStorageService) { }
 
@@ -26,5 +26,8 @@ export class BoardUserComponent implements OnInit {
       const user = this.tokenStorageService.getUser();
       this.roles = user.roles;
       this.username = user.username;
+      this.id = user.id;
+      localStorage.setItem('id', this.id);
+
     }
   }}

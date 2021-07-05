@@ -12,7 +12,7 @@
       </div>
     </form>
     <!-- Navbar-->
-    {{ username }}
+    {{ id }}
     <ul class="navbar-nav ml-auto ml-md-0">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="userDropdown" href="#!" role="button" data-toggle="dropdown"
@@ -125,33 +125,33 @@
       <div class="container" *ngIf="currentUser; else loggedOut">
         <header class="jumbotron">
           <h3>
-            <strong>{{ currentUser.username }}</strong> Profile
+            <strong>{{ user.username }}</strong> Profile
           </h3>
         </header>
 
         <p>
           <strong>Nom:</strong>
-          {{ currentUser.nom }}
+          {{ user.nom }}
         </p>
         <p>
           <strong>Prenom:</strong>
-          {{ currentUser.prenom }}
+          {{ user.prenom }}
         </p>
         <p>
           <strong>Phone:</strong>
-          {{ currentUser.phone }}
+          {{ user.phone }}
         </p>
         <p>
           <strong>Gender:</strong>
-          {{ currentUser.gender }}
+          {{ user.gender }}
         </p>
         <p>
           <strong>Status:</strong>
-          {{ currentUser.status }}
+          {{ user.status }}
         </p>
         <p>
           <strong>Username:</strong>
-          {{ currentUser.username }}
+          {{ user.username }}
         </p>
 
         <p>

@@ -33,7 +33,7 @@ const routes: Routes = [
       { path: 'ticket', component: AfficherticketComponent },
       { path: 'creerticket', component: CreerticketComponent },
       { path: 'adduser', component: CreerutilisateurComponent },
-      { path: 'modifierticket', component: ModifierticketComponent },
+      { path: 'updateticket/:id', component: ModifierticketComponent },
       { path: 'users', component: AfficherutilisateurComponent, },
       { path: 'adminn', component: AdminboardComponent },
       { path: 'userr', component: UtilisateurboardComponent },

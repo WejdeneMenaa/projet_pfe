@@ -5,7 +5,6 @@
     phone:string;
     gender : String;
     status : boolean;
-
     username: string;
     password: string;
     email: string;

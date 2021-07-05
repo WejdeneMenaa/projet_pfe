@@ -4,193 +4,160 @@
             <div class="container-fluid">
                 <h1 class="mt-4">Tickets</h1>
                 <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item"><a routerLink ="/" routerLinkActive="active">Accueil</a></li>
+                    <li class="breadcrumb-item"><a routerLink="/" routerLinkActive="active">Accueil</a></li>
                     <li class="breadcrumb-item active">Tickets</li>
                 </ol>
-                                
+                <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
-                                <div class="form-row">
-                                    <div class="name">Titre</div>
-                                    <div class="value">
-                                        <div class="input-group">
-                                            <input class="input--style-5" type="text" name="company">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="name">Description</div>
-                                    <div class="value">
-                                        <div class="input-group">
-                                            <input class="input--style-5" type="email" name="email">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="name">Ouveert le </div>
-                                    <div class="value">
-                                        <div class="input-group">
-                                            <div class="rs-select2 js-select-simple select--no-search">
-                                                <select name="subject">
-                                                    <option disabled="disabled" selected="selected">Choose option</option>
-                                                    <option>Subject 1</option>
-                                                    <option>Subject 2</option>
-                                                    <option>Subject 3</option>
-                                                </select>
-                                                <div class="select-dropdown"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="name">Date d'écheance </div>
-                                    <div class="value">
-                                        <div class="input-group">
-                                            <div class="rs-select2 js-select-simple select--no-search">
-                                                <select name="subject">
-                                                    <option disabled="disabled" selected="selected">Choose option</option>
-                                                    <option>Subject 1</option>
-                                                    <option>Subject 2</option>
-                                                    <option>Subject 3</option>
-                                                </select>
-                                                <div class="select-dropdown"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="name">Type </div>
-                                    <div class="value">
-                                        <div class="input-group">
-                                            <div class="rs-select2 js-select-simple select--no-search">
-                                                <select name="subject">
-                                                    <option disabled="disabled" selected="selected">Choose option</option>
-                                                    <option>Subject 1</option>
-                                                    <option>Subject 2</option>
-                                                    <option>Subject 3</option>
-                                                </select>
-                                                <div class="select-dropdown"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="name">Catégorie </div>
-                                    <div class="value">
-                                        <div class="input-group">
-                                            <div class="rs-select2 js-select-simple select--no-search">
-                                                <select name="subject">
-                                                    <option disabled="disabled" selected="selected">Choose option</option>
-                                                    <option>Subject 1</option>
-                                                    <option>Subject 2</option>
-                                                    <option>Subject 3</option>
-                                                </select>
-                                                <div class="select-dropdown"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="name">Statut </div>
-                                    <div class="value">
-                                        <div class="input-group">
-                                            <div class="rs-select2 js-select-simple select--no-search">
-                                                <select name="subject">
-                                                    <option disabled="disabled" selected="selected">Choose option</option>
-                                                    <option>Subject 1</option>
-                                                    <option>Subject 2</option>
-                                                    <option>Subject 3</option>
-                                                </select>
-                                                <div class="select-dropdown"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="name">Urgence </div>
-                                    <div class="value">
-                                        <div class="input-group">
-                                            <div class="rs-select2 js-select-simple select--no-search">
-                                                <select name="subject">
-                                                    <option disabled="disabled" selected="selected">Choose option</option>
-                                                    <option>Subject 1</option>
-                                                    <option>Subject 2</option>
-                                                    <option>Subject 3</option>
-                                                </select>
-                                                <div class="select-dropdown"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="name">Impact </div>
-                                    <div class="value">
-                                        <div class="input-group">
-                                            <div class="rs-select2 js-select-simple select--no-search">
-                                                <select name="subject">
-                                                    <option disabled="disabled" selected="selected">Choose option</option>
-                                                    <option>Subject 1</option>
-                                                    <option>Subject 2</option>
-                                                    <option>Subject 3</option>
-                                                </select>
-                                                <div class="select-dropdown"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="name">Priorité </div>
-                                    <div class="value">
-                                        <div class="input-group">
-                                            <div class="rs-select2 js-select-simple select--no-search">
-                                                <select name="subject">
-                                                    <option disabled="disabled" selected="selected">Choose option</option>
-                                                    <option>Subject 1</option>
-                                                    <option>Subject 2</option>
-                                                    <option>Subject 3</option>
-                                                </select>
-                                                <div class="select-dropdown"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="name">Demandeur </div>
-                                    <div class="value">
-                                        <div class="input-group">
-                                            <div class="rs-select2 js-select-simple select--no-search">
-                                                <select name="subject">
-                                                    <option disabled="disabled" selected="selected">Choose option</option>
-                                                    <option>Subject 1</option>
-                                                    <option>Subject 2</option>
-                                                    <option>Subject 3</option>
-                                                </select>
-                                                <div class="select-dropdown"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><div class="form-row">
-                                    <div class="name">Attribué à </div>
-                                    <div class="value">
-                                        <div class="input-group">
-                                            <div class="rs-select2 js-select-simple select--no-search">
-                                                <select name="subject">
-                                                    <option disabled="disabled" selected="selected">Choose option</option>
-                                                    <option>Subject 1</option>
-                                                    <option>Subject 2</option>
-                                                    <option>Subject 3</option>
-                                                </select>
-                                                <div class="select-dropdown"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div>
-                                    <button class="btn btn--radius-2 btn--red" type="submit">Ajouter</button>
-                                </div>
-                        
+                    <div class="form-row">
+                        <label for="titre">Titre</label>
+                        <input type="text" class="form-control" formControlName="titre" name="titre" required
+                            minlength="3" maxlength="20" />
+                    </div>
+                    <div class="form-row">
+                        <label for="description">Description</label>
+                        <input type="text" class="form-control" name="description" formControlName="description"
+                            required minlength="3" maxlength="20" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="date_creation">Date de création</label>
+                        <input id="date_creation" name="date_creation" formControlName="date_creation"
+                            class="form-control" type="date" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="date_echeance">Date d'échéance</label>
+                        <input id="date_echeance" name="date_echeance" formControlName="date_echeance"
+                            class="form-control" type="date" />
+                    </div>
+
+                    <div class="form-row">
+                        <label for="type">Type</label>
+                        <div class="input-group">
+                            <div class="rs-select2 js-select-simple select--no-search">
+                                <select  name="type" formControlName="type">
+                                    <option  value="Incident" formControlName="type" name="type">Incident</option >
+                                    <option  value="Demande" formControlName="type" name="type">Demande</option >
+                                </select >
+                                <div class="select-dropdown"></div>
                             </div>
-               
+                        </div>
+                    </div>
+
+
+                    <div class="form-row">
+                        <label for="statut">Statut</label>
+                        <div class="input-group">
+                            <div class="rs-select2 js-select-simple select--no-search">
+                                <mat-select  name="statut" formControlName="statut">
+                                    <mat-option name="statut" formControlName="statut" value="Nouveau">Nouveau</mat-option>
+                                    <mat-option name="statut" formControlName="statut" value="En cours">En cours</mat-option>
+                                    <mat-option name="statut" formControlName="statut" value="Résolu">Résolu</mat-option>
+                                </mat-select>
+                                <div class="select-dropdown"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="urgence">Urgence</label>
+                        <div class="input-group">
+                            <div class="rs-select2 js-select-simple select--no-search">
+                                <mat-select name="urgence" formControlName="urgence">
+                                    <mat-option name="urgence" formControlName="urgence" value="Haute">Haute</mat-option>
+                                    <mat-option name="urgence" formControlName="urgence" value="Moyenne">Moyenne</mat-option>
+                                    <mat-option name="urgence" formControlName="urgence" value="Basse">Basse</mat-option>
+                                </mat-select>
+                                <div class="select-dropdown"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="impact">Impact</label>
+                        <div class="input-group">
+                            <div class="rs-select2 js-select-simple select--no-search">
+                                <mat-select name="impact" formControlName="impact" >
+                                    <mat-option name="impact" formControlName="impact" value="Haut">Haut</mat-option>
+                                    <mat-option name="impact" formControlName="impact" value="Moyen">Moyen</mat-option>
+                                    <mat-option name="impact" formControlName="impact" value="Bas">Bas</mat-option>
+                                </mat-select>
+                                <div class="select-dropdown"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="priorite">Priorité</label>
+                        <div class="input-group">
+                            <div class="rs-select2 js-select-simple select--no-search">
+                                <mat-select name="priorite" formControlName="priorite">
+                                    <mat-option name="priorite" ngDefaultControl value="Haute">Haute</mat-option>
+                                    <mat-option name="priorite" ngDefaultControl value="Moyenne">Moyenne</mat-option>
+                                    <mat-option name="priorite" ngDefaultControl value="Basse">Basse</mat-option>
+                                </mat-select>
+                                <div class="select-dropdown"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="name">Catégorie</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <div class="rs-select2 js-select-simple select--no-search">
+                                    <mat-select name="categorie" formControlName="categorie">
+                                        <mat-option disabled="disabled" selected="selected">------</mat-option>
+                                        <mat-option>Subject 1</mat-option>
+                                        <mat-option>Subject 2</mat-option>
+                                        <mat-option>Subject 3</mat-option>
+                                    </mat-select>
+                                    <div class="select-dropdown"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="name">Demandeur</div>
+                        <div class="value">
+                            <div class="input-group">
+                                <div class="rs-select2 js-select-simple select--no-search">
+                                    <mat-select name="subject">
+                                        <mat-option disabled="disabled" selected="selected">Choose option</mat-option>
+                                        <mat-option>Subject 1</mat-option>
+                                        <mat-option>Subject 2</mat-option>
+                                        <mat-option>Subject 3</mat-option>
+                                    </mat-select>
+                                    <div class="select-dropdown"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="name">Attribué à </div>
+                        <div class="value">
+                            <div class="input-group">
+                                <div class="rs-select2 js-select-simple select--no-search">
+                                    <mat-select name="subject">
+                                        <mat-option disabled="disabled" selected="selected">Choose option</mat-option>
+                                        <mat-option>Subject 1</mat-option>
+                                        <mat-option>Subject 2</mat-option>
+                                        <mat-option>Subject 3</mat-option>
+                                    </mat-select>
+                                    <div class="select-dropdown"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <button class="btn btn--radius-2 btn--red" type="submit">Modifer</button>
+                    </div>
+                </form>
+            </div>
+
         </main>
     </div>
 </body>

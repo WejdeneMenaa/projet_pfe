@@ -19,8 +19,11 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
+db.ticket = require("./ticket.model.js")(sequelize, Sequelize);
 db.utilisateur = require("./utilisateur.model.js")(sequelize, Sequelize);
 db.role = require("../models/role.model.js")(sequelize, Sequelize);
+db.categorie = require("../models/categorie.model.js")(sequelize, Sequelize);
+
 
 
 db.role.belongsToMany(db.utilisateur, {
@@ -34,6 +37,18 @@ db.utilisateur.belongsToMany(db.role, {
   otherKey: "roleId"
 });
 
+db.ticket.belongsToMany(db.categorie, {
+  through: "tickets",
+  foreignKey: "ticket_id",
+  otherKey: "cat_id"
+} );
+
+db.ticket.belongsToMany(db.utilisateur, {
+  through: "tickets",
+  foreignKey: "ticket_id",
+  otherKey: "user_id"
+});
 db.ROLES = ["user", "admin", "moderator"];
+db.CATEGORIES = ["materiel", "logiciel", "reseaux"];
 
 module.exports = db;

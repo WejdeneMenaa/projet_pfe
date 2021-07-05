@@ -23,7 +23,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './auth.guard';
 import { AuthService } from './_service/auth.service';
-
+import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularMaterialModule } from './material.module';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,9 @@ import { AuthService } from './_service/auth.service';
     FormsModule,
     CommonModule,
     ReactiveFormsModule,
+    BsDatepickerModule.forRoot(),
+    BrowserAnimationsModule,
+    AngularMaterialModule
 
   ],
   providers: [AuthService, AuthGuard],

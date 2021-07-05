@@ -26,6 +26,7 @@ db.sequelize.sync();
 
 require("./server/routes/utilisateur.routes")(app);
 require("./server/routes/auth.routes")(app);
+require("./server/routes/ticket.routes")(app);
 
 // set port, listen for requests
 app.listen(3000, (req,res)=> {

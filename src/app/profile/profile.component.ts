@@ -24,7 +24,7 @@ export class ProfileComponent implements OnInit {
   isAddMode: boolean;
   loading = false;
   submitted = false;
-  user = null;
+  user : any = {};
 
   constructor(private token: TokenStorageService,
     private UtilisateurService: UtilisateurService,
@@ -38,7 +38,7 @@ export class ProfileComponent implements OnInit {
 
     this.id = this.route.snapshot.params['id'];
     this.isAddMode = !this.id;
-    this.UtilisateurService.get(this.id).subscribe((data) => {
+    this.UtilisateurService.get(localStorage.getItem('id')).subscribe((data) => {
         this.user = data
         console.log("user" + this.user)
     })
