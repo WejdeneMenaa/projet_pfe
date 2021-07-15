@@ -21,16 +21,15 @@ export class CreerticketComponent implements OnInit {
   submitted = false;
   categorie: any = ['materiel', 'logiciel', 'reseaux'];
   images;
-  currentUser = null;
+  url: any;
+  selectedImage: any;
+  imageUrl: any;
 
 
 
-
-  constructor(private TicketService: TicketService, public http: HttpService, private https: HttpClient,private token: TokenStorageService) { }
+  constructor(private TicketService: TicketService, public http: HttpService, private https: HttpClient, private token: TokenStorageService) { }
   ngOnInit(): void {
-    //this.currentUser = this.token.getUser();
-   // monObjet:string = localStorage.getItem('monObjet');
-    console.log("oussama"+localStorage.getItem('id'))
+    console.log("***" + localStorage.getItem('id'))
   }
 
 
@@ -38,32 +37,39 @@ export class CreerticketComponent implements OnInit {
   selectImage(event) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
+      console.log("file" + file);
       this.images = file;
+      // this.ticket.image = file;
     }
   }
+
+
   onSubmit() {
 
     const formData = new FormData();
     formData.append('file', this.images);
 
     this.https.post<any>('http://localhost:4200/api/ticket/file', formData).subscribe(
-      (res) => console.log(res),
-      (err) => console.log(err)
-    );
-    this.ticket.user_id = localStorage.getItem('id');
-    this.TicketService.create(this.ticket).subscribe(
-      data => {
-        //console.log("///"+this.currentUser.user_id)
-        this.ticket.user_id = 89;
-        console.log(data);
-        this.isSuccessful = true;
-        this.isSignUpFailed = false;
+      (res) => {
+        console.log(res)
+        this.ticket.statut = 'Nouveau'
+        this.ticket.image = res.file;
+        this.ticket.user_id = localStorage.getItem('id');
+        this.TicketService.create(this.ticket).subscribe(
+          data => {
+            console.log(data);
+            this.isSuccessful = true;
+            this.isSignUpFailed = false;
+
+          },
+          err => {
+            this.errorMessage = err.error.message;
+            this.isSignUpFailed = true;
+          }
+        );
 
       },
-      err => {
-        this.errorMessage = err.error.message;
-        this.isSignUpFailed = true;
-      }
+      (err) => console.log(err)
     );
   }
 }

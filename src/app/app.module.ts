@@ -26,6 +26,10 @@ import { AuthService } from './_service/auth.service';
 import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './material.module';
+import { ResoudreticketComponent } from './ticket/resoudreticket/resoudreticket.component';
+import { RouterModule } from '@angular/router';
+import { DetailsticketComponent } from './ticket/detailsticket/detailsticket.component';
+
 
 @NgModule({
   declarations: [
@@ -45,7 +49,9 @@ import { AngularMaterialModule } from './material.module';
     BoardModeratorComponent,
     BoardUserComponent,
     ProfileComponent,
-    HomeComponent
+    HomeComponent,
+    ResoudreticketComponent,
+    DetailsticketComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +62,8 @@ import { AngularMaterialModule } from './material.module';
     ReactiveFormsModule,
     BsDatepickerModule.forRoot(),
     BrowserAnimationsModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    RouterModule
 
   ],
   providers: [AuthService, AuthGuard],

@@ -41,6 +41,9 @@ module.exports = (sequelize, Sequelize) => {
       categorie: {
         type: Sequelize.STRING
       },
+      solution: {
+        type: Sequelize.STRING
+      },
       cat_id: {
         type: Sequelize.INTEGER
       },

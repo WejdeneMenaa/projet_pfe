@@ -62,10 +62,6 @@
                                                 <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
                                                     rowspan="1" colspan="1" aria-sort="ascending"
                                                     aria-label="Name: activate to sort column descending"
-                                                    style="width: 145px;">Date d'échéance</th>
-                                                <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
-                                                    rowspan="1" colspan="1" aria-sort="ascending"
-                                                    aria-label="Name: activate to sort column descending"
                                                     style="width: 145px;">Description</th>
                                                 <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                     colspan="1" aria-label="Position: activate to sort column ascending"
@@ -76,27 +72,11 @@
                                                 <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
                                                     rowspan="1" colspan="1" aria-sort="ascending"
                                                     aria-label="Name: activate to sort column descending"
-                                                    style="width: 145px;">Priorité</th>
-                                                <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
-                                                    rowspan="1" colspan="1" aria-sort="ascending"
-                                                    aria-label="Name: activate to sort column descending"
-                                                    style="width: 145px;">Urgence</th>
-                                                <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
-                                                    rowspan="1" colspan="1" aria-sort="ascending"
-                                                    aria-label="Name: activate to sort column descending"
-                                                    style="width: 145px;">Impact</th>
-                                                    <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
-                                                    rowspan="1" colspan="1" aria-sort="ascending"
-                                                    aria-label="Name: activate to sort column descending"
                                                     style="width: 145px;">Catégorie</th>
                                                 <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
                                                     rowspan="1" colspan="1" aria-sort="ascending"
                                                     aria-label="Name: activate to sort column descending"
-                                                    style="width: 145px;">Attribué à</th>
-                                                <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
-                                                    rowspan="1" colspan="1" aria-sort="ascending"
-                                                    aria-label="Name: activate to sort column descending"
-                                                    style="width: 145px;">Modifer</th>
+                                                    style="width: 145px;">Détails</th>
                                                 <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
                                                     rowspan="1" colspan="1" aria-sort="ascending"
                                                     aria-label="Name: activate to sort column descending"
@@ -107,19 +87,16 @@
                                             <tr role="row" class="odd" *ngFor="let ticket of tickets">
                                                 <td>{{ticket.titre}}</td>
                                                 <td>{{ticket.date_creation}}</td>
-                                                <td>{{ticket.date_echeance}}</td>
                                                 <td>{{ticket.description}}</td>
                                                 <td>{{ticket.statut}}</td>
                                                 <td>{{ticket.type}}</td>
-                                                <td>{{ticket.priorite}}</td>
-                                                <td>{{ticket.urgence}}</td>
-                                                <td>{{ticket.impact}}</td>
                                                 <td>{{ticket.categorie}}</td>
-                                                <td>{{ticket.attribuea}}</td>
-                                                <td><button routerLink="/updateticket/{{ ticket.ticket_id }}" routerLinkActive="active"
+
+                                                <td><button routerLink="/detailsticket/{{ ticket.ticket_id }}"
+                                                        routerLinkActive="active"
                                                         class="btn btn-sm btn-danger btn-delete-user">
 
-                                                        <span>modifier</span>
+                                                        <span>Details</span>
                                                     </button></td>
 
                                                 <td><button (click)="deleteTicket(ticket.ticket_id)"
@@ -129,7 +106,6 @@
                                                             class="spinner-border spinner-border-sm"></span>
                                                         <span *ngIf="!ticket.isDeleting">Supprimer</span>
                                                     </button></td>
-
                                             </tr>
                                         </tbody>
                                     </table>

@@ -9,7 +9,9 @@
     priorite: string;
     urgence: string;
     categorie: string;
+    image: string;
     impact: string;
+    solution: string;
     attribuea: string;
     user_id:number;
 }

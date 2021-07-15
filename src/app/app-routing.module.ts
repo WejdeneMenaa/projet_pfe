@@ -17,6 +17,9 @@ import { BoardUserComponent } from './board-user/board-user.component';
 import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { AuthGuard } from './auth.guard';
+import { DetailsticketComponent } from './ticket/detailsticket/detailsticket.component';
+import { ResoudreticketComponent } from './ticket/resoudreticket/resoudreticket.component';
+
 
 
 
@@ -27,6 +30,7 @@ const routes: Routes = [
   { path: 'admin', component: BoardAdminComponent },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'detailsticket/:id', component: DetailsticketComponent },
   {
     path: '', component: AccueilComponent,
     children: [
@@ -34,13 +38,12 @@ const routes: Routes = [
       { path: 'creerticket', component: CreerticketComponent },
       { path: 'adduser', component: CreerutilisateurComponent },
       { path: 'updateticket/:id', component: ModifierticketComponent },
+      { path: 'resoudre/:id', component: ResoudreticketComponent },
       { path: 'users', component: AfficherutilisateurComponent, },
       { path: 'adminn', component: AdminboardComponent },
       { path: 'userr', component: UtilisateurboardComponent },
       { path: 'updateprofil', component: ModifierprofileComponent },
       { path: 'updateuser/:id', component: ModifierutilisateurComponent },
-
-
 
     ]
   }

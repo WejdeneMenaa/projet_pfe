@@ -48,7 +48,9 @@ export class ModifierutilisateurComponent implements OnInit {
         }
 
         this.form = this.formBuilder.group({
-            username: ['', Validators.required],
+            nom: ['', Validators.required],
+            prenom: ['', Validators.required],
+            phone: ['', Validators.required],
             email: ['', Validators.required],
             password: ['', passwordValidators]
         });

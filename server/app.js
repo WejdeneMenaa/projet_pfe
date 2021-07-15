@@ -5,12 +5,13 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const bodyParser = require("body-parser");
 const cors = require("cors");
+app.use(cors(corsOptions));
 //var cors = require('cors')
 var indexRouter = require('./routes/utilisateur.routes');
 var app = express();
+app.use('/uploads', express.static('uploads'));
 const nodemailer = require("nodemailer");
 app.use(bodyParser.json());
-
 //app.use(cors)
 app.use(logger('dev'));
 app.use(express.json());
@@ -18,6 +19,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors({ origin: "*" }))
 app.use('/api', indexRouter);
+
+var corsOptions = {
+  origin: "http://localhost:3000"
+};
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

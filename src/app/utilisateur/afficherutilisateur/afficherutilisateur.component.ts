@@ -11,7 +11,7 @@ import { UtilisateurService } from 'src/app/_service/utilisateur.service';
 export class AfficherutilisateurComponent implements OnInit {
   users = null;
   utilisateur = null;
-
+  nom = "saharrr"
   constructor(
     private utilisateurservice: UtilisateurService,
     private route: ActivatedRoute,

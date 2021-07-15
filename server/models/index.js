@@ -48,6 +48,7 @@ db.ticket.belongsToMany(db.utilisateur, {
   foreignKey: "ticket_id",
   otherKey: "user_id"
 });
+
 db.ROLES = ["user", "admin", "moderator"];
 db.CATEGORIES = ["materiel", "logiciel", "reseaux"];
 

@@ -3,6 +3,8 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 const app = express();
+app.use(express.static('uploads'));
+
 
 var corsOptions = {
   origin: "http://localhost:4200"

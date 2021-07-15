@@ -3,7 +3,8 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const multer = require('multer');
-
+const app = express();
+const path = require("path");
 
 const controller = require("../controllers/ticket.controller");
 
@@ -24,14 +25,12 @@ module.exports = function (app) {
   router.get("/:ticket_id", controller.findOne);
 
 
-
-
   const storage = multer.diskStorage({
     destination: (req, file, callBack) => {
       callBack(null, 'uploads')
     },
     filename: (req, file, callBack) => {
-      callBack(null, `Wimbee_${file.originalname}`)
+      callBack(null, file.originalname)
     }
   })
 
@@ -48,10 +47,10 @@ module.exports = function (app) {
       error.httpStatusCode = 400
       return next(error)
     }
-    res.send(file);
+    res.send({ file: file.originalname });
   })
-
-
+  app.use('/api/ticket/uploads', express.static('uploads'));
+  app.use(express.static('uploads'));
 
   app.use('/api/ticket', router);
 

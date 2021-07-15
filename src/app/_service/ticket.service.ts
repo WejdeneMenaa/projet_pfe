@@ -20,7 +20,11 @@ export class TicketService {
 
 
   public get ticketValue(): Ticket {
-    return this.ticketSubject.value;
+    if(this.ticketSubject && this.ticketSubject.value) {
+      return this.ticketSubject.value;
+    } else {
+      return null
+    } 
   }
 
   getAll(): Observable<any> {
@@ -41,9 +45,11 @@ export class TicketService {
     priorite: string;
     urgence: string;
     impact: string;
+    image: string;
     categorie: string;
+    solution: string;
     attribuea: string;
-    user_id:number;
+    user_id: number;
   }): Observable<any> {
     return this.http.post(baseUrl, data);
   }
@@ -53,7 +59,7 @@ export class TicketService {
       .pipe(map(x => {
         console.log("**" + JSON.stringify(x))
         // update stored user if the logged in user updated their own record
-        if (ticket_id == this.ticketValue.ticket_id) {
+        if (this.ticketValue && this.ticketValue.ticket_id == this.ticketValue.ticket_id) {
           // update local storage
           const ticket = { ...this.ticketValue, ...params };
           localStorage.setItem('ticket', JSON.stringify(ticket));
@@ -72,5 +78,8 @@ export class TicketService {
       .pipe(map(x => {
         return x;
       }));
+  }
+  sendEmail(url) {
+    return this.http.get(url);
   }
 }

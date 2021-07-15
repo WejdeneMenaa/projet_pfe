@@ -15,11 +15,33 @@
                         <form [formGroup]="form" (ngSubmit)="onSubmit()">
                             <div class="form-row">
                                 <div class="form-group col">
-                                    <label for="username">Nom</label>
-                                    <input type="text" formControlName="username" class="form-control"
-                                        [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-                                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-                                        <div *ngIf="f.username.errors.required">Username is required</div>
+                                    <label for="nom">Nom</label>
+                                    <input type="text" formControlName="nom" class="form-control"
+                                        [ngClass]="{ 'is-invalid': submitted && f.nom.errors }" />
+                                    <div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
+                                        <div *ngIf="f.nom.errors.required">Name is required</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col">
+                                    <label for="prenom">Prenom</label>
+                                    <input type="text" formControlName="prenom" class="form-control"
+                                        [ngClass]="{ 'is-invalid': submitted && f.prenom.errors }" />
+                                    <div *ngIf="submitted && f.prenom.errors" class="invalid-feedback">
+                                        <div *ngIf="f.prenom.errors.required">Last name is required</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col">
+                                    <label for="phone">Phone</label>
+                                    <input type="text" formControlName="phone" class="form-control"
+                                        [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
+                                    <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                                        <div *ngIf="f.phone.errors.required">Phone is required</div>
                                     </div>
                                 </div>
                             </div>

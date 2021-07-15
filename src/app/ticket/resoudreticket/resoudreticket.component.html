@@ -1,0 +1,82 @@
+<body>
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <img class="navbar-brand" src="assets/img/wimbee.png" />
+        <!-- Navbar Search-->
+        <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+            <div class="input-group">
+                <input class="form-control" type="text" placeholder="Search for..." aria-label="Search"
+                    aria-describedby="basic-addon2" />
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </form>
+        <!-- Navbar-->
+        <ul class="navbar-nav ml-auto ml-md-0">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="userDropdown" href="#!" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+            </li>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#!">Settings</a>
+                <a class="dropdown-item" href="#!">Activity Log</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="login.html">Logout</a>
+            </div>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="container-fluid">
+            <h1 class="mt-4">Résoudre un ticket</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item"><a routerLink="/" routerLinkActive="active">Accueil</a></li>
+                <li class="breadcrumb-item active">Résoudre un ticket</li>
+            </ol>
+
+            <div class="card mb-4">
+                <div class="card-header">
+
+                    <h3>Résoudre un ticket</h3>
+                    <form [formGroup]="form">
+                        <div class="form-row">
+                            <div class="form-group col">
+                                <label for="titre">Titre</label>
+                                <input id="titre" name="titre" formControlName="titre" class="form-control" type="text"
+                                    readonly />
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col">
+                                <label for="description">Description</label>
+                                <input id="description" name="description" formControlName="description"
+                                    class="form-control" type="text" readonly />
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col">
+                                <label for="statut">Status</label>
+                                <input id="statut" name="statut" formControlName="statut" class="form-control"
+                                    type="text" readonly />
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col">
+                                <label for="solution">Solution</label>
+                                <textarea id="solution" name="solution" formControlName="solution" class="form-control"
+                                    type="text"></textarea>
+                            </div>
+                        </div>
+
+                        <td><button (click)="ResoudreTicket(ticket.ticket_id)"  class="btn btn-sm btn-danger btn-delete-user">
+                                <span>Résoudre</span>
+                            </button></td>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>

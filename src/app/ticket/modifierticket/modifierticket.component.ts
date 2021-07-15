@@ -46,6 +46,8 @@ export class ModifierticketComponent implements OnInit {
             priorite: ['', [Validators.required]],
             urgence: ['', [Validators.required]],
             impact: ['', [Validators.required]],
+            image: ['', [Validators.required]],
+            user_id: ['', [Validators.required]],
         });
 
         if (!this.isAddMode) {
