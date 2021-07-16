@@ -54,16 +54,4 @@ export class DetailsticketComponent implements OnInit {
     this.router.navigate([`/resoudre/${this.ticket_id}`])
   }
 
-  /* readUrl(event:any) {
-     if (event.target.files && event.target.files[0]) {
-       var reader = new FileReader();
-   
-       reader.onload = (event: ProgressEvent) => {
-         this.url = (<FileReader>event.target).result;
-       }
-   
-       reader.readAsDataURL(event.target.files[0]);
-     }
-   }*/
-
 }

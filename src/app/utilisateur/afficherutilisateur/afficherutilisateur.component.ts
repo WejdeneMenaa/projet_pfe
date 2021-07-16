@@ -2,18 +2,25 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { UtilisateurService } from 'src/app/_service/utilisateur.service';
+import {ConfirmationService} from 'primeng/api';
+import {Message} from 'primeng/api';
+
+
 
 @Component({
   selector: 'app-afficherutilisateur',
   templateUrl: './afficherutilisateur.component.html',
-  styleUrls: ['./afficherutilisateur.component.css']
+  styleUrls: ['./afficherutilisateur.component.css'],
+  providers: [ConfirmationService]
 })
 export class AfficherutilisateurComponent implements OnInit {
+  msgs: Message[] = [];
   users = null;
   utilisateur = null;
   nom = "saharrr"
   constructor(
     private utilisateurservice: UtilisateurService,
+    private confirmationService: ConfirmationService, 
     private route: ActivatedRoute,
     private router: Router) { }
 
@@ -47,8 +54,18 @@ export class AfficherutilisateurComponent implements OnInit {
 
 
   deleteUser(user_id: string) {
-    console.log("sahar" + user_id)
     const user = this.users.find(x => x.id === user_id);
+    this.confirmationService.confirm({
+      message: 'Do you want to delete this record?',
+      header: 'Delete Confirmation',
+      icon: 'pi pi-info-circle',
+      accept: () => {
+          this.msgs = [{severity:'info', summary:'Confirmed', detail:'Record deleted'}];
+      },
+      reject: () => {
+          this.msgs = [{severity:'info', summary:'Rejected', detail:'You have rejected'}];
+      }
+  });
     this.utilisateurservice.delete(user_id)
       .pipe(first())
       .subscribe(() => this.users = this.users.filter(x => x.id !== user_id));

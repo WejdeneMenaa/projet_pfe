@@ -94,7 +94,7 @@
                                                 <td>{{utilisateur.username}}</td>
                                                 <td>{{utilisateur.email}}</td>
                                                 <td>{{utilisateur.gender}}</td>
-                                                <td>{{utilisateur.status ? "true" : "false"}}</td>
+                                                <td>{{utilisateur.status ? "active" : "desactive"}}</td>
                                                 <td><button routerLink="/updateuser/{{ utilisateur.user_id }}"
                                                         routerLinkActive="active"
                                                         class="btn btn-sm btn-danger btn-delete-user">
@@ -102,7 +102,7 @@
                                                         <span>modifier</span>
                                                     </button></td>
 
-                                                <td><button (click)="deleteUser(utilisateur.user_id)"
+                                                <td><button (click)="deleteUser(utilisateur.user_id)" icon="pi pi-times"
                                                         class="btn btn-sm btn-danger btn-delete-user"
                                                         [disabled]="utilisateur.isDeleting">
                                                         <span *ngIf="utilisateur.isDeleting"

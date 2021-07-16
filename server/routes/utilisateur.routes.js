@@ -44,12 +44,14 @@ module.exports = function (app) {
   router.post("/sendmail", (req, res) => {
     console.log("request came");
     let utilisateur = req.body;
+
     const subject = "Bienvenue chez Wimbee !";
     const html = `<h3>Bonjour cher(e) ${utilisateur.nom}</h3>
     <h3>Les identifiants suivants vous donnent accés à votre espace : </h3>
     <h3>Nom d'utilisateur : ${utilisateur.username} </h3><br>
     <h3>Mot de passe : ${utilisateur.password} </h3><br>
       <h3>Merci de vous joindre à nous !</h3>`;
+
     sendMail((utilisateur, subject, html), info => {
       console.log(`The mail has beed send 😃 and the id is ${info.messageId}`);
       res.send(info);
@@ -60,23 +62,24 @@ module.exports = function (app) {
     console.log("request came");
     let user_id = req.params.id;
     console.log('************', req.params.id)
-    console.log('************', req.params)
     Utilisateur.findByPk(user_id)
-    .then(data => {
-      const subject = 'sahar';
-      const html = 'sahar';
-      sendMail(data, subject, html, info => {
-        console.log(`The mail has beed send 😃 and the id is ${info.messageId}`);
-        res.send(info);
+      .then(data => {
+        const subject = `"Bienvenue chez Wimbee !${req.params.nom}`;
+        const html = `<h3>Bonjour cher(e) ${utilisateur.nom}</h3>
+      <h3>Par le présent, nous vous informons que votre ticket a été résolu avec succées ! </h3>
+      <h3>Merci pour votre confiance !</h3>`;
+        sendMail(data, subject, html, info => {
+          console.log(`The mail has beed send 😃 and the id is ${info.messageId}`);
+          res.send(info);
+        });
+      })
+      .catch(err => {
+        res.status(500).send({
+          message: "Error retrieving Tutorial with id=" + user_id
+        });
       });
-    })
-    .catch(err => {
-      res.status(500).send({
-        message: "Error retrieving Tutorial with id=" + user_id
-      });
-    });
   });
-  async function sendMail(utilisateur,subject, html,  callback) {
+  async function sendMail(utilisateur, subject, html, callback) {
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
