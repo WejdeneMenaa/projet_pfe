@@ -20,8 +20,8 @@ export class DetailsticketComponent implements OnInit {
   ticket: any = {};
   ticket_id: number;
   url: any
-  nom: any;
-  private utilisateurs: string[];
+  statut: any;
+  user = null;
 
   constructor(
     private TicketService: TicketService,
@@ -32,8 +32,8 @@ export class DetailsticketComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const user = this.token.getUser();
-    this.nom = user.nom;
+    this.user  = this.token.getUser();
+    this.statut = this.ticket.statut;
     this.ticket_id = this.route.snapshot.params['id'];
     this.isAddMode = !this.ticket_id;
     this.TicketService.get(this.ticket_id).subscribe((data) => {
@@ -42,7 +42,20 @@ export class DetailsticketComponent implements OnInit {
     })
   }
 
-  updateStatus() {
+  updateStatus2() {
+    const link = ['/ticket'];
+    console.log('**********************here')
+    this.ticket.statut = 'Resolu'
+    this.TicketService.update(this.ticket_id, this.ticket).subscribe((data) => {
+      this.ticket = data
+      console.log("user" + this.ticket)
+    })
+    this.ngOnInit();
+    this.router.navigate(link);
+
+  }
+
+  updateStatus1() {
     console.log('**********************here')
     this.ticket.statut = 'En cours'
     this.TicketService.update(this.ticket_id, this.ticket).subscribe((data) => {

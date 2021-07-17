@@ -28,6 +28,9 @@ module.exports = (sequelize, Sequelize) => {
       },
       status: {
         type:  Sequelize.BOOLEAN
+      },
+      image: {
+        type: Sequelize.STRING
       }
 
     });

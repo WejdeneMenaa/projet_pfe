@@ -2,8 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { UtilisateurService } from 'src/app/_service/utilisateur.service';
-import {ConfirmationService} from 'primeng/api';
-import {Message} from 'primeng/api';
+import { ConfirmationService } from 'primeng/api';
+import { Message } from 'primeng/api';
+import { MatDialog } from '@angular/material/dialog';
+import { ModifierutilisateurComponent } from '../modifierutilisateur/modifierutilisateur.component';
+import { DetailsticketComponent } from 'src/app/ticket/detailsticket/detailsticket.component';
+import { ProfileComponent } from 'src/app/profile/profile.component';
 
 
 
@@ -20,8 +24,9 @@ export class AfficherutilisateurComponent implements OnInit {
   nom = "saharrr"
   constructor(
     private utilisateurservice: UtilisateurService,
-    private confirmationService: ConfirmationService, 
+    private confirmationService: ConfirmationService,
     private route: ActivatedRoute,
+    public dialog: MatDialog,
     private router: Router) { }
 
 
@@ -34,22 +39,27 @@ export class AfficherutilisateurComponent implements OnInit {
 
   }
 
-  updateStatus(status,utilisateur) {
+  openDialog() {
+    this.dialog.open(ProfileComponent);
+  }
+
+
+  updateStatus(status, utilisateur) {
     const data = {
-     status:status
+      status: status
     };
 
-    console.log("***"+this.users)
+    console.log("***" + this.users)
     this.utilisateurservice.update(utilisateur.user_id, data)
       .subscribe(
         response => {
-        //  this.users.status = status;
+          //  this.users.status = status;
           console.log(response);
         },
         error => {
           console.log(error);
         });
-        this.ngOnInit();
+    this.ngOnInit();
   }
 
 

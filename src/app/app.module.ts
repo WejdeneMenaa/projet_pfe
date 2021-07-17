@@ -31,6 +31,7 @@ import { RouterModule } from '@angular/router';
 import { DetailsticketComponent } from './ticket/detailsticket/detailsticket.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +52,8 @@ import { DetailsticketComponent } from './ticket/detailsticket/detailsticket.com
     ProfileComponent,
     HomeComponent,
     ResoudreticketComponent,
-    DetailsticketComponent
+    DetailsticketComponent,
+  
   ],
   imports: [
     BrowserModule,

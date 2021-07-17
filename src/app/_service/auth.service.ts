@@ -18,7 +18,7 @@ export class AuthService {
   status = false;
 
 
-  constructor(private http: HttpClient ,private tokenStorage: TokenStorageService) { }
+  constructor(private http: HttpClient, private tokenStorage: TokenStorageService) { }
 
   login(credentials: { username: any; password: any; }): Observable<any> {
     return this.http.post(AUTH_API + 'signin', {
@@ -27,7 +27,7 @@ export class AuthService {
     }, httpOptions);
   }
 
-  register(utilisateur: { username: any; email: any; password: any; nom: any; prenom: any; phone: any; gender: any; status: any; }): Observable<any> {
+  register(utilisateur: { username: any; email: any; password: any; nom: any; prenom: any; phone: any; gender: any; status: any; image: any; }): Observable<any> {
     return this.http.post(AUTH_API + 'signup', {
       username: utilisateur.username,
       email: utilisateur.email,
@@ -36,6 +36,7 @@ export class AuthService {
       prenom: utilisateur.prenom,
       phone: utilisateur.phone,
       gender: utilisateur.gender,
+      image: utilisateur.image,
       status: false
     }, httpOptions);
   }
@@ -45,6 +46,6 @@ export class AuthService {
   }
 
   loggedIn() {
-    return !!localStorage.getItem('token')    
+    return !!localStorage.getItem('token')
   }
 }

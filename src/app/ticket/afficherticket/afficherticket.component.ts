@@ -15,15 +15,18 @@ import { TokenStorageService } from 'src/app/_service/token-storage.service';
 
 export class AfficherticketComponent implements OnInit {
   tickets = null;
-  ticket = null;
+  ticket: any = {};
   id: string;
-  statut = "En cours";
   private roles: string[];
   isLoggedIn = false;
   showAdminBoard = false;
   showTechnicienBoard = false;
   username: string;
   user = null;
+  ticket_id: number;
+  isAddMode: boolean;
+
+
 
   constructor(
     private TicketService: TicketService,
@@ -42,32 +45,14 @@ export class AfficherticketComponent implements OnInit {
       this.username = this.user.username;
       this.id = this.user.id;
       localStorage.setItem('id', this.id);
-
     }
+    this.ticket_id = this.route.snapshot.params['id'];
+    this.isAddMode = !this.ticket_id;
     this.TicketService.getAll().subscribe((data) => {
       this.tickets = data
     })
 
   }
-
-  updateStatus(status,ticket) {
-    const data = {
-     status:status
-    };
-
-    console.log("***"+this.tickets)
-    this.TicketService.update(ticket.ticket_id, data)
-      .subscribe(
-        response => {
-        //  this.users.status = status;
-          console.log(response);
-        },
-        error => {
-          console.log(error);
-        });
-        this.ngOnInit();
-  }
-
 
   deleteTicket(ticket_id: string) {
     console.log("sahar" + ticket_id)
@@ -78,14 +63,6 @@ export class AfficherticketComponent implements OnInit {
     this.ngOnInit();
   }
 
-  ResoudreTicket(ticket_id: string) {
-
-    
-  
-
-    document.getElementById("statut").setAttribute(this.ticket.statut, "En cours");
-    // status = "En cours";
-  }
 }
 
 

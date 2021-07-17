@@ -18,10 +18,11 @@ exports.create = (req, res) => {
     email: req.body.email,
     password: req.body.password,
     nom: req.body.nom,
+    image: req.body.image,
     prenom: req.body.prenom,
     phone: req.body.phone,
     gender: req.body.gender,
-    status: req.body.status
+    status: req.body.status,
     };
   
     // Save Tutorial in the database

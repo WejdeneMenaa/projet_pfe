@@ -4,6 +4,7 @@ import { HttpService } from 'src/app/_service/http.service';
 import { FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { TokenStorageService } from 'src/app/_service/token-storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-creerticket',
@@ -27,7 +28,11 @@ export class CreerticketComponent implements OnInit {
 
 
 
-  constructor(private TicketService: TicketService, public http: HttpService, private https: HttpClient, private token: TokenStorageService) { }
+  constructor(private router: Router,
+    private TicketService: TicketService, 
+    public http: HttpService, 
+    private https: HttpClient, 
+    private token: TokenStorageService) { }
   ngOnInit(): void {
     console.log("***" + localStorage.getItem('id'))
   }
@@ -43,8 +48,9 @@ export class CreerticketComponent implements OnInit {
     }
   }
 
-
   onSubmit() {
+    const link = ['/ticket'];
+
 
     const formData = new FormData();
     formData.append('file', this.images);
@@ -72,5 +78,7 @@ export class CreerticketComponent implements OnInit {
       },
       (err) => console.log(err)
     );
+    this.router.navigate(link);
+
   }
 }

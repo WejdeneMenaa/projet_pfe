@@ -5,7 +5,10 @@
         <strong>{{ user.username }}</strong> Profile
       </h3>
     </header>
-
+    <p>
+      <strong>Image:</strong>
+      <img [src]="'http://localhost:4200/api/ticket/uploads/' + user.image" class="img-fluid" alt="Responsive image">
+    </p>
     <p>
       <strong>Nom:</strong>
       {{ user.nom }}
@@ -38,7 +41,7 @@
     </p>
     <p>
       <strong>Email:</strong>
-      {{ currentUser.email }}
+      {{ user.email }}
     </p>
     <strong>Roles:</strong>
     <ul>

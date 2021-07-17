@@ -81,11 +81,11 @@
                                                     style="width: 145px;">Status</th>
                                                 <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                     colspan="1" aria-label="Age: activate to sort column ascending"
-                                                    style="width: 44px;">Modifer</th>
+                                                    style="width: 44px;">Bannir</th>
                                                 <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                     colspan="1"
                                                     aria-label="Start date: activate to sort column ascending"
-                                                    style="width: 96px;">Supprimer</th>
+                                                    style="width: 96px;">Action</th>
                                         </thead>
 
                                         <tbody>
@@ -97,32 +97,35 @@
                                                 <td>{{utilisateur.email}}</td>
                                                 <td>{{utilisateur.gender}}</td>
                                                 <td>{{utilisateur.status ? "active" : "desactive"}}</td>
-                                                <td><button routerLink="/updateuser/{{ utilisateur.user_id }}"
-                                                        routerLinkActive="active"
-                                                        class="btn btn-sm btn-danger btn-delete-user">
 
-                                                        <span>modifier</span>
-                                                    </button></td>
-
-                                                <td><button (click)="deleteUser(utilisateur.user_id)"
-                                                        class="btn btn-sm btn-danger btn-delete-user"
-                                                        [disabled]="utilisateur.isDeleting">
-                                                        <span *ngIf="utilisateur.isDeleting"
-                                                            class="spinner-border spinner-border-sm"></span>
-                                                        <span *ngIf="!utilisateur.isDeleting">Supprimer</span>
-                                                    </button></td>
-                                                <td> <button class="btn btn-sm btn-danger btn-delete-user"
-                                                        *ngIf="utilisateur.status"
+                                                <td> <button class="btn btn-secondary" *ngIf="utilisateur.status"
                                                         (click)="updateStatus(false,utilisateur)">
                                                         Désactiver
                                                     </button>
-                                                    <button *ngIf="!utilisateur.status"
-                                                        class="btn btn-sm btn-danger btn-delete-user"
+                                                    <button *ngIf="!utilisateur.status" class="btn btn-secondary"
                                                         (click)="updateStatus(true,utilisateur)">
                                                         Activer
                                                     </button>
                                                 </td>
 
+                                                <td>
+                                                    <div class="dropdown show">
+                                                        <a class="btn btn-secondary dropdown-toggle" href="#"
+                                                            role="button" id="dropdownMenuLink" data-toggle="dropdown"
+                                                            aria-haspopup="true" aria-expanded="false">
+                                                            Action
+                                                        </a>
+                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                            <a mat-button class="dropdown-item"
+                                                                routerLink="/updateuser/{{ utilisateur.user_id }}"
+                                                                routerLinkActive="active">Modifier</a>
+                                                            <a mat-button class="dropdown-item"
+                                                                (click)="deleteUser(utilisateur.user_id)">Supprimer</a>
+                                                            <a class="dropdown-item" mat-button
+                                                                (click)="openDialog()">details</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>

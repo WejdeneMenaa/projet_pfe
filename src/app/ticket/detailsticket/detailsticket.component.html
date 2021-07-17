@@ -8,7 +8,7 @@
     </header>
     <p>
       <strong>Image:</strong>
-      <img [src]="'http://localhost:4200/api/ticket/uploads/' + ticket.image" width="600" height="300">
+      <img [src]="'http://localhost:4200/api/ticket/uploads/' + ticket.image" class="img-fluid" alt="Responsive image">
     </p>
     <p>
       <strong>Titre:</strong>
@@ -55,15 +55,27 @@
       <strong>Demandeur:</strong>
       {{ ticket.user_id }}
     </p>
+    <p>
+      <strong>Affecter à :</strong>
+      <mat-select name="affectea" [(ngModel)]="ticket.affectea">
+        <mat-option name="affectea" [(ngModel)]="ticket.affectea" value="affectea">......
+        </mat-option>
+    </mat-select>
+    </p>
 
     <button routerLink="/updateticket/{{ ticket.ticket_id }}" routerLinkActive="active"
       class="btn btn-sm btn-danger btn-delete-user">
       <span>modifier</span>
     </button>
 
-    <button (click)="updateStatus()" class="btn btn-sm btn-danger btn-delete-user">
+    <button (click)="updateStatus1()" class="btn btn-sm btn-danger btn-delete-user">
 
       <span>Résoudre</span>
+    </button>
+
+    <button *ngIf="ticket.statut.includes('En cours')" (click)="updateStatus2()" class="btn btn-sm btn-danger btn-delete-user">
+
+      <span>Cloturer</span>
     </button>
 
   </div>
