@@ -1,6 +1,8 @@
 <body>
     <main>
         <div class="container-fluid">
+            <router-outlet></router-outlet>
+
             <h1 class="mt-4">Utilisateurs</h1>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item"><a routerLink="/" routerLinkActive="active">Accueil</a></li>
@@ -102,7 +104,7 @@
                                                         <span>modifier</span>
                                                     </button></td>
 
-                                                <td><button (click)="deleteUser(utilisateur.user_id)" icon="pi pi-times"
+                                                <td><button (click)="deleteUser(utilisateur.user_id)"
                                                         class="btn btn-sm btn-danger btn-delete-user"
                                                         [disabled]="utilisateur.isDeleting">
                                                         <span *ngIf="utilisateur.isDeleting"

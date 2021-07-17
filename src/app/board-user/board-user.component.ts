@@ -11,11 +11,12 @@ import { TokenStorageService } from '../_service/token-storage.service';
 export class BoardUserComponent implements OnInit {
 
   utilisateur: Utilisateur;
-  users=null;
-  private roles: string[];
+  users = null;
+  roles: string[];
   isLoggedIn = false;
   username: string;
   id: string;
+  user = null;
 
   constructor(private tokenStorageService: TokenStorageService) { }
 
@@ -23,11 +24,12 @@ export class BoardUserComponent implements OnInit {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
 
     if (this.isLoggedIn) {
-      const user = this.tokenStorageService.getUser();
-      this.roles = user.roles;
-      this.username = user.username;
-      this.id = user.id;
+      this.user = this.tokenStorageService.getUser();
+      this.roles = this.user.roles;
+      this.username = this.user.username;
+      this.id = this.user.id;
       localStorage.setItem('id', this.id);
 
     }
-  }}
+  }
+}

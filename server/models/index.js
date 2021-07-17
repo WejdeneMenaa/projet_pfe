@@ -49,7 +49,7 @@ db.ticket.belongsToMany(db.utilisateur, {
   otherKey: "user_id"
 });
 
-db.ROLES = ["user", "admin", "moderator"];
+db.ROLES = ["user", "admin", "technicien"];
 db.CATEGORIES = ["materiel", "logiciel", "reseaux"];
 
 module.exports = db;

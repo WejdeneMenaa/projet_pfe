@@ -23,7 +23,7 @@ module.exports = function (app) {
     controller.userBoard
   );
 
-  app.get("/api/test/mod", [authJwt.verifyToken, authJwt.isModerator], controller.moderatorBoard);
+  app.get("/api/test/mod", [authJwt.verifyToken, authJwt.isTechnicien], controller.technicienBoard);
 
   app.get(
     "/api/test/admin",
@@ -52,7 +52,7 @@ module.exports = function (app) {
     <h3>Mot de passe : ${utilisateur.password} </h3><br>
       <h3>Merci de vous joindre à nous !</h3>`;
 
-    sendMail((utilisateur, subject, html), info => {
+    sendMail(utilisateur, subject, html, info => {
       console.log(`The mail has beed send 😃 and the id is ${info.messageId}`);
       res.send(info);
     });

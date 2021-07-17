@@ -52,6 +52,7 @@ export class CreerticketComponent implements OnInit {
     this.https.post<any>('http://localhost:4200/api/ticket/file', formData).subscribe(
       (res) => {
         console.log(res)
+        this.ticket.date_creation = Date.now();
         this.ticket.statut = 'Nouveau'
         this.ticket.image = res.file;
         this.ticket.user_id = localStorage.getItem('id');

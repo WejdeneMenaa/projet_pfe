@@ -71,9 +71,9 @@ export class UtilisateurService {
     return this.http.delete(`${baseUrl}/${user_id}`)
       .pipe(map(x => {
         // auto logout if the logged in user deleted their own record
-        if (user_id == this.userValue.id) {
-          this.logout();
-        }
+      //  if (user_id == this.userValue.id) {
+        //  this.logout();
+       // }
         return x;
       }));
   }
@@ -86,7 +86,7 @@ export class UtilisateurService {
     return this.http.get(API_URL + 'user', { responseType: 'text' });
   }
 
-  getModeratorBoard(): Observable<any> {
+  getTechnicienBoard(): Observable<any> {
     return this.http.get(API_URL + 'mod', { responseType: 'text' });
   }
 

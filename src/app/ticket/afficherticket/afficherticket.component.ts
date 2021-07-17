@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { toASCII } from 'punycode';
 import { first } from 'rxjs/operators';
 import { TicketService } from 'src/app/_service/ticket.service';
+import { TokenStorageService } from 'src/app/_service/token-storage.service';
 
 
 
@@ -17,38 +18,37 @@ export class AfficherticketComponent implements OnInit {
   ticket = null;
   id: string;
   statut = "En cours";
+  private roles: string[];
+  isLoggedIn = false;
+  showAdminBoard = false;
+  showTechnicienBoard = false;
+  username: string;
+  user = null;
 
   constructor(
     private TicketService: TicketService,
+    private tokenStorageService: TokenStorageService,
     private route: ActivatedRoute,
     private router: Router) { }
 
 
 
   ngOnInit(): void {
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+
+    if (this.isLoggedIn) {
+      this.user = this.tokenStorageService.getUser();
+      this.roles = this.user.roles;
+      this.username = this.user.username;
+      this.id = this.user.id;
+      localStorage.setItem('id', this.id);
+
+    }
     this.TicketService.getAll().subscribe((data) => {
       this.tickets = data
-
-    /*  this.items = [
-        {label: 'Update', icon: 'pi pi-refresh', command: () => {
-            this.TicketService.update(this.ticket.ticket_id, data);
-        }},
-        {label: 'Delete', icon: 'pi pi-times', command: () => {
-          this.TicketService.delete(this.ticket.ticket_id);
-        }},
-    ];*/
-      //filter(ticket => this.ticket.user_id === localStorage.getItem('id'));
     })
 
   }
-  /*ngOnInit(): void {
-    if (this.ticket.user_id = localStorage.getItem('id')){
-      this.TicketService.getAll().subscribe((data) => {
-        this.tickets = data
-        //.filter(status => status.isActive);
-      })
-    };
-  }*/
 
   updateStatus(status,ticket) {
     const data = {

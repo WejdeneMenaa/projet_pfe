@@ -54,18 +54,8 @@ export class AfficherutilisateurComponent implements OnInit {
 
 
   deleteUser(user_id: string) {
-    const user = this.users.find(x => x.id === user_id);
-    this.confirmationService.confirm({
-      message: 'Do you want to delete this record?',
-      header: 'Delete Confirmation',
-      icon: 'pi pi-info-circle',
-      accept: () => {
-          this.msgs = [{severity:'info', summary:'Confirmed', detail:'Record deleted'}];
-      },
-      reject: () => {
-          this.msgs = [{severity:'info', summary:'Rejected', detail:'You have rejected'}];
-      }
-  });
+    console.log("sahar" + user_id)
+    const ticket = this.users.find(x => x.id === user_id);
     this.utilisateurservice.delete(user_id)
       .pipe(first())
       .subscribe(() => this.users = this.users.filter(x => x.id !== user_id));

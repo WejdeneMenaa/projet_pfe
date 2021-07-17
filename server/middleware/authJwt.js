@@ -41,28 +41,28 @@ isAdmin = (req, res, next) => {
   });
 };
 
-isModerator = (req, res, next) => {
+isTechnicien = (req, res, next) => {
   User.findByPk(req.user_id).then(utilisateur => {
     utilisateur.getRoles().then(roles => {
       for (let i = 0; i < roles.length; i++) {
-        if (roles[i].name === "moderator") {
+        if (roles[i].name === "technicien") {
           next();
           return;
         }
       }
 
       res.status(403).send({
-        message: "Require Moderator Role!"
+        message: "Require Technicien Role!"
       });
     });
   });
 };
 
-isModeratorOrAdmin = (req, res, next) => {
+isTechnicienOrAdmin = (req, res, next) => {
   User.findByPk(req.user_id).then(utilisateur => {
     utilisateur.getRoles().then(roles => {
       for (let i = 0; i < roles.length; i++) {
-        if (roles[i].name === "moderator") {
+        if (roles[i].name === "technicien") {
           next();
           return;
         }
@@ -74,7 +74,7 @@ isModeratorOrAdmin = (req, res, next) => {
       }
 
       res.status(403).send({
-        message: "Require Moderator or Admin Role!"
+        message: "Require Technicien or Admin Role!"
       });
     });
   });
@@ -83,7 +83,7 @@ isModeratorOrAdmin = (req, res, next) => {
 const authJwt = {
   verifyToken: verifyToken,
   isAdmin: isAdmin,
-  isModerator: isModerator,
-  isModeratorOrAdmin: isModeratorOrAdmin
+  isTechnicien: isTechnicien,
+  isTechnicienOrAdmin: isTechnicienOrAdmin
 };
 module.exports = authJwt;

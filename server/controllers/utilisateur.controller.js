@@ -106,17 +106,17 @@ exports.create = (req, res) => {
       .then(num => {
         if (num == 1) {
           res.send({
-            message: "Tutorial was deleted successfully!"
+            message: "User was deleted successfully!"
           });
         } else {
           res.send({
-            message: `Cannot delete Tutorial with id=${user_id}. Maybe Tutorial was not found!`
+            message: `Cannot delete User with id=${user_id}. Maybe User was not found!`
           });
         }
       })
       .catch(err => {
         res.status(500).send({
-          message: "Could not delete Tutorial with id=" + user_id
+          message: "Could not delete User with id=" + user_id
         });
       });
   };
@@ -133,6 +133,6 @@ exports.create = (req, res) => {
     res.status(200).send("Admin Content.");
   };
   
-  exports.moderatorBoard = (req, res) => {
-    res.status(200).send("Moderator Content.");
+  exports.technicienBoard = (req, res) => {
+    res.status(200).send("Technicien Content.");
   };

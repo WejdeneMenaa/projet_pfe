@@ -17,7 +17,7 @@ import { AdminboardComponent } from './dashboard/adminboard/adminboard.component
 import { UtilisateurboardComponent } from './dashboard/utilisateurboard/utilisateurboard.component';
 import { ModifierprofileComponent } from './dashboard/utilisateurboard/modifierprofile/modifierprofile.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
-import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
+import { BoardTechnicienComponent } from './board-technicien/board-technicien.component';
 import { BoardUserComponent } from './board-user/board-user.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from './home/home.component';
@@ -46,7 +46,7 @@ import { DetailsticketComponent } from './ticket/detailsticket/detailsticket.com
     UtilisateurboardComponent,
     ModifierprofileComponent,
     BoardAdminComponent,
-    BoardModeratorComponent,
+    BoardTechnicienComponent,
     BoardUserComponent,
     ProfileComponent,
     HomeComponent,

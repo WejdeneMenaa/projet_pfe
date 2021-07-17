@@ -1,139 +1,121 @@
 <body>
-    <div id="layoutSidenav_content">
-        <main>
-            <div class="container-fluid">
-                <h1 class="mt-4">Tickets</h1>
-                <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item"><a routerLink="/" routerLinkActive="active">Accueil</a></li>
-                    <li class="breadcrumb-item active">Tickets</li>
-                </ol>
-                <form *ngIf="!isSuccessful" name="ticket" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm"
-                    novalidate>
+    <main>
+        <div class="container-fluid">
+            <router-outlet></router-outlet>
+            <h1 class="mt-4">Tickets</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item"><a routerLink="/" routerLinkActive="active">Accueil</a></li>
+                <li class="breadcrumb-item active">Tickets</li>
+            </ol>
+            <form *ngIf="!isSuccessful" name="ticket" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
 
-                    <div class="form-row">
-                        <label for="titre">Titre</label>
-                        <input type="text" class="form-control" name="titre" [(ngModel)]="ticket.titre" required
-                            minlength="3" maxlength="20" #nom="ngModel" />
-                    </div>
-                    <div class="form-row">
-                        <label for="description">Description</label>
-                        <input type="text" class="form-control" name="description" [(ngModel)]="ticket.description"
-                            required minlength="3" maxlength="20" #nom="ngModel" />
-                    </div>
+                <div class="form-row">
+                    <label for="titre">Titre</label>
+                    <input type="text" class="form-control" name="titre" [(ngModel)]="ticket.titre" required
+                        minlength="3" maxlength="20" #nom="ngModel" />
+                </div>
+                <div class="form-row">
+                    <label for="description">Description</label>
+                    <input type="text" class="form-control" name="description" [(ngModel)]="ticket.description" required
+                        minlength="3" maxlength="20" #nom="ngModel" />
+                </div>
 
-                    <div class="form-row">
-                        <label for="image">Image</label>
-                        <div>
-                            <input type="file" class="form-control" name="image" [(ngModel)]="ticket.image"
-                                (change)="selectImage($event)" />
+                <div class="form-row">
+                    <label for="image">Image</label>
+                        <input type="file" class="form-control" name="image" [(ngModel)]="ticket.image"
+                            (change)="selectImage($event)" />
+                </div>
+
+                <div class="form-group">
+                    <label for="date_echeance">Date d'échéance</label>
+                    <input id="date_echeance" name="date_echeance" class="form-control"
+                        [(ngModel)]="ticket.date_echeance" type="date" [ngModelOptions]="{standalone: true}" />
+                </div>
+
+                <div class="form-row">
+                    <label for="type">Type</label>
+                    <div class="input-group">
+                        <div class="rs-select2 js-select-simple select--no-search">
+                            <mat-select name="type" [(ngModel)]="ticket.type">
+                                <mat-option value="Incident" name="type" [(ngModel)]="ticket.type">Incident</mat-option>
+                                <mat-option value="Demande" name="type" [(ngModel)]="ticket.type">Demande</mat-option>
+                            </mat-select>
+                            <div class="select-dropdown"></div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="form-group">
-                        <label for="date_creation">Date de création</label>
-                        <input id="date_creation" name="date_creation" class="form-control"
-                            [(ngModel)]="ticket.date_creation" type="date" [ngModelOptions]="{standalone: true}" />
-                    </div>
-
-                    <div class="form-group">
-                        <label for="date_echeance">Date d'échéance</label>
-                        <input id="date_echeance" name="date_echeance" class="form-control"
-                            [(ngModel)]="ticket.date_echeance" type="date" [ngModelOptions]="{standalone: true}" />
-                    </div>
-
-                    <div class="form-row">
-                        <div class="type">Type</div>
-                        <div class="input-group">
-                            <div class="rs-select2 js-select-simple select--no-search">
-                                <mat-select name="type" [(ngModel)]="ticket.type">
-                                    <mat-option value="Incident" name="type" [(ngModel)]="ticket.type">Incident</mat-option>
-                                    <mat-option value="Demande" name="type" [(ngModel)]="ticket.type">Demande</mat-option>
-                                </mat-select>
-                                <div class="select-dropdown"></div>
-                            </div>
+                <div class="form-row">
+                    <label for="urgence">Urgence</label>
+                    <div class="input-group">
+                        <div class="rs-select2 js-select-simple select--no-search">
+                            <mat-select name="urgence" [(ngModel)]="ticket.urgence">
+                                <mat-option name="urgence" [(ngModel)]="ticket.urgence" value="Haute">Haute</mat-option>
+                                <mat-option name="urgence" [(ngModel)]="ticket.urgence" value="Moyenne">Moyenne
+                                </mat-option>
+                                <mat-option name="urgence" [(ngModel)]="ticket.urgence" value="Basse">Basse</mat-option>
+                            </mat-select>
+                            <div class="select-dropdown"></div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="form-row">
-                        <div class="urgence">Urgence</div>
-                        <div class="input-group">
-                            <div class="rs-select2 js-select-simple select--no-search">
-                                <mat-select name="urgence" [(ngModel)]="ticket.urgence">
-                                    <mat-option name="urgence" [(ngModel)]="ticket.urgence" value="Haute">Haute</mat-option>
-                                    <mat-option name="urgence" [(ngModel)]="ticket.urgence" value="Moyenne">Moyenne</mat-option>
-                                    <mat-option name="urgence" [(ngModel)]="ticket.urgence" value="Basse">Basse</mat-option>
-                                </mat-select>
-                                <div class="select-dropdown"></div>
-                            </div>
+                <div class="form-row">
+                    <label for="impact">Impact</label>
+                    <div class="input-group">
+                        <div class="rs-select2 js-select-simple select--no-search">
+                            <mat-select name="impact" [(ngModel)]="ticket.impact">
+                                <mat-option name="impact" [(ngModel)]="ticket.impact" value="Haut">Haut</mat-option>
+                                <mat-option name="impact" [(ngModel)]="ticket.impact" value="Moyen">Moyen</mat-option>
+                                <mat-option name="impact" [(ngModel)]="ticket.impact" value="Bas">Bas</mat-option>
+                            </mat-select>
+                            <div class="select-dropdown"></div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="form-row">
-                        <div class="impact">Impact</div>
-                        <div class="input-group">
-                            <div class="rs-select2 js-select-simple select--no-search">
-                                <mat-select name="impact" [(ngModel)]="ticket.impact">
-                                    <mat-option name="impact" [(ngModel)]="ticket.impact" value="Haut">Haut</mat-option>
-                                    <mat-option name="impact" [(ngModel)]="ticket.impact" value="Moyen">Moyen</mat-option>
-                                    <mat-option name="impact" [(ngModel)]="ticket.impact" value="Bas">Bas</mat-option>
-                                </mat-select>
-                                <div class="select-dropdown"></div>
-                            </div>
+                <div class="form-row">
+                    <label for="priorite">Priorité</label>
+                    <div class="input-group">
+                        <div class="rs-select2 js-select-simple select--no-search">
+                            <mat-select name="priorite" [(ngModel)]="ticket.priorite">
+                                <mat-option name="priorite" [(ngModel)]="ticket.priorite" value="Haute">Haute
+                                </mat-option>
+                                <mat-option name="priorite" [(ngModel)]="ticket.priorite" value="Moyenne">Moyenne
+                                </mat-option>
+                                <mat-option name="priorite" [(ngModel)]="ticket.priorite" value="Basse">Basse
+                                </mat-option>
+                            </mat-select>
+                            <div class="select-dropdown"></div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="form-row">
-                        <div class="priorite">Priorité</div>
-                        <div class="input-group">
-                            <div class="rs-select2 js-select-simple select--no-search">
-                                <mat-select name="priorite" [(ngModel)]="ticket.priorite">
-                                    <mat-option name="priorite" [(ngModel)]="ticket.priorite" value="Haute">Haute</mat-option>
-                                    <mat-option name="priorite" [(ngModel)]="ticket.priorite" value="Moyenne">Moyenne</mat-option>
-                                    <mat-option name="priorite" [(ngModel)]="ticket.priorite" value="Basse">Basse</mat-option>
-                                </mat-select>
-                                <div class="select-dropdown"></div>
-                            </div>
+                <div class="form-row">
+                    <label for="categorie">Catégorie</label>
+                    <div class="input-group">
+                        <div class="rs-select2 js-select-simple select--no-search">
+                            <mat-select name="categorie" [(ngModel)]="ticket.categorie">
+                                <mat-option name="categorie" [(ngModel)]="ticket.categorie" value="Materiel">Materiel
+                                </mat-option>
+                                <mat-option name="categorie" [(ngModel)]="ticket.categorie" value="Logiciel">Logiciel
+                                </mat-option>
+                                <mat-option name="categorie" [(ngModel)]="ticket.categorie" value="Reseaux">Reseaux
+                                </mat-option>
+                            </mat-select>
+                            <div class="select-dropdown"></div>
                         </div>
+
                     </div>
+                </div>
 
-                    <div class="form-row">
-                        <div class="name">Catégorie</div>
-                        <div class="input-group">
-                            <div class="rs-select2 js-select-simple select--no-search">
-                                <select name="categorie" [(ngModel)]="ticket.categorie">
-                                    <option name="categorie" [(ngModel)]="ticket.categorie"
-                                        *ngFor="let categorie of categorie">{{categorie}}
+                <div>
+                    <button class="btn btn-primary" type="submit">Ajouter</button>
+                    <a routerLink="/ticket" class="btn btn-link">Cancel</a>
 
-                                    </option>
-                                </select>
-                                <div class="select-dropdown"></div>
-                            </div>
+                </div>
+            </form>
+        </div>
 
-                        </div>
-                    </div>
-
-
-                    <div class="form-row">
-                        <div class="categorie">Catégorie</div>
-                        <div class="input-group">
-                            <div class="rs-select2 js-select-simple select--no-search">
-                                <mat-select name="categorie" [(ngModel)]="ticket.categorie">
-                                    <mat-option name="categorie" [(ngModel)]="ticket.categorie" value="Materiel">Materiel</mat-option>
-                                    <mat-option name="categorie" [(ngModel)]="ticket.categorie" value="Logiciel">Logiciel</mat-option>
-                                    <mat-option name="categorie" [(ngModel)]="ticket.categorie" value="Reseaux">Reseaux</mat-option>
-                                </mat-select>
-                                <div class="select-dropdown"></div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div>
-                        <button class="btn btn--radius-2 btn--red" type="submit">Ajouter</button>
-                    </div>
-                </form>
-            </div>
-
-        </main>
-    </div>
+    </main>
 </body>

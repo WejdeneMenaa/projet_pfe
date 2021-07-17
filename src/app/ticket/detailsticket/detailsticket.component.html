@@ -1,207 +1,74 @@
 <body class="sb-nav-fixed">
-  <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-    <img class="navbar-brand" src="assets/img/wimbee.png" />
-    <!-- Navbar Search-->
-    <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-      <div class="input-group">
-        <input class="form-control" type="text" placeholder="Search for..." aria-label="Search"
-          aria-describedby="basic-addon2" />
-        <div class="input-group-append">
-          <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
-        </div>
-      </div>
-    </form>
-    <!-- Navbar-->
-    <ul class="navbar-nav ml-auto ml-md-0">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="userDropdown" href="#!" role="button" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-      </li>
-      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-        <a class="dropdown-item" href="#!">Settings</a>
-        <a class="dropdown-item" href="#!">Activity Log</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="login.html">Logout</a>
-      </div>
-    </ul>
-  </nav>
-  <div id="layoutSidenav">
-    <div id="layoutSidenav_nav">
-      <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-        <div class="sb-sidenav-menu">
-          <div class="nav">
-            <div class="sb-sidenav-menu-heading"></div>
-            <a class="nav-link" href="index.html">
-              <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-              Accueil
-            </a>
-            <div class="sb-sidenav-menu-heading">Interface</div>
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts"
-              aria-expanded="false" aria-controls="collapseLayouts">
-              <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-              Assistance
-              <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-            </a>
-            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-              <nav class="sb-sidenav-menu-nested nav">
-                <a routerLink="/ticket" routerLinkActive="active" class="nav-link">Consulter mes tickets</a>
-                <a routerLink="/creerticket" routerLinkActive="active" class="nav-link">Créer un ticket</a>
+  <div class="container">
+    <router-outlet></router-outlet>
+    <header class="jumbotron">
+      <h3>
+        <strong>{{ ticket.titre }}</strong> Details
+      </h3>
+    </header>
+    <p>
+      <strong>Image:</strong>
+      <img [src]="'http://localhost:4200/api/ticket/uploads/' + ticket.image" width="600" height="300">
+    </p>
+    <p>
+      <strong>Titre:</strong>
+      {{ ticket.titre }}
+    </p>
+    <p>
+      <strong>Description:</strong>
+      {{ ticket.description }}
+    </p>
+    <p>
+      <strong>Date de création:</strong>
+      {{ ticket.date_creation }}
+    </p>
+    <p>
+      <strong>Date d'échéance:</strong>
+      {{ ticket.date_echeance }}
+    </p>
+    <p>
+      <strong>Statut:</strong>
+      {{ ticket.statut }}
+    </p>
+    <p>
+      <strong>Type:</strong>
+      {{ ticket.type }}
+    </p>
+    <p>
+      <strong>Urgence:</strong>
+      {{ ticket.urgence }}
+    </p>
+    <p>
+      <strong>Priorité:</strong>
+      {{ ticket.priorite }}
+    </p>
+    <p>
+      <strong>Impact:</strong>
+      {{ ticket.impact }}
+    </p>
 
-              </nav>
-            </div>
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAdministration"
-              aria-expanded="false" aria-controls="collapsePages">
-              <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-              Administration
-              <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-            </a>
-            <div class="collapse" id="collapseAdministration" aria-labelledby="headingTwo"
-              data-parent="#sidenavAccordion">
-              <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                <a class="nav-link collapsed" routerLink="/profile" routerLinkActive="active" data-toggle="collapse"
-                  data-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                  afficher mon compte
-                </a>
-              </nav>
-            </div>
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseParc"
-              aria-expanded="false" aria-controls="collapsePages">
-              <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-              Parc
-              <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-            </a>
-            <div class="collapse" id="collapseParc" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-              <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth"
-                  aria-expanded="false" aria-controls="pagesCollapseAuth">
-                  Ordinatueurs
-                </a>
-              </nav>
-            </div>
-            <div class="collapse" id="collapseParc" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-              <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth"
-                  aria-expanded="false" aria-controls="pagesCollapseAuth">
-                  Logiciels
-                </a>
-              </nav>
-            </div>
-            <div class="collapse" id="collapseParc" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-              <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth"
-                  aria-expanded="false" aria-controls="pagesCollapseAuth">
-                  Imprimantes
-                </a>
-              </nav>
-            </div>
-            <div class="collapse" id="collapseParc" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-              <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth"
-                  aria-expanded="false" aria-controls="pagesCollapseAuth">
-                  Périphériiques
-                </a>
-              </nav>
-            </div>
-            <div class="collapse" id="collapseParc" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-              <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth"
-                  aria-expanded="false" aria-controls="pagesCollapseAuth">
-                  Matériels réseaux
-                </a>
-              </nav>
-            </div>
-          </div>
-        </div>
-        <div class="sb-sidenav-footer">
-          Wimbeetech
-        </div>
-      </nav>
-    </div>
-    <div id="layoutSidenav_content">
-      <div class="container">
-        <header class="jumbotron">
-          <h3>
-            <strong>{{ ticket.titre }}</strong> Details
-          </h3>
-        </header>
-        <p>
-          <strong>Image:</strong>
-          <img [src]="'http://localhost:4200/api/ticket/uploads/' + ticket.image">
-        </p>
-        <p>
-          <strong>Titre:</strong>
-          {{ ticket.titre }}
-        </p>
-        <p>
-          <strong>Description:</strong>
-          {{ ticket.description }}
-        </p>
-        <p>
-          <strong>Date de création:</strong>
-          {{ ticket.date_creation }}
-        </p>
-        <p>
-          <strong>Date d'échéance:</strong>
-          {{ ticket.date_echeance }}
-        </p>
-        <p>
-          <strong>Statut:</strong>
-          {{ ticket.statut }}
-        </p>
-        <p>
-          <strong>Type:</strong>
-          {{ ticket.type }}
-        </p>
-        <p>
-          <strong>Urgence:</strong>
-          {{ ticket.urgence }}
-        </p>
-        <p>
-          <strong>Priorité:</strong>
-          {{ ticket.priorite }}
-        </p>
-        <p>
-          <strong>Impact:</strong>
-          {{ ticket.impact }}
-        </p>
+    <p>
+      <strong>Catégorie:</strong>
+      {{ ticket.categorie }}
+    </p>
+    <p>
+      <strong>Demandeur:</strong>
+      {{ ticket.user_id }}
+    </p>
 
-        <p>
-          <strong>Catégorie:</strong>
-          {{ ticket.categorie }}
-        </p>
-        <p>
-          <strong>Demandeur:</strong>
-          {{ ticket.user_id }}
-        </p>
+    <button routerLink="/updateticket/{{ ticket.ticket_id }}" routerLinkActive="active"
+      class="btn btn-sm btn-danger btn-delete-user">
+      <span>modifier</span>
+    </button>
 
-        <button routerLink="/updateticket/{{ ticket.ticket_id }}" routerLinkActive="active"
-          class="btn btn-sm btn-danger btn-delete-user">
-          <span>modifier</span>
-        </button>
+    <button (click)="updateStatus()" class="btn btn-sm btn-danger btn-delete-user">
 
-        <button (click)="updateStatus()" class="btn btn-sm btn-danger btn-delete-user">
+      <span>Résoudre</span>
+    </button>
 
-          <span>Résoudre</span>
-        </button>
-
-      </div>
-
-      <ng-template #loggedOut>
-        Please login.
-      </ng-template>
-
-      <footer class="py-4 bg-light mt-auto">
-        <div class="container-fluid">
-          <div class="d-flex align-items-center justify-content-between small">
-            <div class="text-muted">Copyright &copy; Your Website 2021</div>
-            <div>
-              <a href="#">Privacy Policy</a>
-              &middot;
-              <a href="#">Terms &amp; Conditions</a>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </div>
   </div>
+
+  <ng-template #loggedOut>
+    Please login.
+  </ng-template>
 </body>

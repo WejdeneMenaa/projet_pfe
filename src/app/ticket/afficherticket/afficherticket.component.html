@@ -1,6 +1,7 @@
 <body>
     <main>
         <div class="container-fluid">
+            <router-outlet></router-outlet>
             <h1 class="mt-4">Tickets</h1>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item"><a routerLink="/" routerLinkActive="active">Accueil</a></li>
@@ -99,12 +100,12 @@
                                                         <span>Details</span>
                                                     </button></td>
 
-                                                <td><button (click)="deleteTicket(ticket.ticket_id)"
+                                                <td><button *ngIf="user.roles.includes('ROLE_ADMIN')" (click)="deleteTicket(ticket.ticket_id)"
                                                         class="btn btn-sm btn-danger btn-delete-user"
                                                         [disabled]="ticket.isDeleting">
                                                         <span *ngIf="ticket.isDeleting"
                                                             class="spinner-border spinner-border-sm"></span>
-                                                        <span *ngIf="!ticket.isDeleting">Supprimer</span>
+                                                        <span *ngIf="!ticket.isDeleting" >Supprimer</span>
                                                     </button></td>
                                             </tr>
                                         </tbody>
