@@ -63,6 +63,19 @@ export class AfficherticketComponent implements OnInit {
     this.ngOnInit();
   }
 
+  updateStatus2(ticket_id: string) {
+    const link = ['/ticket'];
+    console.log('**********************here')
+    this.ticket.statut = 'cloture'
+    this.TicketService.update(ticket_id, this.ticket).subscribe((data) => {
+      this.ticket = data
+      console.log("user" + this.ticket)
+    })
+    this.ngOnInit();
+    this.router.navigate(link);
+
+  }
+
 }
 
 

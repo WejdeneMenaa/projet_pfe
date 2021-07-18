@@ -73,7 +73,7 @@ exports.signin = (req, res) => {
       if (status === false) {
         return res.status(401).send({
           accessToken: null,
-          message: "Votre Compte a été Bloqué!"
+          message: "Votre Compte a été banni!"
         });
       }
 

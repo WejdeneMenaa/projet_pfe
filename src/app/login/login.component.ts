@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   errorMessage = '';
   roles: string[] = [];
   currentUser: any;
-  status= false;
+  status = false;
 
 
 
@@ -51,15 +51,13 @@ export class LoginComponent implements OnInit {
           if (this.currentUser.roles.includes('ROLE_ADMIN')) { this.router.navigate(link2); }
           else
             if (this.currentUser.roles.includes('ROLE_TECHNICIEN')) { this.router.navigate(link3); }
-
-       //if (this.currentUser.status = true) { this.router.navigate(link4); }
-        console.log("sahar" + this.utilisateur.status)
       },
       err => {
         this.errorMessage = err.error.message;
         this.isLoginFailed = true;
       }
     );
+    this.ngOnInit();
   }
 
   reloadPage() {

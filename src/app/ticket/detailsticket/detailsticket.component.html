@@ -56,29 +56,28 @@
       {{ ticket.user_id }}
     </p>
 
-    <div class="form-group">
-        <label for="attribuea">Affecter à</label>
-        <select name="attribuea" [(ngModel)]="ticket.attribuea">
-          <option class="form-control" name="attribuea" formControlName="attribuea" *ngFor="let user of users" [(ngModel)]="ticket.attribuea">{{user.nom}}
-          </option>
-        </select>     
-    </div>
+    <div class="form-row">
+      <label for="attribuea">Affecter à</label>
+      <div class="input-group">
+          <div class="rs-select2 js-select-simple select--no-search">
+              <mat-select formControlName="attribuea" name="attribuea" [(ngModel)]="ticket.attribuea">
+                  <mat-option id="attribuea" class="form-control" value="user.nom" formControlName="attribuea" name="attribuea" *ngFor="let user of users" [(ngModel)]="ticket.attribuea">{{user.nom}}</mat-option>
+              </mat-select>
+              <div class="select-dropdown"></div>
+          </div>
+      </div>
+  </div>
 
     <button routerLink="/updateticket/{{ ticket.ticket_id }}" routerLinkActive="active"
       class="btn btn-sm btn-danger btn-delete-user">
       <span>modifier</span>
     </button>
 
-    <button (click)="updateStatus1()" class="btn btn-sm btn-danger btn-delete-user">
+    <button (click)="updateStatus1(ticket.ticket_id)" class="btn btn-sm btn-danger btn-delete-user">
 
       <span>Résoudre</span>
     </button>
 
-    <button *ngIf="ticket.statut.includes('Resolu') && user.roles.includes('ROLE_USER')" (click)="updateStatus2()"
-      class="btn btn-sm btn-danger btn-delete-user">
-
-      <span>Cloturer</span>
-    </button>
 
   </div>
 
