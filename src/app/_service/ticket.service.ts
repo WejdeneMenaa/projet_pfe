@@ -79,7 +79,7 @@ export class TicketService {
         return x;
       }));
   }
-  sendEmail(url) {
-    return this.http.get(url);
+  sendEmail(url, body) {
+    return this.http.post(url, body);
   }
 }

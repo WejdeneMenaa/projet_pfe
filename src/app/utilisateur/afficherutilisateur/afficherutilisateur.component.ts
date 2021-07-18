@@ -5,8 +5,6 @@ import { UtilisateurService } from 'src/app/_service/utilisateur.service';
 import { ConfirmationService } from 'primeng/api';
 import { Message } from 'primeng/api';
 import { MatDialog } from '@angular/material/dialog';
-import { ModifierutilisateurComponent } from '../modifierutilisateur/modifierutilisateur.component';
-import { DetailsticketComponent } from 'src/app/ticket/detailsticket/detailsticket.component';
 import { ProfileComponent } from 'src/app/profile/profile.component';
 
 
@@ -21,13 +19,10 @@ export class AfficherutilisateurComponent implements OnInit {
   msgs: Message[] = [];
   users = null;
   utilisateur = null;
-  nom = "saharrr"
+
   constructor(
     private utilisateurservice: UtilisateurService,
-    private confirmationService: ConfirmationService,
-    private route: ActivatedRoute,
-    public dialog: MatDialog,
-    private router: Router) { }
+    public dialog: MatDialog) { }
 
 
 
@@ -65,7 +60,6 @@ export class AfficherutilisateurComponent implements OnInit {
 
   deleteUser(user_id: string) {
     console.log("sahar" + user_id)
-    const ticket = this.users.find(x => x.id === user_id);
     this.utilisateurservice.delete(user_id)
       .pipe(first())
       .subscribe(() => this.users = this.users.filter(x => x.id !== user_id));

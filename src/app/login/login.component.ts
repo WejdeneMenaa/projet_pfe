@@ -30,7 +30,9 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  onSubmit() {
+  onSubmit(form) {
+    console.log('*********************form', form)
+    console.log('*********************this.utilisateur', this.utilisateur)
     this.authService.login(this.utilisateur).subscribe(
       data => {
 

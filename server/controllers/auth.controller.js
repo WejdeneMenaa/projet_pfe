@@ -69,6 +69,14 @@ exports.signin = (req, res) => {
         });
       }
 
+      var status = utilisateur.status
+      if (status === false) {
+        return res.status(401).send({
+          accessToken: null,
+          message: "Votre Compte a été Bloqué!"
+        });
+      }
+
       var token = jwt.sign({ id: utilisateur.user_id }, config.secret, {
         expiresIn: 7200 // 2 hours (seconds)
       });
@@ -82,6 +90,7 @@ exports.signin = (req, res) => {
           id: utilisateur.user_id,
           username: utilisateur.username,
           email: utilisateur.email,
+          status: utilisateur.status,
           roles: authorities,
           accessToken: token
         });

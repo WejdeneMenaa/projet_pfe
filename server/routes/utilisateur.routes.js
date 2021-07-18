@@ -58,15 +58,17 @@ module.exports = function (app) {
     });
   });
 
-  router.get("/sendmail/:id", (req, res) => {
+  router.post("/sendmail/:id/", (req, res) => {
     console.log("request came");
     let user_id = req.params.id;
     console.log('************', req.params.id)
     Utilisateur.findByPk(user_id)
       .then(data => {
-        const subject = `"Bienvenue chez Wimbee !${req.params.nom}`;
-        const html = `<h3>Bonjour cher(e) ${utilisateur.nom}</h3>
+        const subject = "Bienvenue chez Wimbee !";
+        const html = `<h3>Bonjour cher(e) client(e)</h3>
       <h3>Par le présent, nous vous informons que votre ticket a été résolu avec succées ! </h3>
+      <h3>Et voici la solution pour votre probléme :
+       ${req.body.solution}! </h3>
       <h3>Merci pour votre confiance !</h3>`;
         sendMail(data, subject, html, info => {
           console.log(`The mail has beed send 😃 and the id is ${info.messageId}`);

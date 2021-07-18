@@ -20,7 +20,7 @@ export class ResoudreticketComponent implements OnInit {
   submitted = false;
   ticket = null;
   tickets: any;
-  solution:string;
+  solution: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -49,7 +49,7 @@ export class ResoudreticketComponent implements OnInit {
       impact: ['', [Validators.required]],
       image: ['', [Validators.required]],
       user_id: ['', [Validators.required]],
-      solution:['', [Validators.required]],
+      solution: ['', [Validators.required]],
     });
 
     if (!this.isAddMode) {
@@ -60,19 +60,20 @@ export class ResoudreticketComponent implements OnInit {
   }
 
   ResoudreTicket(ticket_id: string) {
-    this.ticket.solution =  this.form.controls.solution.value;
+    this.ticket.statut = 'Resolu'
+    this.ticket.solution = this.form.controls.solution.value;
     console.log('test', this.ticket.solution)
     this.TicketService.update(this.ticket_id, this.ticket).subscribe((data) => {
-      this.TicketService.sendEmail(`http://localhost:4200/api/utilisateur/sendmail/${this.ticket.user_id}`).subscribe(
-      res => {        
-        console.log(res)
-        this.router.navigate([`/ticket`])
-      },
-      err => {
-        console.log(err);
-      })    
+      this.TicketService.sendEmail(`http://localhost:4200/api/utilisateur/sendmail/${this.ticket.user_id}`, { solution: this.ticket.solution }).subscribe(
+        res => {
+          console.log(res)
+          this.router.navigate([`/ticket`])
+        },
+        err => {
+          console.log(err);
+        })
     })
-  
+
   }
 
 }

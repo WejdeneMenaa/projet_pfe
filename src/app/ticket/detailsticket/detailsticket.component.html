@@ -55,13 +55,14 @@
       <strong>Demandeur:</strong>
       {{ ticket.user_id }}
     </p>
-    <p>
-      <strong>Affecter à :</strong>
-      <mat-select name="affectea" [(ngModel)]="ticket.affectea">
-        <mat-option name="affectea" [(ngModel)]="ticket.affectea" value="affectea">......
-        </mat-option>
-    </mat-select>
-    </p>
+
+    <div class="form-group">
+        <label for="attribuea">Affecter à</label>
+        <select name="attribuea" [(ngModel)]="ticket.attribuea">
+          <option class="form-control" name="attribuea" formControlName="attribuea" *ngFor="let user of users" [(ngModel)]="ticket.attribuea">{{user.nom}}
+          </option>
+        </select>     
+    </div>
 
     <button routerLink="/updateticket/{{ ticket.ticket_id }}" routerLinkActive="active"
       class="btn btn-sm btn-danger btn-delete-user">
@@ -73,7 +74,8 @@
       <span>Résoudre</span>
     </button>
 
-    <button *ngIf="ticket.statut.includes('En cours')" (click)="updateStatus2()" class="btn btn-sm btn-danger btn-delete-user">
+    <button *ngIf="ticket.statut.includes('Resolu') && user.roles.includes('ROLE_USER')" (click)="updateStatus2()"
+      class="btn btn-sm btn-danger btn-delete-user">
 
       <span>Cloturer</span>
     </button>
