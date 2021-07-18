@@ -79,6 +79,7 @@ export class CreerticketComponent implements OnInit {
       (err) => console.log(err)
     );
     this.router.navigate(link);
+    this.ngOnInit();
 
   }
 }
