@@ -12,6 +12,6 @@
     image: string;
     impact: string;
     solution: string;
-    attribuea: string;
+    attribuea: number;
     user_id:number;
 }

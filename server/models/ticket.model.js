@@ -30,7 +30,7 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING
       },
       attribuea: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       date_creation: {
         type: Sequelize.DATE

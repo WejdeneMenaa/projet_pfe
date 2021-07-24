@@ -48,7 +48,7 @@ export class TicketService {
     image: string;
     categorie: string;
     solution: string;
-    attribuea: string;
+    attribuea: number;
     user_id: number;
   }): Observable<any> {
     return this.http.post(baseUrl, data);

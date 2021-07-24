@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, RouterModule } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { TicketService } from 'src/app/_service/ticket.service';
@@ -22,11 +22,12 @@ export class DetailsticketComponent implements OnInit {
   ticket_id: number;
   url: any
   statut: any;
-  attribuea: string;
+  attribuea: number;
   user: any = {};
   users = null;
   private roles: string[];
   form: FormGroup;
+  id :number;
 
 
 
@@ -51,6 +52,7 @@ export class DetailsticketComponent implements OnInit {
     })
     this.user = this.token.getUser();
     this.roles = this.user.roles;
+    this.id = this.user.id;
     this.statut = this.ticket.statut;
     this.attribuea = this.ticket.attribuea;
     this.ticket_id = this.route.snapshot.params['id'];
@@ -61,7 +63,7 @@ export class DetailsticketComponent implements OnInit {
     })
 
     this.form = this.formBuilder.group({
-      attribuea: ['', Validators.required],
+      attribuea: new FormControl(''),
     });
 
     if (!this.isAddMode) {

@@ -6,6 +6,7 @@ import { ConfirmationService } from 'primeng/api';
 import { Message } from 'primeng/api';
 import { MatDialog } from '@angular/material/dialog';
 import { ProfileComponent } from 'src/app/profile/profile.component';
+import { DialogService } from 'src/app/_service/dialog.service';
 
 
 
@@ -22,7 +23,8 @@ export class AfficherutilisateurComponent implements OnInit {
 
   constructor(
     private utilisateurservice: UtilisateurService,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog,
+    private dialogservice: DialogService) { }
 
 
 
@@ -58,14 +60,27 @@ export class AfficherutilisateurComponent implements OnInit {
   }
 
 
-  deleteUser(user_id: string) {
-    console.log("sahar" + user_id)
-    this.utilisateurservice.delete(user_id)
-      .pipe(first())
-      .subscribe(() => this.users = this.users.filter(x => x.id !== user_id));
-    this.ngOnInit();
-  }
+  //deleteUser(user_id: string) {
+  //console.log("sahar" + user_id)
+  //this.utilisateurservice.delete(user_id)
+  // .pipe(first())
+  //.subscribe(() => this.users = this.users.filter(x => x.id !== user_id));
+  //this.ngOnInit();
+  // }
 
+
+  deleteUser(user_id: string) {
+    this.dialogservice.openConfirmDialog('voulez-vous vraiment supprimer cet utilisateur ?')
+      .afterClosed().subscribe(res => {
+        console.log(res);
+        if (res) {
+          this.utilisateurservice.delete(user_id)
+            .pipe(first())
+            .subscribe(() => this.users = this.users.filter(x => x.id !== user_id));
+          this.ngOnInit();
+        }
+      });
+  }
 
 }
 

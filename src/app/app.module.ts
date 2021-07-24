@@ -29,6 +29,10 @@ import { AngularMaterialModule } from './material.module';
 import { ResoudreticketComponent } from './ticket/resoudreticket/resoudreticket.component';
 import { RouterModule } from '@angular/router';
 import { DetailsticketComponent } from './ticket/detailsticket/detailsticket.component';
+import {MatSelectModule} from '@angular/material/select';
+import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 
 
@@ -53,6 +57,7 @@ import { DetailsticketComponent } from './ticket/detailsticket/detailsticket.com
     HomeComponent,
     ResoudreticketComponent,
     DetailsticketComponent,
+    MatConfirmDialogComponent,
   
   ],
   imports: [
@@ -65,10 +70,13 @@ import { DetailsticketComponent } from './ticket/detailsticket/detailsticket.com
     BsDatepickerModule.forRoot(),
     BrowserAnimationsModule,
     AngularMaterialModule,
-    RouterModule
+    RouterModule,
+    MatSelectModule,
+    MatDialogModule
 
   ],
   providers: [AuthService, AuthGuard],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[AfficherutilisateurComponent,MatConfirmDialogComponent]
 })
 export class AppModule { }
