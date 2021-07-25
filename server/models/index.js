@@ -1,5 +1,4 @@
 const dbConfig = require("../config/dbconfig.js");
-
 const Sequelize = require("sequelize");
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   host: dbConfig.HOST,
@@ -19,12 +18,11 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
+db.stock = require("./stock.model.js")(sequelize, Sequelize);
 db.ticket = require("./ticket.model.js")(sequelize, Sequelize);
 db.utilisateur = require("./utilisateur.model.js")(sequelize, Sequelize);
 db.role = require("../models/role.model.js")(sequelize, Sequelize);
 db.categorie = require("../models/categorie.model.js")(sequelize, Sequelize);
-
-
 
 db.role.belongsToMany(db.utilisateur, {
   through: "user_roles",
@@ -41,7 +39,7 @@ db.ticket.belongsToMany(db.categorie, {
   through: "tickets",
   foreignKey: "ticket_id",
   otherKey: "cat_id"
-} );
+});
 
 db.ticket.belongsToMany(db.utilisateur, {
   through: "tickets",
