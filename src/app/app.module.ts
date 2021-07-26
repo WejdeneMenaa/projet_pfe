@@ -32,6 +32,10 @@ import { DetailsticketComponent } from './ticket/detailsticket/detailsticket.com
 import {MatSelectModule} from '@angular/material/select';
 import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { StockComponent } from './stock/stock.component';
+import { AfficherstockComponent } from './stock/afficherstock/afficherstock.component';
+import { CreerstockComponent } from './stock/creerstock/creerstock.component';
+import { ModifierstockComponent } from './stock/modifierstock/modifierstock.component';
 
 
 
@@ -58,6 +62,10 @@ import {MatDialogModule} from '@angular/material/dialog';
     ResoudreticketComponent,
     DetailsticketComponent,
     MatConfirmDialogComponent,
+    StockComponent,
+    AfficherstockComponent,
+    CreerstockComponent,
+    ModifierstockComponent,
   
   ],
   imports: [

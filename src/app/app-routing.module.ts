@@ -7,8 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { CreerutilisateurComponent } from './utilisateur/creerutilisateur/creerutilisateur.component';
 import { ModifierticketComponent } from './ticket/modifierticket/modifierticket.component';
 import { AfficherutilisateurComponent } from './utilisateur/afficherutilisateur/afficherutilisateur.component';
-import { AdminboardComponent } from './dashboard/adminboard/adminboard.component';
-import { UtilisateurboardComponent } from './dashboard/utilisateurboard/utilisateurboard.component';
+
 import { ModifierprofileComponent } from './dashboard/utilisateurboard/modifierprofile/modifierprofile.component';
 import { ModifierutilisateurComponent } from './utilisateur/modifierutilisateur/modifierutilisateur.component';
 import { HomeComponent } from './home/home.component';
@@ -19,7 +18,10 @@ import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { AuthGuard } from './auth.guard';
 import { DetailsticketComponent } from './ticket/detailsticket/detailsticket.component';
 import { ResoudreticketComponent } from './ticket/resoudreticket/resoudreticket.component';
-
+import { StockComponent } from './stock/stock.component';
+import { AfficherstockComponent } from './stock/afficherstock/afficherstock.component';
+import { CreerstockComponent } from './stock/creerstock/creerstock.component';
+import { ModifierstockComponent } from './stock/modifierstock/modifierstock.component';
 
 
 
