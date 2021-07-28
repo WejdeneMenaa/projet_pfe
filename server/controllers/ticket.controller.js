@@ -73,26 +73,6 @@ exports.update = (req, res) => {
 };
 
 //find all tickets
-/*exports.findAll = (user_id) => {
-  const user_id = req.query.user_id;
-  //var condition = user_id ? { titre: { [Op.iLike]: `%${titre}%` } } : null;
-
-  Ticket.findAll({
-    where: {
-      user_id: { $like: user_id }
-    }
-  })
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving tickets."
-      });
-    });
-};
-*/
 exports.findAll = (req, res) => {
   const titre = req.query.titre;
   var condition = titre ? { titre: { [Op.iLike]: `%${titre}%` } } : null;
@@ -108,19 +88,6 @@ exports.findAll = (req, res) => {
       });
     });
 };
-/*function _getChildren(id) {
-  let options = {
-    where: {
-      iduser: { $like: id}
-    }
-  };
-  return tiket.findAll(options).then((rows) => {
-    return rows.map((r) => {
-      return r.dataValues;
-    });
-  });
-}*/
-
 
 //find ticket by titre
 exports.findOne = (req, res) => {

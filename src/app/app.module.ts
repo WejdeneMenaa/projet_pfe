@@ -36,6 +36,8 @@ import { StockComponent } from './stock/stock.component';
 import { AfficherstockComponent } from './stock/afficherstock/afficherstock.component';
 import { CreerstockComponent } from './stock/creerstock/creerstock.component';
 import { ModifierstockComponent } from './stock/modifierstock/modifierstock.component';
+import {InputNumberModule} from 'primeng/inputnumber';
+
 
 
 
@@ -80,7 +82,9 @@ import { ModifierstockComponent } from './stock/modifierstock/modifierstock.comp
     AngularMaterialModule,
     RouterModule,
     MatSelectModule,
-    MatDialogModule
+    MatDialogModule,
+    InputNumberModule,
+
 
   ],
   providers: [AuthService, AuthGuard],

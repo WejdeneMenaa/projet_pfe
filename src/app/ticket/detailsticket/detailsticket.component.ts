@@ -22,8 +22,8 @@ export class DetailsticketComponent implements OnInit {
   ticket_id: number;
   url: any
   statut: any;
-  attribuea: number;
-  user: any = {};
+  attribuea: string;
+  user:  any = [];
   users = null;
   private roles: string[];
   form: FormGroup;
@@ -54,7 +54,6 @@ export class DetailsticketComponent implements OnInit {
     this.roles = this.user.roles;
     this.id = this.user.id;
     this.statut = this.ticket.statut;
-    this.attribuea = this.ticket.attribuea;
     this.ticket_id = this.route.snapshot.params['id'];
     this.isAddMode = !this.ticket_id;
     this.TicketService.get(this.ticket_id).subscribe((data) => {
@@ -63,7 +62,19 @@ export class DetailsticketComponent implements OnInit {
     })
 
     this.form = this.formBuilder.group({
-      attribuea: new FormControl(''),
+      titre: ['', Validators.required],
+      description: ['', Validators.required],
+      date_creation: ['', Validators.required],
+      date_echeance: ['', Validators.required],
+      statut: ['', [Validators.required]],
+      type: ['', [Validators.required]],
+      priorite: ['', [Validators.required]],
+      urgence: ['', [Validators.required]],
+      impact: ['', [Validators.required]],
+      image: ['', [Validators.required]],
+      user_id: ['', [Validators.required]],
+      solution: ['', [Validators.required]],
+      attribuea :['', [Validators.required]]
     });
 
     if (!this.isAddMode) {
@@ -74,21 +85,21 @@ export class DetailsticketComponent implements OnInit {
   }
 
 
-
-  updateStatus1(ticket_id: string) {
+  Affecter(ticket_id: string) {
     console.log('**********************here')
     this.ticket.statut = 'En cours'
-    // console.log("lalalalal"+this.form.get("attribuea").get(this.ticket.attribuea).value);
-    this.ticket.attribuea = this.form.controls.attribuea.value;
-    console.log('test', this.form.controls.attribuea.value)
+  
+    this.ticket.attribuea =this.form.controls.attribuea.value;
+    console.log('test',  this.ticket.attribuea)
 
     this.TicketService.update(ticket_id, this.ticket).subscribe((data) => {
+     
       this.ticket = data
 
       console.log("user" + this.ticket)
 
     })
-    this.router.navigate([`/resoudre/${this.ticket_id}`])
+    this.router.navigate([`/ticket`])
   }
 
 }

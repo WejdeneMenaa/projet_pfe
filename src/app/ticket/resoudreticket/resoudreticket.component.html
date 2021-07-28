@@ -65,6 +65,18 @@
                             </div>
                         </div>
 
+                        <div *ngIf="ticket.type.includes('Demande')" class="form-row">
+                            <label for="attribuea">Affecter la demande</label>
+                            <div class="input-group">
+                              <div class="rs-select2 js-select-simple select--no-search">
+                                <select id="attribuea" >
+                                  <option id="attribuea" class="form-control" formControlName="attribuea" ></option>
+                                </select>
+                                <div class="select-dropdown"></div>
+                              </div>
+                            </div>
+                          </div>
+
                         <div class="form-row">
                             <div class="form-group col">
                                 <label for="solution">Solution</label>

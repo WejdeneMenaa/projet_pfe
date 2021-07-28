@@ -23,6 +23,8 @@ db.ticket = require("./ticket.model.js")(sequelize, Sequelize);
 db.utilisateur = require("./utilisateur.model.js")(sequelize, Sequelize);
 db.role = require("../models/role.model.js")(sequelize, Sequelize);
 db.categorie = require("../models/categorie.model.js")(sequelize, Sequelize);
+db.scategorie = require("../models/scategorie.model.js")(sequelize, Sequelize);
+
 
 db.role.belongsToMany(db.utilisateur, {
   through: "user_roles",
@@ -40,6 +42,12 @@ db.ticket.belongsToMany(db.categorie, {
   foreignKey: "ticket_id",
   otherKey: "cat_id"
 });
+
+//db.scategorie.belongsToMany(db.categorie, {
+ // through: "scategories",
+ // foreignKey: "id",
+ // otherKey: "id"
+//});
 
 db.ticket.belongsToMany(db.utilisateur, {
   through: "tickets",

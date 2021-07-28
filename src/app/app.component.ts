@@ -18,7 +18,6 @@ export class AppComponent implements OnInit {
   id: string;
 
 
-
   constructor(private tokenStorageService: TokenStorageService, public router: Router ){ }
 
   ngOnInit(): void {

@@ -68,4 +68,43 @@ export class StockService {
         return x;
       }));
   }
+
+
+  categorie(){
+    return [
+      {
+        id: 1,
+        name: "Materiel"
+      },
+      {
+        id: 2,
+        name: "Logiciel"
+      },
+      {
+        id: 3,
+        name: "Réseaux"
+      }
+    ]
+  }
+
+  sous_categorie(){
+    return [
+      {
+        id: 1,
+        name: "PC"
+      },
+      {
+        id: 1,
+        name: "Imprimante"
+      },
+      {
+        id: 2,
+        name: "licence"
+      },
+      {
+        id: 3,
+        name: "switch"
+      }
+    ]
+  }
 }

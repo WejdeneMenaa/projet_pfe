@@ -18,7 +18,7 @@ export class ResoudreticketComponent implements OnInit {
   isAddMode: boolean;
   loading = false;
   submitted = false;
-  ticket = null;
+  ticket : any;
   tickets: any;
   solution: string;
 
