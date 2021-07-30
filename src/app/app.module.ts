@@ -37,6 +37,7 @@ import { AfficherstockComponent } from './stock/afficherstock/afficherstock.comp
 import { CreerstockComponent } from './stock/creerstock/creerstock.component';
 import { ModifierstockComponent } from './stock/modifierstock/modifierstock.component';
 import {InputNumberModule} from 'primeng/inputnumber';
+import { AfficherticketclotureComponent } from './ticket/afficherticketcloture/afficherticketcloture.component';
 
 
 
@@ -68,6 +69,7 @@ import {InputNumberModule} from 'primeng/inputnumber';
     AfficherstockComponent,
     CreerstockComponent,
     ModifierstockComponent,
+    AfficherticketclotureComponent,
   
   ],
   imports: [

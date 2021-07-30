@@ -22,6 +22,7 @@ import { StockComponent } from './stock/stock.component';
 import { AfficherstockComponent } from './stock/afficherstock/afficherstock.component';
 import { CreerstockComponent } from './stock/creerstock/creerstock.component';
 import { ModifierstockComponent } from './stock/modifierstock/modifierstock.component';
+import { AfficherticketclotureComponent } from './ticket/afficherticketcloture/afficherticketcloture.component';
 
 
 
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: 'detailsticket/:id', component: DetailsticketComponent },
   { path: 'adduser', component: CreerutilisateurComponent },
   { path: 'ticket', component: AfficherticketComponent },
+  { path: 'ticketcloture', component: AfficherticketclotureComponent },
   { path: 'stock', component: AfficherstockComponent },
   { path: 'creerticket', component: CreerticketComponent },
   { path: 'creerstock', component: CreerstockComponent },
