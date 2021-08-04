@@ -100,7 +100,7 @@ export class ModifierutilisateurComponent implements OnInit {
     }
 
     private updateUser() {
-        const link = ['/profile'];
+        const link = ['/users'];
         this.UtilisateurService.update(this.id, this.form.value)
             .pipe(first())
             .subscribe({

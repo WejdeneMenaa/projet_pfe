@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TokenStorageService } from '../_service/token-storage.service';
+import { TokenStorageService } from '../../_service/token-storage.service';
 import { Utilisateur } from 'src/app/_models/utilisateur';
 import { UtilisateurService } from 'src/app/_service/utilisateur.service';
 import { FormGroup } from '@angular/forms';

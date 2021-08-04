@@ -99,7 +99,7 @@ export class DetailsticketComponent implements OnInit {
       console.log("user" + this.ticket)
 
     })
-    this.router.navigate([`/ticket`])
+    this.router.navigate([`/ticketadmin`])
   }
 
 }

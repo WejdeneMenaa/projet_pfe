@@ -5,7 +5,7 @@ import { UtilisateurService } from 'src/app/_service/utilisateur.service';
 import { ConfirmationService } from 'primeng/api';
 import { Message } from 'primeng/api';
 import { MatDialog } from '@angular/material/dialog';
-import { ProfileComponent } from 'src/app/profile/profile.component';
+import { ProfileComponent } from 'src/app/utilisateur/profile/profile.component';
 import { DialogService } from 'src/app/_service/dialog.service';
 
 
