@@ -38,9 +38,6 @@ module.exports = (sequelize, Sequelize) => {
       date_echeance: {
         type: Sequelize.DATE
       },
-      categorie: {
-        type: Sequelize.STRING
-      },
       solution: {
         type: Sequelize.STRING
       },

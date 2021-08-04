@@ -47,11 +47,6 @@
       {{ ticket.impact }}
     </p>
 
-    <p>
-      <strong>Catégorie:</strong>
-      {{ ticket.categorie }}
-    </p>
-
     <div class="form-row" *ngIf="user.roles.includes('ROLE_ADMIN')">
       <label for="attribuea">Affecter à</label>
       <div class="input-group">

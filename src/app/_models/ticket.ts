@@ -8,7 +8,6 @@
     type: string;
     priorite: string;
     urgence: string;
-    categorie: string;
     image: string;
     impact: string;
     solution: string;

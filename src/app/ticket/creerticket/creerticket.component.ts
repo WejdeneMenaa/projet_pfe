@@ -20,7 +20,6 @@ export class CreerticketComponent implements OnInit {
   loading = false;
   buttionText = "Submit";
   submitted = false;
-  categorie: any = ['materiel', 'logiciel', 'reseaux'];
   images;
   url: any;
   selectedImage: any;

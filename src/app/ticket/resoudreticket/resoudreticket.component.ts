@@ -69,7 +69,7 @@ export class ResoudreticketComponent implements OnInit {
       //this.TicketService.sendEmail(`http://localhost:4200/api/utilisateur/sendmail/${this.ticket.user_id}`, { solution: this.ticket.solution }).subscribe(
         //res => {
           //console.log(res)
-          this.router.navigate([`/ticket`])
+          this.router.navigate([`/ticketadmin`])
         //},
         //err => {
          // console.log(err);

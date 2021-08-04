@@ -56,29 +56,6 @@ export class AfficherticketComponent implements OnInit {
 
   }
 
-  //deleteTicket(ticket_id: string) {
-  //console.log("sahar" + ticket_id)
-  //const ticket = this.tickets.find(x => x.id === ticket_id);
-  //this.TicketService.delete(ticket_id)
-  //.pipe(first())
-  //.subscribe(() => this.tickets = this.tickets.filter(x => x.id !== ticket_id));
-  //this.ngOnInit();
-  // }
-
-  deleteTicket(ticket_id: string) {
-    this.dialogservice.openConfirmDialog('voulez-vous vraiment supprimer ce ticket ?')
-      .afterClosed().subscribe(res => {
-        console.log(res);
-        if (res) {
-          const ticket = this.tickets.find(x => x.id === ticket_id);
-          this.TicketService.delete(ticket_id)
-            .pipe(first())
-            .subscribe(() => this.tickets = this.tickets.filter(x => x.id !== ticket_id));
-          this.ngOnInit();
-        }
-      });
-  }
-
   updateStatus2(ticket_id: string) {
     const link = ['/ticket'];
     console.log('**********************here')

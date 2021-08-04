@@ -85,24 +85,6 @@
                     </div>
                 </div>
 
-                <div class="form-row">
-                    <label for="categorie">Catégorie</label>
-                    <div class="input-group">
-                        <div class="rs-select2 js-select-simple select--no-search">
-                            <mat-select name="categorie" [(ngModel)]="ticket.categorie">
-                                <mat-option name="categorie" [(ngModel)]="ticket.categorie" value="Materiel">Materiel
-                                </mat-option>
-                                <mat-option name="categorie" [(ngModel)]="ticket.categorie" value="Logiciel">Logiciel
-                                </mat-option>
-                                <mat-option name="categorie" [(ngModel)]="ticket.categorie" value="Reseaux">Reseaux
-                                </mat-option>
-                            </mat-select>
-                            <div class="select-dropdown"></div>
-                        </div>
-
-                    </div>
-                </div>
-
                 <div>
                     <button class="btn btn-primary" type="submit">Ajouter</button>
                     <a routerLink="/ticket" class="btn btn-link">Cancel</a>

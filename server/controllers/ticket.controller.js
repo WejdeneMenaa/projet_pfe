@@ -22,7 +22,6 @@ exports.create = (req, res) => {
     priorite: req.body.priorite,
     urgence: req.body.urgence,
     impact: req.body.impact,
-    categorie: req.body.categorie,
     image: req.body.image,
     user_id: req.body.user_id,
     attribuea: req.body.attribuea,

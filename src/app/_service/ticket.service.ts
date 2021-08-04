@@ -46,7 +46,6 @@ export class TicketService {
     urgence: string;
     impact: string;
     image: string;
-    categorie: string;
     solution: string;
     attribuea: number;
     user_id: number;
