@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { TokenStorageService } from 'src/app/_service/token-storage.service';
-import { StockService} from 'src/app/_service/stock.service'
+import { StockService } from 'src/app/_service/stock.service'
+import { DialogService } from 'src/app/_service/dialog.service';
 
 @Component({
   selector: 'app-afficherstock',
@@ -28,7 +29,8 @@ export class AfficherstockComponent implements OnInit {
     private StockService: StockService,
     private tokenStorageService: TokenStorageService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private dialogservice: DialogService) { }
 
 
 
@@ -50,13 +52,28 @@ export class AfficherstockComponent implements OnInit {
 
   }
 
-  deleteStock(stock_id: string) {
+  /*deleteStock(stock_id: string) {
     console.log("delete stock with id" + stock_id)
     const stock = this.stocks.find(x => x.id === stock_id);
     this.StockService.delete(stock_id)
       .pipe(first())
       .subscribe(() => this.stocks = this.stocks.filter(x => x.id !== stock_id));
     this.ngOnInit();
+  }
+*/
+
+  deleteStock(stock_id: string) {
+    this.dialogservice.openConfirmDialog('voulez-vous vraiment supprimer ce stock ?')
+      .afterClosed().subscribe(res => {
+        console.log(res);
+        if (res) {
+          const stock = this.stocks.find(x => x.id === stock_id);
+          this.StockService.delete(stock_id)
+            .pipe(first())
+            .subscribe(() => this.stocks = this.stocks.filter(x => x.id !== stock_id));
+          this.ngOnInit();
+        }
+      });
   }
 
 

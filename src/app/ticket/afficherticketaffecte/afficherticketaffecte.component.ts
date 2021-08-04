@@ -62,7 +62,7 @@ export class AfficherticketaffecteComponent implements OnInit {
   updateStatus2(ticket_id: string) {
     const link = ['/ticket'];
     console.log('**********************here')
-    this.ticket.statut = 'cloture'
+    this.ticket.statut = 'Cloture'
     this.TicketService.update(ticket_id, this.ticket).subscribe((data) => {
       this.ticket = data
       console.log("user" + this.ticket)

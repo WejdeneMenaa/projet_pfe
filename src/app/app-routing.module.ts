@@ -19,7 +19,6 @@ import { ResoudreticketComponent } from './ticket/resoudreticket/resoudreticket.
 import { AfficherstockComponent } from './stock/afficherstock/afficherstock.component';
 import { CreerstockComponent } from './stock/creerstock/creerstock.component';
 import { ModifierstockComponent } from './stock/modifierstock/modifierstock.component';
-import { AfficherticketclotureComponent } from './ticket/afficherticketcloture/afficherticketcloture.component';
 import { AfficherticketadminComponent } from './ticket/afficherticketadmin/afficherticketadmin.component';
 import { AfficherticketaffecteComponent } from './ticket/afficherticketaffecte/afficherticketaffecte.component';
 
@@ -37,7 +36,6 @@ const routes: Routes = [
   { path: 'adduser', component: CreerutilisateurComponent },
   { path: 'ticket', component: AfficherticketComponent },
   { path: 'ticketadmin', component: AfficherticketadminComponent },
-  { path: 'ticketcloture', component: AfficherticketclotureComponent },
   { path: 'ticketaffecte', component: AfficherticketaffecteComponent },
   { path: 'stock', component: AfficherstockComponent },
   { path: 'creerticket', component: CreerticketComponent },

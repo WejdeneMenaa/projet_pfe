@@ -51,12 +51,8 @@
       <strong>Catégorie:</strong>
       {{ ticket.categorie }}
     </p>
-    <p>
-      <strong>Demandeur:</strong>
-      {{ ticket.user_id }}
-    </p>
 
-    <div class="form-row">
+    <div class="form-row" *ngIf="user.roles.includes('ROLE_ADMIN')">
       <label for="attribuea">Affecter à</label>
       <div class="input-group">
         <div class="rs-select2 js-select-simple select--no-search">
@@ -69,12 +65,12 @@
       </div>
     </div>
 
-    <button routerLink="/updateticket/{{ ticket.ticket_id }}" routerLinkActive="active"
+    <button routerLink="/updateticket/{{ ticket.ticket_id }}" 
       class="btn btn-sm btn-danger btn-delete-user">
       <span>modifier</span>
     </button>
 
-    <button (click)="Affecter(ticket.ticket_id)" class="btn btn-sm btn-danger btn-delete-user">
+    <button (click)="Affecter(ticket.ticket_id)" class="btn btn-sm btn-danger btn-delete-user" *ngIf="user.roles.includes('ROLE_ADMIN')">
 
       <span>Affecter</span>
     </button>

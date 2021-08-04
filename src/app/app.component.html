@@ -48,8 +48,6 @@
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a routerLink="/ticket" routerLinkActive="active" class="nav-link">suivre mes
                                     tickets</a>
-                                    <a routerLink="/ticketcloture" routerLinkActive="active" class="nav-link">Consulter mes
-                                        tickets cloturés</a>
                                 <a routerLink="/creerticket" routerLinkActive="active" class="nav-link">Créer un
                                     ticket</a>
                             </nav>
@@ -58,14 +56,16 @@
                         <div *ngIf="user &&  user.roles.includes('ROLE_ADMIN','ROLE_TECHNICIEN')" class="collapse"
                             id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a routerLink="/ticketadmin" routerLinkActive="active" class="nav-link">List des tickets</a>
+                                <a routerLink="/ticketadmin" routerLinkActive="active" class="nav-link">List des
+                                    tickets</a>
                             </nav>
                         </div>
 
-                        <div class="collapse"
-                            id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
+                            data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a routerLink="/ticketaffecte" routerLinkActive="active" class="nav-link">List des tickets affectes</a>
+                                <a routerLink="/ticketaffecte" routerLinkActive="active" class="nav-link">List des
+                                    tickets affectes</a>
                             </nav>
                         </div>
 
@@ -127,15 +127,15 @@
                                 <a class="nav-link collapsed" routerLink="/stock" routerLinkActive="active"
                                     data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false"
                                     aria-controls="pagesCollapseAuth">
-                                    Ordinatueurs
+                                    Matériels
                                 </a>
                             </nav>
                         </div>
                         <div class="collapse" id="collapseParc" aria-labelledby="headingTwo"
                             data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link collapsed" href="#" data-toggle="collapse"
-                                    data-target="#pagesCollapseAuth" aria-expanded="false"
+                                <a class="nav-link collapsed" routerLink="/stock" routerLinkActive="active"
+                                    data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false"
                                     aria-controls="pagesCollapseAuth">
                                     Logiciels
                                 </a>
@@ -144,30 +144,10 @@
                         <div class="collapse" id="collapseParc" aria-labelledby="headingTwo"
                             data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link collapsed" href="#" data-toggle="collapse"
-                                    data-target="#pagesCollapseAuth" aria-expanded="false"
+                                <a class="nav-link collapsed" routerLink="/stock" routerLinkActive="active"
+                                    data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false"
                                     aria-controls="pagesCollapseAuth">
-                                    Imprimantes
-                                </a>
-                            </nav>
-                        </div>
-                        <div class="collapse" id="collapseParc" aria-labelledby="headingTwo"
-                            data-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link collapsed" href="#" data-toggle="collapse"
-                                    data-target="#pagesCollapseAuth" aria-expanded="false"
-                                    aria-controls="pagesCollapseAuth">
-                                    Périphériiques
-                                </a>
-                            </nav>
-                        </div>
-                        <div class="collapse" id="collapseParc" aria-labelledby="headingTwo"
-                            data-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link collapsed" href="#" data-toggle="collapse"
-                                    data-target="#pagesCollapseAuth" aria-expanded="false"
-                                    aria-controls="pagesCollapseAuth">
-                                    Matériels réseaux
+                                    Réseaux
                                 </a>
                             </nav>
                         </div>

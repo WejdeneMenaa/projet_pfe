@@ -59,16 +59,6 @@ export class AfficherutilisateurComponent implements OnInit {
     this.ngOnInit();
   }
 
-
-  //deleteUser(user_id: string) {
-  //console.log("sahar" + user_id)
-  //this.utilisateurservice.delete(user_id)
-  // .pipe(first())
-  //.subscribe(() => this.users = this.users.filter(x => x.id !== user_id));
-  //this.ngOnInit();
-  // }
-
-
   deleteUser(user_id: string) {
     this.dialogservice.openConfirmDialog('voulez-vous vraiment supprimer cet utilisateur ?')
       .afterClosed().subscribe(res => {

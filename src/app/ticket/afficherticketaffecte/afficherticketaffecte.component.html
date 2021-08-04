@@ -89,22 +89,14 @@
                                                         </a>
                                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                                             <a class="dropdown-item" mat-button
-                                                                *ngIf="user.roles.includes('ROLE_ADMIN')"
-                                                                (click)="deleteTicket(ticket.ticket_id)">Delete</a>
-                                                            <a class="dropdown-item" mat-button
                                                                 routerLink="/detailsticket/{{ ticket.ticket_id }}"
                                                                 routerLinkActive="active">Details</a>
                                                             <a routerLink="/resoudre/{{ ticket.ticket_id }}"
-                                                                *ngIf="user.roles.includes('ROLE_ADMIN','ROLE_TECHNICIEN')"
                                                                 routerLinkActive="active" mat-button
                                                                 class="dropdown-item">Résoudre</a>
-                                                            <a *ngIf="ticket.statut.includes('Resolu') && user.roles.includes('ROLE_USER')"
-                                                                (click)="updateStatus2(ticket.ticket_id)" mat-button
-                                                                class="dropdown-item">Cloturer</a>
                                                         </div>
                                                     </div>
                                                 </td>
-
                                             </tr>
                                         </tbody>
                                     </table>

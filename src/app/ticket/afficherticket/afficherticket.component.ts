@@ -4,6 +4,7 @@ import { toASCII } from 'punycode';
 import { first } from 'rxjs/operators';
 import { TicketService } from 'src/app/_service/ticket.service';
 import { TokenStorageService } from 'src/app/_service/token-storage.service';
+import { DialogService } from 'src/app/_service/dialog.service';
 
 
 
@@ -32,7 +33,8 @@ export class AfficherticketComponent implements OnInit {
     private TicketService: TicketService,
     private tokenStorageService: TokenStorageService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private dialogservice: DialogService) { }
 
 
 
@@ -54,19 +56,33 @@ export class AfficherticketComponent implements OnInit {
 
   }
 
+  //deleteTicket(ticket_id: string) {
+  //console.log("sahar" + ticket_id)
+  //const ticket = this.tickets.find(x => x.id === ticket_id);
+  //this.TicketService.delete(ticket_id)
+  //.pipe(first())
+  //.subscribe(() => this.tickets = this.tickets.filter(x => x.id !== ticket_id));
+  //this.ngOnInit();
+  // }
+
   deleteTicket(ticket_id: string) {
-    console.log("sahar" + ticket_id)
-    const ticket = this.tickets.find(x => x.id === ticket_id);
-    this.TicketService.delete(ticket_id)
-      .pipe(first())
-      .subscribe(() => this.tickets = this.tickets.filter(x => x.id !== ticket_id));
-    this.ngOnInit();
+    this.dialogservice.openConfirmDialog('voulez-vous vraiment supprimer ce ticket ?')
+      .afterClosed().subscribe(res => {
+        console.log(res);
+        if (res) {
+          const ticket = this.tickets.find(x => x.id === ticket_id);
+          this.TicketService.delete(ticket_id)
+            .pipe(first())
+            .subscribe(() => this.tickets = this.tickets.filter(x => x.id !== ticket_id));
+          this.ngOnInit();
+        }
+      });
   }
 
   updateStatus2(ticket_id: string) {
     const link = ['/ticket'];
     console.log('**********************here')
-    this.ticket.statut = 'cloture'
+    this.ticket.statut = 'Cloture'
     this.TicketService.update(ticket_id, this.ticket).subscribe((data) => {
       this.ticket = data
       console.log("user" + this.ticket)

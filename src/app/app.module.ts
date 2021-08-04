@@ -34,10 +34,10 @@ import { AfficherstockComponent } from './stock/afficherstock/afficherstock.comp
 import { CreerstockComponent } from './stock/creerstock/creerstock.component';
 import { ModifierstockComponent } from './stock/modifierstock/modifierstock.component';
 import { InputNumberModule } from 'primeng/inputnumber';
-import { AfficherticketclotureComponent } from './ticket/afficherticketcloture/afficherticketcloture.component';
 import { SimplelayoutComponent } from './containers/simplelayout/simplelayout.component';
 import { AfficherticketadminComponent } from './ticket/afficherticketadmin/afficherticketadmin.component';
 import { AfficherticketaffecteComponent } from './ticket/afficherticketaffecte/afficherticketaffecte.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 
@@ -66,7 +66,6 @@ import { AfficherticketaffecteComponent } from './ticket/afficherticketaffecte/a
     AfficherstockComponent,
     CreerstockComponent,
     ModifierstockComponent,
-    AfficherticketclotureComponent,
     SimplelayoutComponent,
     AfficherticketadminComponent,
     AfficherticketaffecteComponent,
@@ -86,6 +85,7 @@ import { AfficherticketaffecteComponent } from './ticket/afficherticketaffecte/a
     MatSelectModule,
     MatDialogModule,
     InputNumberModule,
+    MatTabsModule
 
 
   ],
