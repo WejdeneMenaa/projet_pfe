@@ -1,46 +1,53 @@
 <body>
-  <div id="layoutSidenav_content">
-      <main>
-          <div class="container-fluid">
-            <router-outlet></router-outlet>
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid">
+                <router-outlet></router-outlet>
 
-              <h1 class="mt-4">Modifier mon profil</h1>
-              <ol class="breadcrumb mb-4">
-                  <li class="breadcrumb-item"><a routerLink="/" routerLinkActive="active">Accueil</a></li>
-                  <li class="breadcrumb-item active">Modifier mon profil</li>
-              </ol>
+                <h1 class="mt-4">Modifier mon profil</h1>
+                <ol class="breadcrumb mb-4">
+                    <li class="breadcrumb-item"><a routerLink="/" routerLinkActive="active">Accueil</a></li>
+                    <li class="breadcrumb-item active">Modifier mon profil</li>
+                </ol>
 
-              <div class="card mb-4">
-                  <div class="card-header">
+                <div class="card mb-4">
+                    <div class="card-header">
 
-                      <h3 *ngIf="!isAddMode">Modifier mon profil</h3>
-                      <form [formGroup]="form" (ngSubmit)="onSubmit()">
-                          <div class="form-row">
-                              <div class="form-group col">
-                                  <label for="username">Nom</label>
-                                  <input type="text" formControlName="username" class="form-control"
-                                      [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-                                  <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-                                      <div *ngIf="f.username.errors.required">Username is required</div>
-                                  </div>
-                              </div>
-                          </div>
+                        <h3 *ngIf="!isAddMode">Modifier mon profil</h3>
+                        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                            <div class="form-row">
+                                <div class="form-group col">
+                                    <label for="username">Nom</label>
+                                    <input type="text" formControlName="username" class="form-control"
+                                        [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                                        <div *ngIf="f.username.errors.required">Username is required</div>
+                                    </div>
+                                </div>
+                            </div>
 
-                          <div class="form-row">
-                              <div class="form-group col">
-                                  <label for="email">Email</label>
-                                  <input type="text" formControlName="email" class="form-control"
-                                      [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
-                                  <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                                      <div *ngIf="f.email.errors.required">email is required</div>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="form-group">
-                              <button [disabled]="loading" class="btn btn-primary">
-                                  <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                                  Save
-                              </button>
-                              <a routerLink="/user" class="btn btn-link">Cancel</a>
-                          </div>
-                      </form>
+                            <div class="form-row">
+                                <div class="form-group col">
+                                    <label for="email">Email</label>
+                                    <input type="text" formControlName="email" class="form-control"
+                                        [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                        <div *ngIf="f.email.errors.required">email is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button [disabled]="loading" class="btn btn-primary">
+                                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                                    Save
+                                </button>
+                                <a routerLink="/profile" class="btn btn-link">Cancel</a>
+                                
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>

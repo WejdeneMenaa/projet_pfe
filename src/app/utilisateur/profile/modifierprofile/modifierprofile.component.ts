@@ -94,7 +94,7 @@ export class ModifierprofileComponent implements OnInit {
   }
 
   private updateUser() {
-      const link = ['/user'];
+      const link = ['/profile'];
       this.UtilisateurService.update(this.id, this.form.value)
           .pipe(first())
           .subscribe({

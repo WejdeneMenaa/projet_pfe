@@ -60,17 +60,18 @@
       </div>
     </div>
 
-    <button routerLink="/updateticket/{{ ticket.ticket_id }}" 
+    <button routerLink="/updateticket/{{ ticket.ticket_id }}" routerLinkActive="active"
       class="btn btn-sm btn-danger btn-delete-user">
       <span>modifier</span>
     </button>
 
-    <button (click)="Affecter(ticket.ticket_id)" class="btn btn-sm btn-danger btn-delete-user" *ngIf="user.roles.includes('ROLE_ADMIN')">
+    <button (click)="Affecter(ticket.ticket_id)" class="btn btn-sm btn-danger btn-delete-user"
+      *ngIf="user.roles.includes('ROLE_ADMIN')">
 
       <span>Affecter</span>
     </button>
-
-
+    <a routerLink="/ticketadmin" *ngIf="user.roles.includes('ROLE_TECHNICIEN','ROLE_ADMIN')"  class="btn btn-link">Cancel</a>
+    <a routerLink="/ticket" *ngIf="user.roles.includes('ROLE_USER')"  class="btn btn-link">Cancel</a>
   </div>
 
   <ng-template #loggedOut>

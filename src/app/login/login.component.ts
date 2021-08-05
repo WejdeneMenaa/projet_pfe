@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
 
         const link1 = ['/user'];
         const link2 = ['/admin'];
-        const link3 = ['/mod'];
+        const link3 = ['/technicien'];
         const link4 = ['/login'];
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);

@@ -20,7 +20,6 @@ import { AfficherstockComponent } from './stock/afficherstock/afficherstock.comp
 import { CreerstockComponent } from './stock/creerstock/creerstock.component';
 import { ModifierstockComponent } from './stock/modifierstock/modifierstock.component';
 import { AfficherticketadminComponent } from './ticket/afficherticketadmin/afficherticketadmin.component';
-import { AfficherticketaffecteComponent } from './ticket/afficherticketaffecte/afficherticketaffecte.component';
 
 
 
@@ -29,14 +28,13 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'user', component: BoardUserComponent },
-  { path: 'mod', component: BoardTechnicienComponent },
+  { path: 'technicien', component: BoardTechnicienComponent },
   { path: 'admin', component: BoardAdminComponent },
   { path: 'home', component: HomeComponent },
   { path: 'detailsticket/:id', component: DetailsticketComponent },
   { path: 'adduser', component: CreerutilisateurComponent },
   { path: 'ticket', component: AfficherticketComponent },
   { path: 'ticketadmin', component: AfficherticketadminComponent },
-  { path: 'ticketaffecte', component: AfficherticketaffecteComponent },
   { path: 'stock', component: AfficherstockComponent },
   { path: 'creerticket', component: CreerticketComponent },
   { path: 'creerstock', component: CreerstockComponent },
@@ -49,7 +47,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [ RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

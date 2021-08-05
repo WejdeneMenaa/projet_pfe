@@ -36,7 +36,6 @@ import { ModifierstockComponent } from './stock/modifierstock/modifierstock.comp
 import { InputNumberModule } from 'primeng/inputnumber';
 import { SimplelayoutComponent } from './containers/simplelayout/simplelayout.component';
 import { AfficherticketadminComponent } from './ticket/afficherticketadmin/afficherticketadmin.component';
-import { AfficherticketaffecteComponent } from './ticket/afficherticketaffecte/afficherticketaffecte.component';
 import { MatTabsModule } from '@angular/material/tabs';
 
 
@@ -68,7 +67,6 @@ import { MatTabsModule } from '@angular/material/tabs';
     ModifierstockComponent,
     SimplelayoutComponent,
     AfficherticketadminComponent,
-    AfficherticketaffecteComponent,
 
   ],
   imports: [
