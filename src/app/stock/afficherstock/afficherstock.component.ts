@@ -73,6 +73,7 @@ export class AfficherstockComponent implements OnInit {
             .subscribe(() => this.stocks = this.stocks.filter(x => x.id !== stock_id));
           this.ngOnInit();
         }
+        this.ngOnInit();
       });
   }
 

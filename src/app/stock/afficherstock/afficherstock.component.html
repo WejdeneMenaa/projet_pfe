@@ -86,8 +86,7 @@
                                                                 aria-labelledby="dropdownMenuLink">
                                                                 <a class="dropdown-item" mat-button (click)="deleteStock(stock.stock_id)">Supprimer</a>
                                                                 <a class="dropdown-item" mat-button
-                                                                    routerLink="#"
-                                                                    routerLinkActive="active">Modifier</a>
+                                                                routerLink="/updatestock/{{ stock.stock_id }}" routerLinkActive="active" >Modifier</a>
                                                                 <a class="dropdown-item" mat-button
                                                                     routerLink="#"
                                                                     routerLinkActive="active">Details</a>

@@ -43,6 +43,7 @@ const routes: Routes = [
   { path: 'users', component: AfficherutilisateurComponent, },
   { path: 'updateprofil', component: ModifierprofileComponent },
   { path: 'updateuser/:id', component: ModifierutilisateurComponent },
+  { path: 'updatestock/:id', component: ModifierstockComponent },
 
 ];
 

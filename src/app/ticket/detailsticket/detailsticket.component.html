@@ -47,13 +47,13 @@
       {{ ticket.impact }}
     </p>
 
-    <div class="form-row" *ngIf="user.roles.includes('ROLE_ADMIN')">
+    <div class="form-row">
       <label for="attribuea">Affecter à</label>
       <div class="input-group">
         <div class="rs-select2 js-select-simple select--no-search">
-          <select id="attribuea" [(ngModel)]="ticket.attribuea">
-            <option class="form-control" formControlName="attribuea" *ngFor="let user of users" value="user.id">
-              {{user.nom}}</option>
+          <select id="attribuea" name="attribuea" [(ngModel)]="ticket.attribuea" >
+            <option formControlName="attribuea" *ngFor="let user of users" [value]="user.id">
+              {{user.username}}</option>
           </select>
           <div class="select-dropdown"></div>
         </div>
@@ -65,8 +65,7 @@
       <span>modifier</span>
     </button>
 
-    <button (click)="Affecter(ticket.ticket_id)" class="btn btn-sm btn-danger btn-delete-user"
-      *ngIf="user.roles.includes('ROLE_ADMIN')">
+    <button (click)="Affecter(ticket.ticket_id)" class="btn btn-sm btn-danger btn-delete-user">
 
       <span>Affecter</span>
     </button>

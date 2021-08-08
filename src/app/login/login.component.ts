@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   roles: string[] = [];
   currentUser: any;
   status = false;
+  hide = true;
 
 
 
@@ -52,6 +53,7 @@ export class LoginComponent implements OnInit {
           else
             if (this.currentUser.roles.includes('ROLE_TECHNICIEN')) { this.router.navigate(link3); }
       },
+      
       err => {
         this.errorMessage = err.error.message;
         this.isLoginFailed = true;
