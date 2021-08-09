@@ -17,7 +17,7 @@ export class ModifierprofileComponent implements OnInit {
   isAddMode: boolean;
   loading = false;
   submitted = false;
-  user = null;
+  user : any = {};
 
 
   constructor(

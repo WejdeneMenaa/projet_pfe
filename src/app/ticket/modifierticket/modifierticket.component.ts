@@ -17,7 +17,7 @@ export class ModifierticketComponent implements OnInit {
     isAddMode: boolean;
     loading = false;
     submitted = false;
-    ticket = null;
+    ticket: any = {};
 
 
     constructor(
@@ -33,7 +33,7 @@ export class ModifierticketComponent implements OnInit {
         this.isAddMode = !this.id;
         this.TicketService.get(this.id).subscribe((data) => {
             this.ticket = data
-            console.log("user" + this.ticket)
+            console.log("ticket****************" + this.ticket.priorite)
         })
 
         this.form = this.formBuilder.group({
@@ -41,13 +41,13 @@ export class ModifierticketComponent implements OnInit {
             description: ['', Validators.required],
             date_creation: ['', Validators.required],
             date_echeance: ['', Validators.required],
-            statut: ['', [Validators.required]],
-            type: ['', [Validators.required]],
-            priorite: ['', [Validators.required]],
-            urgence: ['', [Validators.required]],
-            impact: ['', [Validators.required]],
-            image: ['', [Validators.required]],
-            user_id: ['', [Validators.required]],
+            statut: ['', Validators.required],
+            type: ['', Validators.required],
+            priorite: ['', Validators.required],
+            urgence: ['', Validators.required],
+            impact: ['', Validators.required],
+            image: ['', Validators.required],
+            user_id: ['', Validators.required],
         });
 
         if (!this.isAddMode) {

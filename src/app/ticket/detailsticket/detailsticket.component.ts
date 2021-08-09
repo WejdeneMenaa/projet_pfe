@@ -72,14 +72,14 @@ export class DetailsticketComponent implements OnInit {
       description: ['', Validators.required],
       date_creation: ['', Validators.required],
       date_echeance: ['', Validators.required],
-      statut: ['', [Validators.required]],
-      type: ['', [Validators.required]],
-      priorite: ['', [Validators.required]],
-      urgence: ['', [Validators.required]],
-      impact: ['', [Validators.required]],
-      image: ['', [Validators.required]],
-      user_id: ['', [Validators.required]],
-      solution: ['', [Validators.required]],
+      statut: ['', Validators.required],
+      type:  ['', Validators.required],
+      priorite:  ['', Validators.required],
+      urgence:  ['', Validators.required],
+      impact:  ['', Validators.required],
+      image:  ['', Validators.required],
+      user_id:  ['', Validators.required],
+      solution: ['', Validators.required],
       attribuea: ['', [Validators.required]]
     });
 
@@ -94,7 +94,7 @@ export class DetailsticketComponent implements OnInit {
   Affecter(ticket_id: string) {
     console.log('**********************here')
     this.ticket.statut = 'En cours'
-    this.ticket.attribuea = this.form.controls.attribuea.value;
+    this.ticket.attribuea = this.attribuea;
     console.log('test', this.ticket.attribuea)
     this.TicketService.update(ticket_id, this.ticket).subscribe((data) => {
 

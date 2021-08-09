@@ -46,13 +46,13 @@
       <strong>Impact:</strong>
       {{ ticket.impact }}
     </p>
-
+ 
     <div class="form-row">
-      <label for="attribuea">Affecter à</label>
+      <label>Affecter à</label>
       <div class="input-group">
         <div class="rs-select2 js-select-simple select--no-search">
-          <select id="attribuea" name="attribuea" [(ngModel)]="ticket.attribuea" >
-            <option formControlName="attribuea" *ngFor="let user of users" [value]="user.id">
+          <select [(ngModel)]="attribuea">
+            <option *ngFor="let user of users" [value]="user.user_id">
               {{user.username}}</option>
           </select>
           <div class="select-dropdown"></div>

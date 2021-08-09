@@ -58,11 +58,11 @@ export class TicketService {
       .pipe(map(x => {
         console.log("**" + JSON.stringify(x))
         // update stored user if the logged in user updated their own record
-        if (this.ticketValue && this.ticketValue.ticket_id == this.ticketValue.ticket_id) {
+
+        if (ticket_id == this.ticketValue.ticket_id) {
           // update local storage
           const ticket = { ...this.ticketValue, ...params };
-          localStorage.setItem('ticket', JSON.stringify(ticket));
-
+          localStorage.setItem('user', JSON.stringify(ticket));
           // publish updated user to subscribers
           this.ticketSubject.next(ticket);
         }
