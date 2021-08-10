@@ -6,6 +6,7 @@ import { TokenStorageService } from 'src/app/_service/token-storage.service';
 import { StockService } from 'src/app/_service/stock.service'
 import { CategorieService } from 'src/app/_service/categorie.service';
 import { ScategorieService } from 'src/app/_service/scategorie.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -21,9 +22,12 @@ export class CreerstockComponent implements OnInit {
   loading = false;
   buttionText = "Submit";
   submitted = false;
-  //categorie: any = ['materiel', 'logiciel', 'reseaux'];
   categories = null;
   scategories = null;
+  cat_id: string;
+  scat_id: string;
+  form: FormGroup;
+
 
 
 
@@ -32,12 +36,11 @@ export class CreerstockComponent implements OnInit {
     private categorieservice: CategorieService,
     private scategorieservice: ScategorieService,
     public http: HttpService,
+    private formBuilder: FormBuilder,
     private https: HttpClient,
     private token: TokenStorageService) { }
   ngOnInit(): void {
     console.log("***" + localStorage.getItem('id'))
-    //this.categorie = this.StockService.categorie();
-
     this.categorieservice.getAll().subscribe((data) => {
       this.categories = data
       console.log("categories" + this.categories)
@@ -47,24 +50,23 @@ export class CreerstockComponent implements OnInit {
       this.scategories = data
       console.log("sous_categories" + this.scategories)
     })
-  }
 
-  /* onSelect(categorie){
-     this.sous_categorie = this.StockService.sous_categorie()
-     .filter(e=> 
-      e.id == categorie.target.value);
-   }*/
+    this.form = this.formBuilder.group({
+      cat_id: ['', Validators.required],
+      scat_id: ['', Validators.required],
+
+    });
+  }
 
   onSubmit() {
     const link = ['/stock'];
-
-    this.StockService.create(this.stock).subscribe(
-      data => {
-        console.log(data);
-        this.isSuccessful = true;
-        this.isSignUpFailed = false;
-
-      },
+    this.stock.cat_id = this.cat_id;
+    this.stock.scat_id = this.scat_id;
+    this.StockService.create(this.stock).subscribe((data) => {
+      console.log(data);
+      this.isSuccessful = true;
+      this.isSignUpFailed = false;
+    },
       err => {
         this.errorMessage = err.error.message;
         this.isSignUpFailed = true;

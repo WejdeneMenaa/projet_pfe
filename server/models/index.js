@@ -37,18 +37,18 @@ db.utilisateur.belongsToMany(db.role, {
   otherKey: "roleId"
 });
 
-db.ticket.belongsToMany(db.categorie, {
-  through: "tickets",
-  foreignKey: "ticket_id",
+db.stock.belongsToMany(db.categorie, {
+  through: "stocks",
+  foreignKey: "stock_id",
   otherKey: "cat_id"
 });
 
-/*db.scategorie.belongsToMany(db.categorie, {
-  through: "scategories",
-  foreignKey: "id",
-  otherKey: "id"
-});
-*/
+db.stock.belongsToMany(db.scategorie, {
+  through: "stocks",
+  foreignKey: "stock_id",
+  otherKey: "scat_id"
+}); 
+
 db.ticket.belongsToMany(db.utilisateur, {
   through: "tickets",
   foreignKey: "ticket_id",

@@ -30,7 +30,7 @@
               <label for="categorie">Catégorie</label>
               <div class="input-group">
                 <div class="rs-select2 js-select-simple select--no-search">
-                  <select name="categorie" [(ngModel)]="stock.categorie">
+                  <select name="categorie" [(ngModel)]="cat_id">
                     <option *ngFor="let categorie of categories" [value]="categorie.id">
                       {{categorie.name}}</option>
                   </select>
@@ -44,7 +44,7 @@
               <label for="sous_categorie">Sous Catégorie</label>
               <div class="input-group">
                 <div class="rs-select2 js-select-simple select--no-search">
-                  <select name="sous_categorie" [(ngModel)]="stock.sous_categorie">
+                  <select name="sous_categorie" [(ngModel)]="scat_id">
                     <option *ngFor="let scategorie of scategories" [value]="scategorie.id">
                       {{scategorie.name}}</option>
                   </select>

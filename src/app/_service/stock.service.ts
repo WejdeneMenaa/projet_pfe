@@ -43,6 +43,8 @@ export class StockService {
     sous_categorie: string;
     quantite: number;
     modele: string;
+    cat_id:number;
+    scat_id:number;
   }): Observable<any> {
     return this.http.post(baseUrl, data);
   }

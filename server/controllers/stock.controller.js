@@ -18,8 +18,10 @@ exports.create = (req, res) => {
     categorie: req.body.categorie,
     quantite: req.body.quantite,
     sous_categorie: req.body.sous_categorie,
-    modele: req.body.modele
-    };
+    modele: req.body.modele,
+    cat_id : req.body.cat_id,
+    scat_id : req.body.scat_id
+  };
   
     // Save Stock in the database
     Stock.create(stock)

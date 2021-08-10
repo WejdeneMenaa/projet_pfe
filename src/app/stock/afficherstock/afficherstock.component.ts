@@ -68,16 +68,6 @@ export class AfficherstockComponent implements OnInit {
 
   }
 
-  /*deleteStock(stock_id: string) {
-    console.log("delete stock with id" + stock_id)
-    const stock = this.stocks.find(x => x.id === stock_id);
-    this.StockService.delete(stock_id)
-      .pipe(first())
-      .subscribe(() => this.stocks = this.stocks.filter(x => x.id !== stock_id));
-    this.ngOnInit();
-  }
-*/
-
   deleteStock(stock_id: string) {
     this.dialogservice.openConfirmDialog('voulez-vous vraiment supprimer ce stock ?')
       .afterClosed().subscribe(res => {
