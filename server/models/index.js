@@ -43,12 +43,12 @@ db.ticket.belongsToMany(db.categorie, {
   otherKey: "cat_id"
 });
 
-//db.scategorie.belongsToMany(db.categorie, {
- // through: "scategories",
- // foreignKey: "id",
- // otherKey: "id"
-//});
-
+/*db.scategorie.belongsToMany(db.categorie, {
+  through: "scategories",
+  foreignKey: "id",
+  otherKey: "id"
+});
+*/
 db.ticket.belongsToMany(db.utilisateur, {
   through: "tickets",
   foreignKey: "ticket_id",

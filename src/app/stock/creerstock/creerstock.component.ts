@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { HttpService } from 'src/app/_service/http.service';
 import { TokenStorageService } from 'src/app/_service/token-storage.service';
 import { StockService } from 'src/app/_service/stock.service'
+import { CategorieService } from 'src/app/_service/categorie.service';
+import { ScategorieService } from 'src/app/_service/scategorie.service';
 
 
 @Component({
@@ -20,26 +22,38 @@ export class CreerstockComponent implements OnInit {
   buttionText = "Submit";
   submitted = false;
   //categorie: any = ['materiel', 'logiciel', 'reseaux'];
-  categorie: any = [];
-  sous_categorie: any = [];
+  categories = null;
+  scategories = null;
 
 
 
   constructor(private router: Router,
     private StockService: StockService,
+    private categorieservice: CategorieService,
+    private scategorieservice: ScategorieService,
     public http: HttpService,
     private https: HttpClient,
     private token: TokenStorageService) { }
   ngOnInit(): void {
     console.log("***" + localStorage.getItem('id'))
-    this.categorie = this.StockService.categorie();
+    //this.categorie = this.StockService.categorie();
+
+    this.categorieservice.getAll().subscribe((data) => {
+      this.categories = data
+      console.log("categories" + this.categories)
+    })
+
+    this.scategorieservice.getAll().subscribe((data) => {
+      this.scategories = data
+      console.log("sous_categories" + this.scategories)
+    })
   }
 
-  onSelect(categorie){
-    this.sous_categorie = this.StockService.sous_categorie()
-    .filter(e=> 
-     e.id == categorie.target.value);
-  }
+  /* onSelect(categorie){
+     this.sous_categorie = this.StockService.sous_categorie()
+     .filter(e=> 
+      e.id == categorie.target.value);
+   }*/
 
   onSubmit() {
     const link = ['/stock'];

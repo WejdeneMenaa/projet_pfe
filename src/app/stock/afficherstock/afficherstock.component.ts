@@ -4,6 +4,8 @@ import { first } from 'rxjs/operators';
 import { TokenStorageService } from 'src/app/_service/token-storage.service';
 import { StockService } from 'src/app/_service/stock.service'
 import { DialogService } from 'src/app/_service/dialog.service';
+import { CategorieService } from 'src/app/_service/categorie.service';
+import { ScategorieService } from 'src/app/_service/scategorie.service';
 
 @Component({
   selector: 'app-afficherstock',
@@ -22,11 +24,15 @@ export class AfficherstockComponent implements OnInit {
   user = null;
   stock_id: number;
   isAddMode: boolean;
+  categories = null;
+  scategories = null;
 
 
 
   constructor(
     private StockService: StockService,
+    private categorieservice: CategorieService,
+    private scategorieservice: ScategorieService,
     private tokenStorageService: TokenStorageService,
     private route: ActivatedRoute,
     private router: Router,
@@ -48,6 +54,16 @@ export class AfficherstockComponent implements OnInit {
     this.isAddMode = !this.stock_id;
     this.StockService.getAll().subscribe((data) => {
       this.stocks = data
+    })
+
+    this.categorieservice.getAll().subscribe((data) => {
+      this.categories = data
+      console.log("categories" + this.categories)
+    })
+
+    this.scategorieservice.getAll().subscribe((data) => {
+      this.scategories = data
+      console.log("sous_categories" + this.scategories)
     })
 
   }

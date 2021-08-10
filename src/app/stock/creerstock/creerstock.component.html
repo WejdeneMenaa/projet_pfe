@@ -30,11 +30,9 @@
               <label for="categorie">Catégorie</label>
               <div class="input-group">
                 <div class="rs-select2 js-select-simple select--no-search">
-                  <select name="categorie" (change)="onSelect($event)">
-                    <option *ngFor="let 
-                          cat of categorie" value="{{cat.id}}">
-                      {{cat.name}}
-                    </option>
+                  <select name="categorie" [(ngModel)]="stock.categorie">
+                    <option *ngFor="let categorie of categories" [value]="categorie.id">
+                      {{categorie.name}}</option>
                   </select>
                   <div class="select-dropdown"></div>
                 </div>
@@ -46,9 +44,9 @@
               <label for="sous_categorie">Sous Catégorie</label>
               <div class="input-group">
                 <div class="rs-select2 js-select-simple select--no-search">
-                  <select [(ngModel)]="stock.sous_categorie">
-                    <option *ngFor="let sous_cat of
-                   sous_categorie">{{sous_cat.name}}</option>
+                  <select name="sous_categorie" [(ngModel)]="stock.sous_categorie">
+                    <option *ngFor="let scategorie of scategories" [value]="scategorie.id">
+                      {{scategorie.name}}</option>
                   </select>
                   <div class="select-dropdown"></div>
                 </div>

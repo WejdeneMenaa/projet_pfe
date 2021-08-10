@@ -60,8 +60,8 @@
                                     tickets</a>
                             </nav>
                         </div>
-                        <div *ngIf="user && user.roles.includes('ROLE_ADMIN')" class="collapse"
-                            id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                        <div *ngIf="user && user.roles.includes('ROLE_ADMIN')" class="collapse" id="collapseLayouts"
+                            aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a routerLink="/ticketadmin" routerLinkActive="active" class="nav-link">List des
                                     tickets</a>
@@ -118,10 +118,10 @@
                         <a class="nav-link collapsed" href="/stock" data-toggle="collapse" data-target="#collapseParc"
                             aria-expanded="false" aria-controls="collapsePages">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Stocks
+                            Stock
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
-                        <div class="collapse" id="collapseParc" aria-labelledby="headingTwo"
+                        <div *ngIf="user && user.roles.includes('ROLE_ADMIN')" class="collapse" id="collapseParc" aria-labelledby="headingTwo"
                             data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                 <a class="nav-link collapsed" routerLink="/creerstock" routerLinkActive="active"
@@ -131,33 +131,14 @@
                                 </a>
                             </nav>
                         </div>
+
                         <div class="collapse" id="collapseParc" aria-labelledby="headingTwo"
                             data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                 <a class="nav-link collapsed" routerLink="/stock" routerLinkActive="active"
                                     data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false"
                                     aria-controls="pagesCollapseAuth">
-                                    Matériels
-                                </a>
-                            </nav>
-                        </div>
-                        <div class="collapse" id="collapseParc" aria-labelledby="headingTwo"
-                            data-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link collapsed" routerLink="/stock" routerLinkActive="active"
-                                    data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false"
-                                    aria-controls="pagesCollapseAuth">
-                                    Logiciels
-                                </a>
-                            </nav>
-                        </div>
-                        <div class="collapse" id="collapseParc" aria-labelledby="headingTwo"
-                            data-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link collapsed" routerLink="/stock" routerLinkActive="active"
-                                    data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false"
-                                    aria-controls="pagesCollapseAuth">
-                                    Réseaux
+                                    Liste de stock
                                 </a>
                             </nav>
                         </div>

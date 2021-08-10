@@ -25,7 +25,7 @@ export class DetailsticketComponent implements OnInit {
   statut: any;
   attribuea: string;
   user = null;
-  users = null;;
+  users = null;
   private roles: string[];
   form: FormGroup;
   id: number;

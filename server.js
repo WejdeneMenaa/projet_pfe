@@ -30,6 +30,8 @@ require("./server/routes/utilisateur.routes")(app);
 require("./server/routes/auth.routes")(app);
 require("./server/routes/ticket.routes")(app);
 require("./server/routes/stock.routes")(app);
+require("./server/routes/categorie.routes")(app);
+require("./server/routes/scategorie.routes")(app);
 
 
 // set port, listen for requests

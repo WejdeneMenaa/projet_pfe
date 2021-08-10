@@ -35,7 +35,8 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <mat-tab-group>
+                                <mat-tab label="Stock des matériels">
                             <div class="row">
                                 <div class="col-sm-12">
                                     <table class="table table-bordered dataTable" id="dataTable" width="100%"
@@ -68,7 +69,8 @@
                                         </thead>
 
                                         <tbody>
-                                                <tr role="row" class="odd" *ngFor="let stock of stocks">
+                                                <tr role="row" class="odd" *ngFor="let stock of stocks"
+                                                [hidden]="stock.categorie =='2' || stock.categorie =='3'  ">
                                                     <td>{{stock.name}}</td>
                                                     <td>{{stock.categorie}}</td>
                                                     <td>{{stock.sous_categorie}}</td>
@@ -99,6 +101,139 @@
                                     </table>
                                 </div>
                             </div>
+                            </mat-tab>
+                            <mat-tab label="Stock des logiciels">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <table class="table table-bordered dataTable" id="dataTable" width="100%"
+                                            cellspacing="0" role="grid" aria-describedby="dataTable_info"
+                                            style="width: 100%;">
+                                            <thead>
+                                                <tr role="row">
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
+                                                        rowspan="1" colspan="1" aria-sort="ascending"
+                                                        aria-label="Name: activate to sort column descending"
+                                                        style="width: 145px;">Name</th>
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
+                                                        rowspan="1" colspan="1" aria-sort="ascending"
+                                                        aria-label="Name: activate to sort column descending"
+                                                        style="width: 145px;">Catégorie</th>
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
+                                                        rowspan="1" colspan="1" aria-sort="ascending"
+                                                        aria-label="Name: activate to sort column descending"
+                                                        style="width: 145px;">Sous Catégorie</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                                        colspan="1" aria-label="Position: activate to sort column ascending"
+                                                        style="width: 145px;">Quantité</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                                        colspan="1" aria-label="Office: activate to sort column ascending"
+                                                        style="width: 108px;">Modéle</th>
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
+                                                        rowspan="1" colspan="1" aria-sort="ascending"
+                                                        aria-label="Name: activate to sort column descending"
+                                                        style="width: 145px;">Action</th>
+                                            </thead>
+    
+                                            <tbody>
+                                                    <tr role="row" class="odd" *ngFor="let stock of stocks"
+                                                    [hidden]="stock.categorie =='1' || stock.categorie =='3'">
+                                                        <td>{{stock.name}}</td>
+                                                        <td>{{stock.categorie}}</td>
+                                                        <td>{{stock.sous_categorie}}</td>
+                                                        <td>{{stock.quantite}}</td>
+                                                        <td>{{stock.modele}}</td>
+                                                        <td>
+                                                            <div class="dropdown show">
+                                                                <a class="btn btn-secondary dropdown-toggle" href="#"
+                                                                    role="button" id="dropdownMenuLink"
+                                                                    data-toggle="dropdown" aria-haspopup="true"
+                                                                    aria-expanded="false">
+                                                                    Action
+                                                                </a>
+                                                                <div class="dropdown-menu"
+                                                                    aria-labelledby="dropdownMenuLink">
+                                                                    <a class="dropdown-item" mat-button (click)="deleteStock(stock.stock_id)">Supprimer</a>
+                                                                    <a class="dropdown-item" mat-button
+                                                                    routerLink="/updatestock/{{ stock.stock_id }}" routerLinkActive="active" >Modifier</a>
+                                                                    <a class="dropdown-item" mat-button
+                                                                        routerLink="#"
+                                                                        routerLinkActive="active">Details</a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+    
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                </mat-tab>
+                                <mat-tab label="Stock des réseaux">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <table class="table table-bordered dataTable" id="dataTable" width="100%"
+                                                cellspacing="0" role="grid" aria-describedby="dataTable_info"
+                                                style="width: 100%;">
+                                                <thead>
+                                                    <tr role="row">
+                                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
+                                                            rowspan="1" colspan="1" aria-sort="ascending"
+                                                            aria-label="Name: activate to sort column descending"
+                                                            style="width: 145px;">Name</th>
+                                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
+                                                            rowspan="1" colspan="1" aria-sort="ascending"
+                                                            aria-label="Name: activate to sort column descending"
+                                                            style="width: 145px;">Catégorie</th>
+                                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
+                                                            rowspan="1" colspan="1" aria-sort="ascending"
+                                                            aria-label="Name: activate to sort column descending"
+                                                            style="width: 145px;">Sous Catégorie</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                                            colspan="1" aria-label="Position: activate to sort column ascending"
+                                                            style="width: 145px;">Quantité</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                                            colspan="1" aria-label="Office: activate to sort column ascending"
+                                                            style="width: 108px;">Modéle</th>
+                                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
+                                                            rowspan="1" colspan="1" aria-sort="ascending"
+                                                            aria-label="Name: activate to sort column descending"
+                                                            style="width: 145px;">Action</th>
+                                                </thead>
+        
+                                                <tbody>
+                                                        <tr role="row" class="odd" *ngFor="let stock of stocks"
+                                                        [hidden]="stock.categorie =='1' || stock.categorie =='2'">
+                                                            <td>{{stock.name}}</td>
+                                                            <td>{{stock.categorie}}</td>
+                                                            <td>{{stock.sous_categorie}}</td>
+                                                            <td>{{stock.quantite}}</td>
+                                                            <td>{{stock.modele}}</td>
+                                                            <td>
+                                                                <div class="dropdown show">
+                                                                    <a class="btn btn-secondary dropdown-toggle" href="#"
+                                                                        role="button" id="dropdownMenuLink"
+                                                                        data-toggle="dropdown" aria-haspopup="true"
+                                                                        aria-expanded="false">
+                                                                        Action
+                                                                    </a>
+                                                                    <div class="dropdown-menu"
+                                                                        aria-labelledby="dropdownMenuLink">
+                                                                        <a class="dropdown-item" mat-button (click)="deleteStock(stock.stock_id)">Supprimer</a>
+                                                                        <a class="dropdown-item" mat-button
+                                                                        routerLink="/updatestock/{{ stock.stock_id }}" routerLinkActive="active" >Modifier</a>
+                                                                        <a class="dropdown-item" mat-button
+                                                                            routerLink="#"
+                                                                            routerLinkActive="active">Details</a>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+        
+                                                        </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    </mat-tab></mat-tab-group>
                         </div>
                     </div>
                 </div>
