@@ -38,9 +38,9 @@
                                 </div>
 
                                 <div class="col-sm-12 col-md-6">
-                                    <div id="dataTable_filter" class="dataTables_filter"><label>Search:<input
-                                                type="search" class="form-control form-control-sm" placeholder=""
-                                                aria-controls="dataTable">
+                                    <div id="dataTable_filter" class="dataTables_filter"><label>Search:
+                                            <input type="text" class="form-control" name="nom" [(ngModel)]="nom"
+                                                (ngModelChange)="Search()" placeholder="" aria-controls="dataTable">
                                         </label>
                                     </div>
                                 </div>
@@ -117,7 +117,7 @@
                                                         </a>
                                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                                             <a mat-button class="dropdown-item"
-                                                                (click)="deleteUser(utilisateur.user_id)">Supprimer</a>
+                                                                (click)="deleteUser(utilisateur.id)">Supprimer</a>
                                                             <a class="dropdown-item" mat-button
                                                                 (click)="openDialog()">details</a>
                                                         </div>

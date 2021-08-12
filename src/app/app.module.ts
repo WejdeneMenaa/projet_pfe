@@ -37,6 +37,10 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { SimplelayoutComponent } from './containers/simplelayout/simplelayout.component';
 import { AfficherticketadminComponent } from './ticket/afficherticketadmin/afficherticketadmin.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 
 
 
@@ -83,10 +87,17 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatSelectModule,
     MatDialogModule,
     InputNumberModule,
-    MatTabsModule
+    MatTabsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FlexLayoutModule
 
 
   ],
+  exports: [
+    MatFormFieldModule,
+    MatInputModule,],
+
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent],
   entryComponents: [AfficherutilisateurComponent, MatConfirmDialogComponent]

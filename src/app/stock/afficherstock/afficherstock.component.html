@@ -72,9 +72,12 @@
 
                                                 <tbody>
                                                     <tr role="row" class="odd" *ngFor="let stock of stocks"
-                                                        [hidden]="stock.cat_id == 2 || stock.cat_id == 3  ">
+                                                        [hidden]="stock.cat_id == 2 || stock.cat_id == 3 ">
                                                         <td>{{stock.name}}</td>
-                                                        <td>{{stock.cat_id}}</td>
+                                                        <td>
+                                                            <p *ngFor="let cat of stocks.categories">
+                                                                {{cat.name}}</p>
+                                                        </td>
                                                         <td>{{stock.scat_id}}</td>
                                                         <td>{{stock.quantite}}</td>
                                                         <td>{{stock.modele}}</td>

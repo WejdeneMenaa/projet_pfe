@@ -7,6 +7,7 @@ import { Message } from 'primeng/api';
 import { MatDialog } from '@angular/material/dialog';
 import { ProfileComponent } from 'src/app/utilisateur/profile/profile.component';
 import { DialogService } from 'src/app/_service/dialog.service';
+import { Utilisateur } from 'src/app/_models/utilisateur';
 
 
 
@@ -18,7 +19,8 @@ import { DialogService } from 'src/app/_service/dialog.service';
 })
 export class AfficherutilisateurComponent implements OnInit {
   msgs: Message[] = [];
-  users = null;
+  users : Utilisateur[] = [];
+  nom: any;
   utilisateur = null;
 
   constructor(
@@ -72,6 +74,18 @@ export class AfficherutilisateurComponent implements OnInit {
       });
   }
 
+  Search() {
+    if (this.nom == "") {
+      this.ngOnInit();
+    }
+    else {
+      this.users = this.users.filter(res => {
+        return res.nom.toLocaleLowerCase().match(this.nom.toLocaleLowerCase());
+      }
+      )
+    }
+  }
+  
 }
 
 

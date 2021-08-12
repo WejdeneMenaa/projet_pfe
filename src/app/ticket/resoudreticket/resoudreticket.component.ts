@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
-import { AlertService } from 'src/app/_service/alert.service';
+import { ScategorieService } from 'src/app/_service/scategorie.service';
 import { TicketService } from 'src/app/_service/ticket.service';
 
 
@@ -21,13 +21,14 @@ export class ResoudreticketComponent implements OnInit {
   ticket : any;
   tickets: any;
   solution: string;
+  scategories = null;
 
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
+    private scategorieservice: ScategorieService,
     private TicketService: TicketService,
-    private alertService: AlertService,
   ) { }
 
   ngOnInit(): void {
@@ -49,7 +50,7 @@ export class ResoudreticketComponent implements OnInit {
       impact: ['', [Validators.required]],
       image: ['', [Validators.required]],
       user_id: ['', [Validators.required]],
-      solution: ['', [Validators.required]],
+      solution: ['', Validators.required],
       attribuea :['', [Validators.required]]
     });
 
@@ -58,11 +59,17 @@ export class ResoudreticketComponent implements OnInit {
         .pipe(first())
         .subscribe(x => this.form.patchValue(x));
     }
+
+    this.scategorieservice.getAll().subscribe((data) => {
+      this.scategories = data
+      console.log("sous_categories" + this.scategories)
+    })
   }
 
   ResoudreTicket(ticket_id: string) {
     this.ticket.statut = 'Resolu'
     this.ticket.date_echeance = Date.now();
+    this.ticket.solution = this.solution;
     this.ticket.solution = this.form.controls.solution.value;
     console.log('test', this.ticket.solution)
     this.TicketService.update(this.ticket_id, this.ticket).subscribe((data) => {
