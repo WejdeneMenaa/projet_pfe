@@ -23,6 +23,7 @@ export class AfficherticketadminComponent implements OnInit {
   user = null;
   ticket_id: number;
   isAddMode: boolean;
+  titre: any;
 
 
 
@@ -79,6 +80,17 @@ export class AfficherticketadminComponent implements OnInit {
 
   }
 
+  Search() {
+    if (this.titre == "") {
+      this.ngOnInit();
+    }
+    else {
+      this.tickets = this.tickets.filter(res => {
+        return res.titre.toLocaleLowerCase().match(this.titre.toLocaleLowerCase());
+      }
+      )
+    }
+  }
 }
 
 

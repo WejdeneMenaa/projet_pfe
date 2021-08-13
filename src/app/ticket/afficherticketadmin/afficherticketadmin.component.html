@@ -22,208 +22,205 @@
 
                 <div class="card-body">
                     <div class="table-responsive">
+
                         <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
                             <div class="row">
-                                <div class="col-sm-12 col-md-6">
-                                </div>
-
-                                <div class="col-sm-12 col-md-6">
-                                    <div id="dataTable_filter" class="dataTables_filter"><label>Search:<input
-                                                type="search" class="form-control form-control-sm" placeholder=""
-                                                aria-controls="dataTable">
-                                        </label>
-                                    </div>
+                                <div class="col-sm-12 ">
+                                    <nav>
+                                        <input type="text" class="form-control" name="titre" [(ngModel)]="titre"
+                                            (ngModelChange)="Search()" placeholder="Rechercher ..."
+                                            aria-controls="dataTable">
+                                    </nav>
                                 </div>
                             </div>
-
-                            <mat-tab-group>
-                                <mat-tab label="Les tickets" *ngIf="user.roles.includes('ROLE_ADMIN')">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <table class="table table-bordered dataTable" id="dataTable" width="100%"
-                                                cellspacing="0" role="grid" aria-describedby="dataTable_info"
-                                                style="width: 100%;">
-                                                <thead>
-                                                    <tr role="row">
-                                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
-                                                            rowspan="1" colspan="1" aria-sort="ascending"
-                                                            aria-label="Name: activate to sort column descending"
-                                                            style="width: 145px;">Titre</th>
-                                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
-                                                            rowspan="1" colspan="1" aria-sort="ascending"
-                                                            aria-label="Name: activate to sort column descending"
-                                                            style="width: 145px;">Date de création</th>
-                                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
-                                                            rowspan="1" colspan="1" aria-sort="ascending"
-                                                            aria-label="Name: activate to sort column descending"
-                                                            style="width: 145px;">Description</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="dataTable"
-                                                            rowspan="1" colspan="1"
-                                                            aria-label="Position: activate to sort column ascending"
-                                                            style="width: 145px;">Statut</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="dataTable"
-                                                            rowspan="1" colspan="1"
-                                                            aria-label="Office: activate to sort column ascending"
-                                                            style="width: 108px;">Type</th>
-                                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
-                                                            rowspan="1" colspan="1" aria-sort="ascending"
-                                                            aria-label="Name: activate to sort column descending"
-                                                            style="width: 145px;">Action</th>
-                                                </thead>
-
-                                                <tbody>
-                                                    <tr role="row" class="odd" *ngFor="let ticket of tickets">
-                                                        <td>{{ticket.titre}}</td>
-                                                        <td>{{ticket.date_creation}}</td>
-                                                        <td>{{ticket.description}}</td>
-                                                        <td>{{ticket.statut}}</td>
-                                                        <td>{{ticket.type}}</td>
-                                                        <td>
-                                                            <div class="dropdown show">
-                                                                <a class="btn btn-secondary dropdown-toggle" href="#"
-                                                                    role="button" id="dropdownMenuLink"
-                                                                    data-toggle="dropdown" aria-haspopup="true"
-                                                                    aria-expanded="false">
-                                                                    Action
-                                                                </a>
-                                                                <div class="dropdown-menu"
-                                                                    aria-labelledby="dropdownMenuLink">
-                                                                    <a class="dropdown-item" mat-button
-                                                                        (click)="deleteTicket(ticket.ticket_id)">Delete</a>
-                                                                    <a class="dropdown-item" mat-button
-                                                                        routerLink="/detailsticket/{{ ticket.ticket_id }}"
-                                                                        routerLinkActive="active">Details</a>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </mat-tab>
-
-                                <mat-tab label="Les tickets à résoudre">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <table class="table table-bordered dataTable" id="dataTable" width="100%"
-                                                cellspacing="0" role="grid" aria-describedby="dataTable_info"
-                                                style="width: 100%;">
-                                                <thead>
-                                                    <tr role="row">
-                                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
-                                                            rowspan="1" colspan="1" aria-sort="ascending"
-                                                            aria-label="Name: activate to sort column descending"
-                                                            style="width: 145px;">Titre</th>
-                                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
-                                                            rowspan="1" colspan="1" aria-sort="ascending"
-                                                            aria-label="Name: activate to sort column descending"
-                                                            style="width: 145px;">Date de création</th>
-                                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
-                                                            rowspan="1" colspan="1" aria-sort="ascending"
-                                                            aria-label="Name: activate to sort column descending"
-                                                            style="width: 145px;">Description</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="dataTable"
-                                                            rowspan="1" colspan="1"
-                                                            aria-label="Position: activate to sort column ascending"
-                                                            style="width: 145px;">Statut</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="dataTable"
-                                                            rowspan="1" colspan="1"
-                                                            aria-label="Office: activate to sort column ascending"
-                                                            style="width: 108px;">Type</th>
-                                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
-                                                            rowspan="1" colspan="1" aria-sort="ascending"
-                                                            aria-label="Name: activate to sort column descending"
-                                                            style="width: 145px;">Action</th>
-                                                </thead>
-
-                                                <tbody>
-                                                    <tr role="row" class="odd" *ngFor="let ticket of tickets"
-                                                        [hidden]="ticket.attribuea !== user.id || ticket.statut =='Resolu'">
-                                                        <td>{{ticket.titre}}</td>
-                                                        <td>{{ticket.date_creation}}</td>
-                                                        <td>{{ticket.description}}</td>
-                                                        <td>{{ticket.statut}}</td>
-                                                        <td>{{ticket.type}}</td>
-                                                        <td>
-                                                            <div class="dropdown show">
-                                                                <a class="btn btn-secondary dropdown-toggle" href="#"
-                                                                    role="button" id="dropdownMenuLink"
-                                                                    data-toggle="dropdown" aria-haspopup="true"
-                                                                    aria-expanded="false">
-                                                                    Action
-                                                                </a>
-                                                                <div class="dropdown-menu"
-                                                                    aria-labelledby="dropdownMenuLink">
-                                                                    <a class="dropdown-item" mat-button
-                                                                        routerLink="/detailsticket/{{ ticket.ticket_id }}"
-                                                                        routerLinkActive="active">Details</a>
-                                                                    <a routerLink="/resoudre/{{ ticket.ticket_id }}"
-                                                                        routerLinkActive="active" mat-button
-                                                                        class="dropdown-item">Résoudre</a>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </mat-tab>
-
-                                <mat-tab label="Les tickets résolus">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <table class="table table-bordered dataTable" id="dataTable" width="100%"
-                                                cellspacing="0" role="grid" aria-describedby="dataTable_info"
-                                                style="width: 100%;">
-                                                <thead>
-                                                    <tr role="row">
-                                                        <th class="sorting" tabindex="0" aria-controls="dataTable"
-                                                            rowspan="1" colspan="1"
-                                                            aria-label="Position: activate to sort column ascending"
-                                                            style="width: 145px;">Titre</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="dataTable"
-                                                            rowspan="1" colspan="1"
-                                                            aria-label="Position: activate to sort column ascending"
-                                                            style="width: 145px;">Date de création</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="dataTable"
-                                                            rowspan="1" colspan="1"
-                                                            aria-label="Position: activate to sort column ascending"
-                                                            style="width: 145px;">Date d'échéance</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="dataTable"
-                                                            rowspan="1" colspan="1"
-                                                            aria-label="Position: activate to sort column ascending"
-                                                            style="width: 145px;">Description</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="dataTable"
-                                                            rowspan="1" colspan="1"
-                                                            aria-label="Position: activate to sort column ascending"
-                                                            style="width: 145px;">Statut</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="dataTable"
-                                                            rowspan="1" colspan="1"
-                                                            aria-label="Position: activate to sort column ascending"
-                                                            style="width: 145px;">Type</th>
-                                                </thead>
-
-                                                <tbody>
-                                                    <tr role="row" class="odd" *ngFor="let ticket of tickets"
-                                                        [hidden]="ticket.statut !=='Resolu'">
-                                                        <td>{{ticket.titre}}</td>
-                                                        <td>{{ticket.date_creation}}</td>
-                                                        <td>{{ticket.date_echeance}}</td>
-                                                        <td>{{ticket.description}}</td>
-                                                        <td>{{ticket.statut}}</td>
-                                                        <td>{{ticket.type}}</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </mat-tab>
-                            </mat-tab-group>
-
                         </div>
+
+                        <mat-tab-group>
+                            <mat-tab label="Les tickets" *ngIf="user.roles.includes('ROLE_ADMIN')">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <table class="table table-bordered dataTable" id="dataTable" width="100%"
+                                            cellspacing="0" role="grid" aria-describedby="dataTable_info"
+                                            style="width: 100%;">
+                                            <thead>
+                                                <tr role="row">
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
+                                                        rowspan="1" colspan="1" aria-sort="ascending"
+                                                        aria-label="Name: activate to sort column descending"
+                                                        style="width: 145px;">Titre</th>
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
+                                                        rowspan="1" colspan="1" aria-sort="ascending"
+                                                        aria-label="Name: activate to sort column descending"
+                                                        style="width: 145px;">Date de création</th>
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
+                                                        rowspan="1" colspan="1" aria-sort="ascending"
+                                                        aria-label="Name: activate to sort column descending"
+                                                        style="width: 145px;">Description</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="dataTable"
+                                                        rowspan="1" colspan="1"
+                                                        aria-label="Position: activate to sort column ascending"
+                                                        style="width: 145px;">Statut</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="dataTable"
+                                                        rowspan="1" colspan="1"
+                                                        aria-label="Office: activate to sort column ascending"
+                                                        style="width: 108px;">Type</th>
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
+                                                        rowspan="1" colspan="1" aria-sort="ascending"
+                                                        aria-label="Name: activate to sort column descending"
+                                                        style="width: 145px;">Action</th>
+                                            </thead>
+
+                                            <tbody>
+                                                <tr role="row" class="odd" *ngFor="let ticket of tickets">
+                                                    <td>{{ticket.titre}}</td>
+                                                    <td>{{ticket.date_creation}}</td>
+                                                    <td>{{ticket.description}}</td>
+                                                    <td>{{ticket.statut}}</td>
+                                                    <td>{{ticket.type}}</td>
+                                                    <td>
+                                                        <div class="dropdown show">
+                                                            <a class="btn btn-secondary dropdown-toggle" href="#"
+                                                                role="button" id="dropdownMenuLink"
+                                                                data-toggle="dropdown" aria-haspopup="true"
+                                                                aria-expanded="false">
+                                                                Action
+                                                            </a>
+                                                            <div class="dropdown-menu"
+                                                                aria-labelledby="dropdownMenuLink">
+                                                                <a class="dropdown-item" mat-button
+                                                                    (click)="deleteTicket(ticket.ticket_id)">Delete</a>
+                                                                <a class="dropdown-item" mat-button
+                                                                    routerLink="/detailsticket/{{ ticket.ticket_id }}"
+                                                                    routerLinkActive="active">Details</a>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </mat-tab>
+
+                            <mat-tab label="Les tickets à résoudre">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <table class="table table-bordered dataTable" id="dataTable" width="100%"
+                                            cellspacing="0" role="grid" aria-describedby="dataTable_info"
+                                            style="width: 100%;">
+                                            <thead>
+                                                <tr role="row">
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
+                                                        rowspan="1" colspan="1" aria-sort="ascending"
+                                                        aria-label="Name: activate to sort column descending"
+                                                        style="width: 145px;">Titre</th>
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
+                                                        rowspan="1" colspan="1" aria-sort="ascending"
+                                                        aria-label="Name: activate to sort column descending"
+                                                        style="width: 145px;">Date de création</th>
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
+                                                        rowspan="1" colspan="1" aria-sort="ascending"
+                                                        aria-label="Name: activate to sort column descending"
+                                                        style="width: 145px;">Description</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="dataTable"
+                                                        rowspan="1" colspan="1"
+                                                        aria-label="Position: activate to sort column ascending"
+                                                        style="width: 145px;">Statut</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="dataTable"
+                                                        rowspan="1" colspan="1"
+                                                        aria-label="Office: activate to sort column ascending"
+                                                        style="width: 108px;">Type</th>
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
+                                                        rowspan="1" colspan="1" aria-sort="ascending"
+                                                        aria-label="Name: activate to sort column descending"
+                                                        style="width: 145px;">Action</th>
+                                            </thead>
+
+                                            <tbody>
+                                                <tr role="row" class="odd" *ngFor="let ticket of tickets"
+                                                    [hidden]="ticket.attribuea !== user.id || ticket.statut =='Resolu'">
+                                                    <td>{{ticket.titre}}</td>
+                                                    <td>{{ticket.date_creation}}</td>
+                                                    <td>{{ticket.description}}</td>
+                                                    <td>{{ticket.statut}}</td>
+                                                    <td>{{ticket.type}}</td>
+                                                    <td>
+                                                        <div class="dropdown show">
+                                                            <a class="btn btn-secondary dropdown-toggle" href="#"
+                                                                role="button" id="dropdownMenuLink"
+                                                                data-toggle="dropdown" aria-haspopup="true"
+                                                                aria-expanded="false">
+                                                                Action
+                                                            </a>
+                                                            <div class="dropdown-menu"
+                                                                aria-labelledby="dropdownMenuLink">
+                                                                <a class="dropdown-item" mat-button
+                                                                    routerLink="/detailsticket/{{ ticket.ticket_id }}"
+                                                                    routerLinkActive="active">Details</a>
+                                                                <a routerLink="/resoudre/{{ ticket.ticket_id }}"
+                                                                    routerLinkActive="active" mat-button
+                                                                    class="dropdown-item">Résoudre</a>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </mat-tab>
+
+                            <mat-tab label="Les tickets résolus">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <table class="table table-bordered dataTable" id="dataTable" width="100%"
+                                            cellspacing="0" role="grid" aria-describedby="dataTable_info"
+                                            style="width: 100%;">
+                                            <thead>
+                                                <tr role="row">
+                                                    <th class="sorting" tabindex="0" aria-controls="dataTable"
+                                                        rowspan="1" colspan="1"
+                                                        aria-label="Position: activate to sort column ascending"
+                                                        style="width: 145px;">Titre</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="dataTable"
+                                                        rowspan="1" colspan="1"
+                                                        aria-label="Position: activate to sort column ascending"
+                                                        style="width: 145px;">Date de création</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="dataTable"
+                                                        rowspan="1" colspan="1"
+                                                        aria-label="Position: activate to sort column ascending"
+                                                        style="width: 145px;">Date d'échéance</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="dataTable"
+                                                        rowspan="1" colspan="1"
+                                                        aria-label="Position: activate to sort column ascending"
+                                                        style="width: 145px;">Description</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="dataTable"
+                                                        rowspan="1" colspan="1"
+                                                        aria-label="Position: activate to sort column ascending"
+                                                        style="width: 145px;">Statut</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="dataTable"
+                                                        rowspan="1" colspan="1"
+                                                        aria-label="Position: activate to sort column ascending"
+                                                        style="width: 145px;">Type</th>
+                                            </thead>
+
+                                            <tbody>
+                                                <tr role="row" class="odd" *ngFor="let ticket of tickets"
+                                                    [hidden]="ticket.statut !=='Resolu'">
+                                                    <td>{{ticket.titre}}</td>
+                                                    <td>{{ticket.date_creation}}</td>
+                                                    <td>{{ticket.date_echeance}}</td>
+                                                    <td>{{ticket.description}}</td>
+                                                    <td>{{ticket.statut}}</td>
+                                                    <td>{{ticket.type}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </mat-tab>
+                        </mat-tab-group>
                     </div>
                 </div>
             </div>

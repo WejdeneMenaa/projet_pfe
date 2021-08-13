@@ -21,6 +21,7 @@ export class AfficherstockComponent implements OnInit {
   showAdminBoard = false;
   showTechnicienBoard = false;
   username: string;
+  name: any;
   user = null;
   stock_id: number;
   isAddMode: boolean;
@@ -83,6 +84,17 @@ export class AfficherstockComponent implements OnInit {
       });
   }
 
+  Search() {
+    if (this.name == "") {
+      this.ngOnInit();
+    }
+    else {
+      this.stocks = this.stocks.filter(res => {
+        return res.name.toLocaleLowerCase().match(this.name.toLocaleLowerCase());
+      }
+      )
+    }
+  }
 
 }
 
