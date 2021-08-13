@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { UtilisateurService } from 'src/app/_service/utilisateur.service';
@@ -8,6 +8,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { ProfileComponent } from 'src/app/utilisateur/profile/profile.component';
 import { DialogService } from 'src/app/_service/dialog.service';
 import { Utilisateur } from 'src/app/_models/utilisateur';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 
 
 
@@ -19,18 +22,25 @@ import { Utilisateur } from 'src/app/_models/utilisateur';
 })
 export class AfficherutilisateurComponent implements OnInit {
   msgs: Message[] = [];
-  users : Utilisateur[] = [];
+  users= null;
   nom: any;
-  utilisateur = null;
+  utilisateur : any = {};
+  user_id: number;
+  isAddMode: boolean;
+
+  @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
 
   constructor(
     private utilisateurservice: UtilisateurService,
     public dialog: MatDialog,
+    private route: ActivatedRoute,
     private dialogservice: DialogService) { }
 
 
 
   ngOnInit(): void {
+    this.user_id = this.route.snapshot.params['user_id'];
+    this.isAddMode = !this.user_id;
     this.utilisateurservice.getAll().subscribe((data) => {
       this.users = data
       //.filter(status => status.isActive);
@@ -38,8 +48,18 @@ export class AfficherutilisateurComponent implements OnInit {
 
   }
 
-  openDialog() {
-    this.dialog.open(ProfileComponent);
+  openDialog(utilisateur) {
+    if (utilisateur != null) {
+
+      this.utilisateurservice.get(utilisateur.user_id).subscribe(res => {
+        this.utilisateur = res;
+      }, ex => {
+        console.log(ex);
+      });
+    }
+    this.dialog.open(this.modalContent);
+    this.ngOnInit();
+    this.utilisateur = new Utilisateur();
   }
 
 
@@ -85,7 +105,7 @@ export class AfficherutilisateurComponent implements OnInit {
       )
     }
   }
-  
+
 }
 
 

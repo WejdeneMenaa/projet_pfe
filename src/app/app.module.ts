@@ -40,7 +40,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
+import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 
@@ -90,7 +91,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatTabsModule,
     MatFormFieldModule,
     MatInputModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    NgbModule,
+    NgbModalModule,
+    Ng2SearchPipeModule
 
 
   ],
