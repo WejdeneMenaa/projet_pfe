@@ -9,7 +9,11 @@ module.exports = function (app) {
   router.get("/", controller.findAll);
   //find ticket by titre
   router.get("/:scat_id", controller.findOne);
+  router.get("/scat/:cat_id", controller.findByCat);
+
 
   app.use('/api/scategorie', router);
 
+
+  
 };

@@ -20,18 +20,12 @@ module.exports = (sequelize, Sequelize) => {
     modele: {
       type: Sequelize.STRING
     },
-    cat_id: {
-      type: Sequelize.INTEGER,
-      references: 'categories',
-      referencesKey: 'id'
-    },
     scat_id: {
       type: Sequelize.INTEGER,
       references: 'scategories',
       referencesKey: 'id'
     },
   },
-  
     {
       timestamps: false
     });

@@ -14,10 +14,28 @@ export class BoardAdminComponent implements OnInit {
   private roles: string[];
   isLoggedIn = false;
   username: string;
-
+  donutChartData = [
+    {
+      label: 'Liverpool FC',
+      value: 5,
+      color: 'red',
+      
+    },
+    {
+      label: 'Real Madrid	',
+      value: 13,
+      color: 'black',
+    },
+    {
+      label: 'FC Bayern München',
+      value: 5,
+      color: 'blue',
+    },
+  ];
   constructor(private userService: UtilisateurService, private tokenStorageService: TokenStorageService) { }
 
   ngOnInit() {
+
     this.isLoggedIn = !!this.tokenStorageService.getToken();
 
     if (this.isLoggedIn) {

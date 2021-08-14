@@ -20,6 +20,8 @@ module.exports = function (app) {
   //find ticket by titre
   router.get("/:ticket_id", controller.findOne);
 
+  router.get("/creation", controller.connect);
+
 
   const storage = multer.diskStorage({
     destination: (req, file, callBack) => {

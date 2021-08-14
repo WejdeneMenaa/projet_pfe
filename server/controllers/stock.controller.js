@@ -19,7 +19,6 @@ exports.create = (req, res) => {
     quantite: req.body.quantite,
     sous_categorie: req.body.sous_categorie,
     modele: req.body.modele,
-    cat_id : req.body.cat_id,
     scat_id : req.body.scat_id
   };
   

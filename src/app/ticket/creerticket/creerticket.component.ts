@@ -66,7 +66,7 @@ export class CreerticketComponent implements OnInit {
             console.log(data);
             this.isSuccessful = true;
             this.isSignUpFailed = false;
-
+            this.router.navigate(link);
           },
           err => {
             this.errorMessage = err.error.message;
@@ -78,7 +78,7 @@ export class CreerticketComponent implements OnInit {
       (err) => console.log(err)
     );   
     this.ngOnInit();
-    this.router.navigate(link);
+    
 
   }
 }

@@ -7,6 +7,11 @@ module.exports = (sequelize, Sequelize) => {
     name: {
       type: Sequelize.STRING
     },
+    cat_id: {
+      type: Sequelize.INTEGER,
+      references: 'categories',
+      referencesKey: 'id'
+    },
   },
   {
     timestamps: false

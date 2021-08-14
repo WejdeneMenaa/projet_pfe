@@ -65,11 +65,11 @@
                             </div>
                         </div>
 
-                        <div class="form-row">
+                        <div *ngIf="ticket.type.includes('Demande')" class="form-row">
                             <label>Affecter la demande</label>
                             <div class="input-group">
                                 <div class="rs-select2 js-select-simple select--no-search">
-                                    <select [(ngModel)]="solution">
+                                    <select name="solution" [(ngModel)]="solution">
                                         <option *ngFor="let sous_cat of scategories" [value]="sous_cat.name">
                                             {{sous_cat.name}}
                                         </option>

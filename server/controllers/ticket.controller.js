@@ -2,6 +2,14 @@ const db = require("../models");
 const Ticket = db.ticket;
 const Op = db.Sequelize.Op;
 
+const { Pool } = require('pg')
+const pool = new Pool({
+  user: 'postgres',
+  host: '127.0.0.1',
+  database: 'projet_pfe',
+  password: 'postgres',
+  port: 5432,
+})
 // create ticket 
 exports.create = (req, res) => {
   // Validate request
@@ -11,6 +19,10 @@ exports.create = (req, res) => {
     });
     return;
   }
+
+
+  //exports.query("SELECT date_creation from tickets"),function()
+
 
   const ticket = {
     date_creation: req.body.date_creation,
@@ -44,6 +56,27 @@ exports.create = (req, res) => {
   } catch (error) {
     console.log(error)
   }
+};
+
+/*exports.connect = (req, res) => {
+  (function (err) {
+    if (err) throw err;
+    console.log("Connecté à la base de données MySQL!");
+    exports.query("SELECT tickets.date_creation from tickets", function (err, result) {
+      if (err) throw err;
+      console.log(result);
+    });
+  });
+}
+*/
+
+exports.connect = (req, res) => {
+  if (err) throw err;
+  console.log("Connecté à la base de données MySQL!");
+  pool.query("SELECT tickets.date_creation from tickets", function (err, result) {
+      if (err) throw err;
+      console.log(result);
+    });
 };
 
 //update Ticket

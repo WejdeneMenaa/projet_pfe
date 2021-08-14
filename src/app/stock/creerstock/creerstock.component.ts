@@ -23,7 +23,7 @@ export class CreerstockComponent implements OnInit {
   buttionText = "Submit";
   submitted = false;
   categories = null;
-  scategories = null;
+  scategories=null;
   cat_id: string;
   scat_id: string;
   form: FormGroup;
@@ -46,16 +46,24 @@ export class CreerstockComponent implements OnInit {
       console.log("categories" + this.categories)
     })
 
-    this.scategorieservice.getAll().subscribe((data) => {
-      this.scategories = data
-      console.log("sous_categories" + this.scategories)
-    })
+    // this.scategorieservice.getAll().subscribe((data) => {
+    //   this.scategories = data
+    //   console.log("sous_categories" + this.scategories)
+    // })
 
     this.form = this.formBuilder.group({
       cat_id: ['', Validators.required],
       scat_id: ['', Validators.required],
 
     });
+  }
+
+  getScat(cat_id){
+    console.log(this.categories[cat_id.target.value])
+    
+    this.scategorieservice.getSCatByCat(cat_id.target.value).subscribe(data=>{
+      this.scategories=data['rows'];
+    })
   }
 
   onSubmit() {

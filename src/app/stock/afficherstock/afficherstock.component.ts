@@ -26,7 +26,7 @@ export class AfficherstockComponent implements OnInit {
   stock_id: number;
   isAddMode: boolean;
   categories = null;
-  scategories = null;
+  scategories:any[]=[];
 
 
 
@@ -55,6 +55,8 @@ export class AfficherstockComponent implements OnInit {
     this.isAddMode = !this.stock_id;
     this.StockService.getAll().subscribe((data) => {
       this.stocks = data
+     
+      console.log(this.stocks)
     })
 
     this.categorieservice.getAll().subscribe((data) => {
@@ -68,7 +70,7 @@ export class AfficherstockComponent implements OnInit {
     })
 
   }
-
+  
   deleteStock(stock_id: string) {
     this.dialogservice.openConfirmDialog('voulez-vous vraiment supprimer ce stock ?')
       .afterClosed().subscribe(res => {

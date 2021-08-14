@@ -42,8 +42,8 @@ import { MatInputModule } from '@angular/material/input';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-
-
+import { NgxDonutChartModule } from 'ngx-doughnut-chart';
+import { ChartsModule } from '@rinminase/ng-charts';
 
 
 
@@ -94,7 +94,9 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     FlexLayoutModule,
     NgbModule,
     NgbModalModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    NgxDonutChartModule,
+    ChartsModule
 
 
   ],

@@ -37,9 +37,9 @@ db.utilisateur.belongsToMany(db.role, {
   otherKey: "roleId"
 });
 
-db.stock.belongsToMany(db.categorie, {
-  through: "stocks",
-  foreignKey: "stock_id",
+db.scategorie.belongsToMany(db.categorie, {
+  through: "scategories",
+  foreignKey: "id",
   otherKey: "cat_id"
 });
 
