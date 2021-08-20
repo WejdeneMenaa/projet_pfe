@@ -43,7 +43,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxDonutChartModule } from 'ngx-doughnut-chart';
-import { ChartsModule } from '@rinminase/ng-charts';
+import { ChartModule } from 'angular-highcharts';
+import { ChartsModule } from 'ng2-charts';
 
 
 
@@ -96,6 +97,7 @@ import { ChartsModule } from '@rinminase/ng-charts';
     NgbModalModule,
     Ng2SearchPipeModule,
     NgxDonutChartModule,
+    ChartModule,
     ChartsModule
 
 

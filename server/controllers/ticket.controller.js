@@ -161,3 +161,28 @@ exports.delete = (req, res) => {
       });
     });
 };
+
+exports.findTicketByStatut = (req, res) => {
+  const statut = req.params.statut;
+  pool.query('select count(*) FROM tickets where tickets.statut =$1 ',[statut]).then(data => {
+    res.send(data);
+  })
+    .catch(err => {
+      res.status(500).send({
+        message: "Error retrieving Tickets with statut=" + statut
+      });
+    });
+};
+
+exports.findTicketByDate = (req, res) => {
+ var currentDate = new Date().getMonth();
+  const datt = currentDate.params.date_creation;
+  pool.query('select count(*) FROM tickets where EXTRACT(MONTH FROM date_creation)=$1 ').then(data => {
+    res.send(data);
+  })
+    .catch(err => {
+      res.status(500).send({
+        message: "Error retrieving Tickets with date=" + datt
+      });
+    });
+};

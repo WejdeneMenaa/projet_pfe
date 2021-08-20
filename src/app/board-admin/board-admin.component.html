@@ -1,4 +1,11 @@
 <router-outlet></router-outlet>
-<div style="text-align: center;">
-    <img src="assets/img/wimbee.png" width="1000" height="300" />
+<div id="container"></div>
+
+<h3>graphique en beignet des tickets par statut </h3>
+<div style="display: block;">
+  <canvas baseChart 
+    [data]="doughnutChartData"
+    [labels]="doughnutChartLabels"
+    [chartType]="doughnutChartType">
+  </canvas>
 </div>

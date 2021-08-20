@@ -81,4 +81,8 @@ export class TicketService {
   sendEmail(url, body) {
     return this.http.post(url, body);
   }
+
+  getTicketByStatut(statut:any){
+    return this.http.get<any>('http://localhost:4200/api/ticket/statut/'+statut)
+  }
 }
