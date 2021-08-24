@@ -74,9 +74,9 @@ exports.connect = (req, res) => {
   if (err) throw err;
   console.log("Connecté à la base de données MySQL!");
   pool.query("SELECT tickets.date_creation from tickets", function (err, result) {
-      if (err) throw err;
-      console.log(result);
-    });
+    if (err) throw err;
+    console.log(result);
+  });
 };
 
 //update Ticket
@@ -164,7 +164,21 @@ exports.delete = (req, res) => {
 
 exports.findTicketByStatut = (req, res) => {
   const statut = req.params.statut;
-  pool.query('select count(*) FROM tickets where tickets.statut =$1 ',[statut]).then(data => {
+  pool.query('select count(*) FROM tickets where tickets.statut =$1 ', [statut]).then(data => {
+    res.send(data);
+  })
+    .catch(err => {
+      res.status(500).send({
+        message: "Error retrieving Tickets with statut=" + statut
+      });
+    });
+};
+////////// donut user 
+
+exports.findTicketByStatutAndUser = (req, res) => {
+  const statut = req.params.statut;
+  const user_id = req.params.user_id;
+  pool.query('select count(*) FROM tickets where tickets.statut =$1 and tickets.user_id=$2', [statut, user_id]).then(data => {
     res.send(data);
   })
     .catch(err => {
@@ -174,16 +188,43 @@ exports.findTicketByStatut = (req, res) => {
     });
 };
 
+exports.findTicketByUser = (req, res) => {
+  const user_id = req.params.user_id;
+  pool.query('select count(*) FROM tickets where tickets.user_id=$1', [user_id]).then(data => {
+    res.send(data);
+  })
+    .catch(err => {
+      res.status(500).send({
+        message: "Error retrieving Tickets with user_id=" + user_id
+      });
+    });
+};
+
+////// fin donut user
+
+
+exports.findTicketAttribuea = (req, res) => {
+  const attribuea = req.params.attribuea;
+  pool.query('select count(*) FROM tickets where tickets.attribuea =$1 ', [attribuea]).then(data => {
+    res.send(data);
+  })
+    .catch(err => {
+      res.status(500).send({
+        message: "Error retrieving Tickets with attribuea=" + attribuea
+      });
+    });
+};
+
 exports.findTicketByDate = (req, res) => {
-  
+
   pool.query('select * FROM tickets where EXTRACT(MONTH FROM date_creation)=EXTRACT(MONTH FROM Now()) order by date_creation').then(data => {
     res.send(data);
 
   })
-  .catch(err => {
-    res.status(500).send({
-      message:
-        err.message || "Some error occurred while retrieving tickets with date."
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving tickets with date."
+      });
     });
-  });
 };

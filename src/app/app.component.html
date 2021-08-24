@@ -30,14 +30,34 @@
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
-                        <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="index.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            Accueil
-                        </a>
+                        <div class="sb-sidenav-menu-heading">Core
+                            <a *ngIf="user && user.roles.includes('ROLE_USER')" class="nav-link" routerLink="/user"
+                                routerLinkActive="active">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Accueil
+                            </a>
+                            <a *ngIf="user && user.roles.includes('ROLE_ADMIN')" class="nav-link" routerLink="/admin"
+                                routerLinkActive="active">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Accueil
+                            </a>
+                            <a *ngIf="user && user.roles.includes('ROLE_TECHNICIEN')" class="nav-link"
+                                routerLink="/technicien" routerLinkActive="active">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Accueil
+                            </a>
+                        </div>
                         <div class="sb-sidenav-menu-heading">Interface</div>
-                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts"
-                            aria-expanded="false" aria-controls="collapseLayouts">
+                        <a *ngIf="user && user.roles.includes('ROLE_USER')" class="nav-link collapsed" href="#"
+                            data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false"
+                            aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Assistance
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <a *ngIf="user && user.roles.includes('ROLE_ADMIN')" class="nav-link collapsed" href="#"
+                            data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false"
+                            aria-controls="collapseLayouts">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                             Assistance
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -46,20 +66,11 @@
                         <div *ngIf="user.roles.includes('ROLE_USER')" class="collapse" id="collapseLayouts"
                             aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a routerLink="/ticket" routerLinkActive="active" class="nav-link">suivre mes
-                                    tickets</a>
                                 <a routerLink="/creerticket" routerLinkActive="active" class="nav-link">Créer un
                                     ticket</a>
                             </nav>
                         </div>
 
-                        <div *ngIf="user && user.roles.includes('ROLE_TECHNICIEN')" class="collapse"
-                            id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a routerLink="/ticketadmin" routerLinkActive="active" class="nav-link">List des
-                                    tickets</a>
-                            </nav>
-                        </div>
                         <div *ngIf="user && user.roles.includes('ROLE_ADMIN')" class="collapse" id="collapseLayouts"
                             aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
@@ -121,8 +132,8 @@
                             Stock
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
-                        <div *ngIf="user && user.roles.includes('ROLE_ADMIN')" class="collapse" id="collapseParc" aria-labelledby="headingTwo"
-                            data-parent="#sidenavAccordion">
+                        <div *ngIf="user && user.roles.includes('ROLE_ADMIN')" class="collapse" id="collapseParc"
+                            aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                 <a class="nav-link collapsed" routerLink="/creerstock" routerLinkActive="active"
                                     data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false"
@@ -162,5 +173,5 @@
             </footer>
         </div>
     </div>
-    
+
 </body>

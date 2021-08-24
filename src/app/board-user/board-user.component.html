@@ -15,7 +15,7 @@
           <router-outlet></router-outlet>
           <h1 class="mt-4">Tickets</h1>
           <ol class="breadcrumb mb-4">
-              <li class="breadcrumb-item"><a routerLink="/" routerLinkActive="active">Accueil</a></li>
+              <li class="breadcrumb-item"><a routerLink="/user" routerLinkActive="active">Accueil</a></li>
               <li class="breadcrumb-item active">Tickets</li>
           </ol>
 
@@ -90,7 +90,7 @@
                                                   <td>{{ticket.type}}</td>
                                                   <td>
                                                       <div class="dropdown show">
-                                                          <a class="btn btn-sm btn-danger btn-delete-user" href="#"
+                                                          <a class="btn btn-secondary dropdown-toggle" href="#"
                                                               role="button" id="dropdownMenuLink"
                                                               data-toggle="dropdown" aria-haspopup="true"
                                                               aria-expanded="false">
@@ -155,7 +155,7 @@
 
                                           <tbody>
                                               <tr role="row" class="odd" *ngFor="let ticket of tickets"
-                                                  [hidden]="ticket.statut !=='Resolu'">
+                                                  [hidden]="ticket.statut !=='Resolu' || ticket.user_id !== user.id ">
                                                   <td>{{ticket.titre}}</td>
                                                   <td>{{ticket.date_creation}}</td>
                                                   <td>{{ticket.date_echeance}}</td>
@@ -164,7 +164,7 @@
                                                   <td>{{ticket.type}}</td>
                                                   <td>
                                                       <div class="dropdown show">
-                                                          <a class="btn btn-sm btn-danger btn-delete-user" href="#"
+                                                          <a class="btn btn-secondary dropdown-toggle" href="#"
                                                               role="button" id="dropdownMenuLink"
                                                               data-toggle="dropdown" aria-haspopup="true"
                                                               aria-expanded="false">
@@ -217,7 +217,7 @@
 
                                           <tbody>
                                               <tr role="row" class="odd" *ngFor="let ticket of tickets"
-                                                  [hidden]="ticket.statut !=='Cloture' ">
+                                                  [hidden]="ticket.statut !=='Cloture' || ticket.user_id !== user.id  ">
                                                   <td>{{ticket.titre}}</td>
                                                   <td>{{ticket.date_creation}}</td>
                                                   <td>{{ticket.description}}</td>

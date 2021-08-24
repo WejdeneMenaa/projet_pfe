@@ -12,14 +12,13 @@ import { TicketService } from '../_service/ticket.service';
   styleUrls: ['./board-admin.component.css']
 })
 export class BoardAdminComponent implements OnInit {
-  public doughnutChartLabels: Label[] = ['Tickets Résolus','Tickets Cloturés','Tickets En cours'];
+  public doughnutChartLabels: Label[] = ['Tickets Nouveaux','Tickets En cours','Tickets Résolus'];
   public doughnutChartData: MultiDataSet = [[0, 0, 0]];
   public doughnutChartType: ChartType = 'doughnut';
 
-  resolus;
-  clotures;
+  nouveaux;
   encours;
-
+  resolus;
   public options: any = {
     Chart: {
       type: 'area',
@@ -73,17 +72,17 @@ export class BoardAdminComponent implements OnInit {
     );
 
     Highcharts.chart('container', this.options);
-    this.ticketservice.getTicketByStatut("Resolu").subscribe(element => {
-      this.resolus = element['rows'][0]['count'];
+    this.ticketservice.getTicketByStatut("Nouveau").subscribe(element => {
+      this.nouveaux = element['rows'][0]['count'];
 
-      this.ticketservice.getTicketByStatut("Cloture").subscribe(element1 => {
-        this.clotures = element1['rows'][0]['count'];
+      this.ticketservice.getTicketByStatut("En cours").subscribe(element1 => {
+        this.encours = element1['rows'][0]['count'];
 
-        this.ticketservice.getTicketByStatut("En cours").subscribe(element2 => {
-          this.encours = element2['rows'][0]['count'];
+        this.ticketservice.getTicketByStatut("Resolu").subscribe(element2 => {
+          this.resolus = element2['rows'][0]['count'];
 
           this.doughnutChartData = [
-            [Number(this.resolus), Number(this.clotures), Number(this.encours)]]
+            [Number(this.nouveaux), Number(this.encours), Number(this.resolus)]]
 
         })
       })

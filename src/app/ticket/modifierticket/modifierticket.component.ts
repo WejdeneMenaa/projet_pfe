@@ -13,7 +13,7 @@ import { TicketService } from 'src/app/_service/ticket.service';
 export class ModifierticketComponent implements OnInit {
 
     form: FormGroup;
-    id: string;
+    ticket_id: string;
     isAddMode: boolean;
     loading = false;
     submitted = false;
@@ -29,9 +29,9 @@ export class ModifierticketComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.id = this.route.snapshot.params['id'];
-        this.isAddMode = !this.id;
-        this.TicketService.get(this.id).subscribe((data) => {
+        this.ticket_id = this.route.snapshot.params['id'];
+        this.isAddMode = !this.ticket_id;
+        this.TicketService.get(this.ticket_id).subscribe((data) => {
             this.ticket = data
             console.log("ticket****************" + this.ticket.priorite)
         })
@@ -51,11 +51,11 @@ export class ModifierticketComponent implements OnInit {
         });
 
         if (!this.isAddMode) {
-            this.TicketService.get(this.id)
+            this.TicketService.get(this.ticket_id)
                 .pipe(first())
                 .subscribe(x => this.form.patchValue(x));
         }
-    }
+        }
 
     // convenience getter for easy access to form fields
     get f() { return this.form.controls; }
@@ -97,7 +97,7 @@ export class ModifierticketComponent implements OnInit {
 
     private updateTicket() {
         const link = ['/ticket'];
-        this.TicketService.update(this.id, this.form.value)
+        this.TicketService.update(this.ticket_id, this.form.value)
             .pipe(first())
             .subscribe({
                 next: () => {

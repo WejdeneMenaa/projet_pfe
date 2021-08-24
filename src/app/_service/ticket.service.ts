@@ -62,7 +62,7 @@ export class TicketService {
         if (ticket_id == this.ticketValue.ticket_id) {
           // update local storage
           const ticket = { ...this.ticketValue, ...params };
-          localStorage.setItem('user', JSON.stringify(ticket));
+          localStorage.setItem('ticket', JSON.stringify(ticket));
           // publish updated user to subscribers
           this.ticketSubject.next(ticket);
         }
@@ -85,4 +85,13 @@ export class TicketService {
   getTicketByStatut(statut:any){
     return this.http.get<any>('http://localhost:4200/api/ticket/statut/'+statut)
   }
+
+  getTicketByUser(user_id:string){
+    return this.http.get<any>('http://localhost:4200/api/ticket/user/'+localStorage.getItem('id'))
+  }
+
+  getTicketByStatutAndUser(statut:any,user_id:string){
+    return this.http.get<any>('http://localhost:4200/api/ticket/statut/'+statut+localStorage.getItem('id'))
+  }
+
 }

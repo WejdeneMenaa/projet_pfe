@@ -29,7 +29,6 @@ export class AppComponent implements OnInit {
       this.username = this.user.username;
       this.id = this.user.id;
       localStorage.setItem('id', this.id);
-
     }
   }
 

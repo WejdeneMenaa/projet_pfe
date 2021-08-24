@@ -16,7 +16,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class BoardUserComponent implements OnInit {
 
-  public doughnutChartLabels: Label[] = ['Tickets Résolus','Tickets Cloturés','Tickets En cours'];
+  public doughnutChartLabels: Label[] = ['Tickets Résolus', 'Tickets Cloturés', 'Tickets En cours'];
   public doughnutChartData: MultiDataSet = [[0, 0, 0]];
   public doughnutChartType: ChartType = 'doughnut';
 
@@ -60,13 +60,13 @@ export class BoardUserComponent implements OnInit {
       this.tickets = data
     })
 
-    this.TicketService.getTicketByStatut("Resolu").subscribe(element => {
+    this.TicketService.getTicketByStatutAndUser("Resolu", localStorage.getItem('id')).subscribe(element => {
       this.resolus = element['rows'][0]['count'];
 
-      this.TicketService.getTicketByStatut("Cloture").subscribe(element1 => {
+      this.TicketService.getTicketByStatutAndUser("Cloture", localStorage.getItem('id')).subscribe(element1 => {
         this.clotures = element1['rows'][0]['count'];
 
-        this.TicketService.getTicketByStatut("En cours").subscribe(element2 => {
+        this.TicketService.getTicketByUser(localStorage.getItem('id')).subscribe(element2 => {
           this.encours = element2['rows'][0]['count'];
 
           this.doughnutChartData = [
@@ -78,7 +78,7 @@ export class BoardUserComponent implements OnInit {
   }
 
   updateStatus2(ticket_id: string) {
-    const link = ['/ticket'];
+    const link = ['/user'];
     console.log('**********************here')
     this.ticket.statut = 'Cloture'
     this.TicketService.update(ticket_id, this.ticket).subscribe((data) => {

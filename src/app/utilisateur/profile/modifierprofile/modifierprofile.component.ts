@@ -5,6 +5,7 @@ import { first } from 'rxjs/operators';
 import { UtilisateurService } from 'src/app/_service/utilisateur.service';
 import { AlertService } from 'src/app/_service/alert.service';
 import { AuthService } from 'src/app/_service/auth.service';
+
 @Component({
   selector: 'app-modifierprofile',
   templateUrl: './modifierprofile.component.html',

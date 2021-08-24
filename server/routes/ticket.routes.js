@@ -24,6 +24,10 @@ module.exports = function (app) {
 
   router.get("/statut/:statut", controller.findTicketByStatut);
 
+  router.get("/statut/:statut/:user_id", controller.findTicketByStatutAndUser);
+  router.get("/user/:user_id", controller.findTicketByUser);
+
+
   router.get("/datecreation/dd", controller.findTicketByDate);
 
 
