@@ -12,20 +12,14 @@ import { TicketService } from '../_service/ticket.service';
   styleUrls: ['./board-admin.component.css']
 })
 export class BoardAdminComponent implements OnInit {
-  public doughnutChartLabels: Label[] = ['Tickets En cours', 'Tickets Résolus', 'Tickets Cloturés'];
-
+  public doughnutChartLabels: Label[] = ['Tickets Résolus','Tickets Cloturés','Tickets En cours'];
   public doughnutChartData: MultiDataSet = [[0, 0, 0]];
-
   public doughnutChartType: ChartType = 'doughnut';
 
   resolus;
   clotures;
   encours;
 
-  content = '';
-  private roles: string[];
-  isLoggedIn = false;
-  username: string;
   public options: any = {
     Chart: {
       type: 'area',
@@ -47,8 +41,14 @@ export class BoardAdminComponent implements OnInit {
     series: [{
       name: 'Tikets',
       data: [502, 635, 809, 947, 1402, 3634, 5268]
-    }, ]
+    },]
   }
+
+  content = '';
+  private roles: string[];
+  isLoggedIn = false;
+  username: string;
+  id: string;
 
   constructor(private userService: UtilisateurService, private ticketservice: TicketService, private tokenStorageService: TokenStorageService) { }
 
@@ -60,6 +60,8 @@ export class BoardAdminComponent implements OnInit {
       const user = this.tokenStorageService.getUser();
       this.roles = user.roles;
       this.username = user.username;
+      this.id = user.id;
+      localStorage.setItem('id', this.id);
     }
     this.userService.getAdminBoard().subscribe(
       data => {
@@ -69,6 +71,7 @@ export class BoardAdminComponent implements OnInit {
         this.content = JSON.parse(err.error).message;
       }
     );
+
     Highcharts.chart('container', this.options);
     this.ticketservice.getTicketByStatut("Resolu").subscribe(element => {
       this.resolus = element['rows'][0]['count'];
@@ -80,16 +83,10 @@ export class BoardAdminComponent implements OnInit {
           this.encours = element2['rows'][0]['count'];
 
           this.doughnutChartData = [
-            [Number(this.resolus), Number(this.clotures), Number(this.encours)],]
+            [Number(this.resolus), Number(this.clotures), Number(this.encours)]]
 
         })
-
       })
-
     })
-
-
-
-
   }
 }

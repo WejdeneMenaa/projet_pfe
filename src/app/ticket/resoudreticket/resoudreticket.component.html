@@ -87,8 +87,14 @@
                             </div>
                         </div>
 
-                        <td><button (click)="ResoudreTicket(ticket.ticket_id)"
-                                class="btn btn-sm btn-danger btn-delete-user">
+                        <td><button *ngIf="user.roles.includes('ROLE_ADMIN')" (click)="ResoudreTicket(ticket.ticket_id)"
+                                class="btn btn-sm btn-danger btn-delete-user" routerLink="/ticketadmin"
+                                routerLinkActive="active">
+                                <span>Résoudre</span>
+                            </button></td>
+                            <td><button *ngIf="user.roles.includes('ROLE_TECHNICIEN')" (click)="ResoudreTicket(ticket.ticket_id)"
+                                class="btn btn-sm btn-danger btn-delete-user" routerLink="/technicien"
+                                routerLinkActive="active">
                                 <span>Résoudre</span>
                             </button></td>
                     </form>

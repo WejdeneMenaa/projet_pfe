@@ -27,10 +27,10 @@
 
 
             <div class="form-group">
-              <label for="categorie">Catégorie</label>
+              <label for="cat_id">Catégorie</label>
               <div class="input-group">
                 <div class="rs-select2 js-select-simple select--no-search">
-                  <select (change)="getScat($event)">
+                  <select name="cat_id" (change)="getScat($event)" [(ngModel)]="cat_id">
                     <option *ngFor="let categorie of categories" [value]="categorie.id">
                       {{categorie.name}}</option>
                   </select>
@@ -41,10 +41,10 @@
 
 
             <div class="form-group">
-              <label for="sous_categorie">Sous Catégorie</label>
+              <label for="scat_id">Sous Catégorie</label>
               <div class="input-group">
                 <div class="rs-select2 js-select-simple select--no-search">
-                  <select name="sous_categorie" [(ngModel)]="scat_id">
+                  <select name="scat_id" [(ngModel)]="scat_id">
                     <option *ngFor="let scategorie of scategories" [value]="scategorie.id">
                       {{scategorie.name}}</option>
                   </select>

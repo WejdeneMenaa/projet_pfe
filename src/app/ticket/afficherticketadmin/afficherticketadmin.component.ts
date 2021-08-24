@@ -17,8 +17,6 @@ export class AfficherticketadminComponent implements OnInit {
   id: string;
   private roles: string[];
   isLoggedIn = false;
-  showAdminBoard = false;
-  showTechnicienBoard = false;
   username: string;
   user = null;
   ticket_id: number;

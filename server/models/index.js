@@ -49,6 +49,12 @@ db.stock.belongsToMany(db.scategorie, {
   otherKey: "scat_id"
 }); 
 
+db.stock.belongsToMany(db.categorie, {
+  through: "stocks",
+  foreignKey: "stock_id",
+  otherKey: "cat_id"
+}); 
+
 db.ticket.belongsToMany(db.utilisateur, {
   through: "tickets",
   foreignKey: "ticket_id",

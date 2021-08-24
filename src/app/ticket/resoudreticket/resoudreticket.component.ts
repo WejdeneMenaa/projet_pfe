@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { ScategorieService } from 'src/app/_service/scategorie.service';
 import { TicketService } from 'src/app/_service/ticket.service';
+import { TokenStorageService } from 'src/app/_service/token-storage.service';
 
 
 @Component({
@@ -22,6 +23,12 @@ export class ResoudreticketComponent implements OnInit {
   tickets: any;
   solution: string;
   scategories = null;
+  id: string;
+  private roles: string[];
+  isLoggedIn = false;
+  username: string;
+  user = null;
+  titre: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -29,6 +36,8 @@ export class ResoudreticketComponent implements OnInit {
     private router: Router,
     private scategorieservice: ScategorieService,
     private TicketService: TicketService,
+    private tokenStorageService: TokenStorageService,
+
   ) { }
 
   ngOnInit(): void {
@@ -36,6 +45,20 @@ export class ResoudreticketComponent implements OnInit {
     this.isAddMode = !this.ticket_id;
     this.TicketService.get(this.ticket_id).subscribe((data) => {
       this.ticket = data
+    })
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+
+    if (this.isLoggedIn) {
+      this.user = this.tokenStorageService.getUser();
+      this.roles = this.user.roles;
+      this.username = this.user.username;
+      this.id = this.user.id;
+      localStorage.setItem('id', this.id);
+    }
+    this.ticket_id = this.route.snapshot.params['id'];
+    this.isAddMode = !this.ticket_id;
+    this.TicketService.getAll().subscribe((data) => {
+      this.tickets = data
     })
 
     this.form = this.formBuilder.group({

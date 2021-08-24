@@ -24,7 +24,7 @@ module.exports = function (app) {
 
   router.get("/statut/:statut", controller.findTicketByStatut);
 
-  router.get("/datecreation", controller.findTicketByDate);
+  router.get("/datecreation/dd", controller.findTicketByDate);
 
 
   const storage = multer.diskStorage({

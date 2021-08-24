@@ -175,14 +175,15 @@ exports.findTicketByStatut = (req, res) => {
 };
 
 exports.findTicketByDate = (req, res) => {
- var currentDate = new Date().getMonth();
-  const datt = currentDate.params.date_creation;
-  pool.query('select count(*) FROM tickets where EXTRACT(MONTH FROM date_creation)=$1 ').then(data => {
+  
+  pool.query('select * FROM tickets where EXTRACT(MONTH FROM date_creation)=EXTRACT(MONTH FROM Now()) order by date_creation').then(data => {
     res.send(data);
+
   })
-    .catch(err => {
-      res.status(500).send({
-        message: "Error retrieving Tickets with date=" + datt
-      });
+  .catch(err => {
+    res.status(500).send({
+      message:
+        err.message || "Some error occurred while retrieving tickets with date."
     });
+  });
 };
