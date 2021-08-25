@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/_service/auth.service';
 import { HttpService } from 'src/app/_service/http.service';
 
@@ -19,7 +20,7 @@ export class CreerutilisateurComponent implements OnInit {
   submitted = false;
   images;
 
-  constructor(private authService: AuthService, public http: HttpService, private https: HttpClient) { }
+  constructor(private authService: AuthService, public http: HttpService, private https: HttpClient,private router: Router) { }
   ngOnInit(): void {
   }
 
@@ -34,6 +35,8 @@ export class CreerutilisateurComponent implements OnInit {
 
   onSubmit() {
 
+    const link = ['/users'];
+
     const formData = new FormData();
     formData.append('file', this.images);
 
@@ -46,6 +49,8 @@ export class CreerutilisateurComponent implements OnInit {
             console.log(data);
             this.isSuccessful = true;
             this.isSignUpFailed = false;
+            this.router.navigate(link);
+
           },
           err => {
             this.errorMessage = err.error.message;
@@ -70,6 +75,8 @@ export class CreerutilisateurComponent implements OnInit {
         );
       }
     );
+    this.ngOnInit();
+
   }
 }
 

@@ -28,7 +28,7 @@ export class BoardAdminComponent implements OnInit {
       height: 700
     },
     title: {
-      text: 'Nombre des tikets Par Jour'
+      text: 'Tikets crées par jour'
     },
     credits: {
       enabled: false

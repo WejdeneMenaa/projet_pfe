@@ -39,7 +39,7 @@ export class BoardTechnicienComponent implements OnInit {
       height: 700
     },
     title: {
-      text: 'Nombre des tikets Par Jour'
+      text: 'Tikets résolus par jour'
     },
     credits: {
       enabled: false
@@ -52,7 +52,7 @@ export class BoardTechnicienComponent implements OnInit {
       }
     },
     series: [{
-      name: 'Tikets',
+      name: 'Tikets résolus',
       data: [0, 0, 0, 0, 0, 0, 0]
     },]
   }
