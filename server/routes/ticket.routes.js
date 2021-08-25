@@ -9,15 +9,14 @@ module.exports = function (app) {
 
   var router = require("express").Router();
 
-  // Create ticket
   router.post("/", controller.create);
-  // update ticket
+
   router.put("/:ticket_id", controller.update);
-  //find all tickets
+
   router.get("/", controller.findAll);
-  //delete ticket
+
   router.delete("/:ticket_id", controller.delete);
-  //find ticket by titre
+
   router.get("/:ticket_id", controller.findOne);
 
   router.get("/creation", controller.connect);
@@ -25,8 +24,10 @@ module.exports = function (app) {
   router.get("/statut/:statut", controller.findTicketByStatut);
 
   router.get("/statut/:statut/:user_id", controller.findTicketByStatutAndUser);
-  router.get("/user/:user_id", controller.findTicketByUser);
 
+  router.get("/datecreation/dd/:statut/:attribuea", controller.findTicketByDateAndStatut);
+
+  router.get("/user/:user_id", controller.findTicketByUser);
 
   router.get("/datecreation/dd", controller.findTicketByDate);
 

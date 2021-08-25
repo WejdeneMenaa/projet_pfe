@@ -44,34 +44,35 @@
                                             style="width: 100%;">
                                             <thead>
                                                 <tr role="row">
-                                                    <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
-                                                        rowspan="1" colspan="1" aria-sort="ascending"
-                                                        aria-label="Name: activate to sort column descending"
-                                                        style="width: 145px;">Titre</th>
-                                                    <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
-                                                        rowspan="1" colspan="1" aria-sort="ascending"
-                                                        aria-label="Name: activate to sort column descending"
-                                                        style="width: 145px;">Date de création</th>
-                                                    <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
-                                                        rowspan="1" colspan="1" aria-sort="ascending"
-                                                        aria-label="Name: activate to sort column descending"
-                                                        style="width: 145px;">Description</th>
                                                     <th class="sorting" tabindex="0" aria-controls="dataTable"
                                                         rowspan="1" colspan="1"
-                                                        aria-label="Position: activate to sort column ascending"
-                                                        style="width: 145px;">Statut</th>
+                                                        aria-label="Office: activate to sort column ascending"
+                                                        style="width: 108px;">Titre</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="dataTable"
+                                                        rowspan="1" colspan="1"
+                                                        aria-label="Office: activate to sort column ascending"
+                                                        style="width: 108px;">Date de création</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="dataTable"
+                                                        rowspan="1" colspan="1"
+                                                        aria-label="Office: activate to sort column ascending"
+                                                        style="width: 108px;">Description</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="dataTable"
+                                                        rowspan="1" colspan="1"
+                                                        aria-label="Office: activate to sort column ascending"
+                                                        style="width: 108px;">Statut</th>
                                                     <th class="sorting" tabindex="0" aria-controls="dataTable"
                                                         rowspan="1" colspan="1"
                                                         aria-label="Office: activate to sort column ascending"
                                                         style="width: 108px;">Type</th>
-                                                    <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
-                                                        rowspan="1" colspan="1" aria-sort="ascending"
-                                                        aria-label="Name: activate to sort column descending"
-                                                        style="width: 145px;">Action</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="dataTable"
+                                                        rowspan="1" colspan="1"
+                                                        aria-label="Office: activate to sort column ascending"
+                                                        style="width: 108px;">Action</th>
                                             </thead>
 
                                             <tbody>
-                                                <tr role="row" class="odd" *ngFor="let ticket of tickets | paginate: {itemsPerPage:5,currentPage:p};">
+                                                <tr role="row" class="odd"
+                                                    *ngFor="let ticket of tickets | paginate: {itemsPerPage:5,currentPage:p};">
                                                     <td>{{ticket.titre}}</td>
                                                     <td>{{ticket.date_creation}}</td>
                                                     <td>{{ticket.description}}</td>
@@ -113,34 +114,35 @@
                                             style="width: 100%;">
                                             <thead>
                                                 <tr role="row">
-                                                    <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
-                                                        rowspan="1" colspan="1" aria-sort="ascending"
-                                                        aria-label="Name: activate to sort column descending"
-                                                        style="width: 145px;">Titre</th>
-                                                    <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
-                                                        rowspan="1" colspan="1" aria-sort="ascending"
-                                                        aria-label="Name: activate to sort column descending"
-                                                        style="width: 145px;">Date de création</th>
-                                                    <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
-                                                        rowspan="1" colspan="1" aria-sort="ascending"
-                                                        aria-label="Name: activate to sort column descending"
-                                                        style="width: 145px;">Description</th>
                                                     <th class="sorting" tabindex="0" aria-controls="dataTable"
                                                         rowspan="1" colspan="1"
-                                                        aria-label="Position: activate to sort column ascending"
-                                                        style="width: 145px;">Statut</th>
+                                                        aria-label="Office: activate to sort column ascending"
+                                                        style="width: 108px;">Titre</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="dataTable"
+                                                        rowspan="1" colspan="1"
+                                                        aria-label="Office: activate to sort column ascending"
+                                                        style="width: 108px;">Date de création</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="dataTable"
+                                                        rowspan="1" colspan="1"
+                                                        aria-label="Office: activate to sort column ascending"
+                                                        style="width: 108px;">Description</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="dataTable"
+                                                        rowspan="1" colspan="1"
+                                                        aria-label="Office: activate to sort column ascending"
+                                                        style="width: 108px;">Statut</th>
                                                     <th class="sorting" tabindex="0" aria-controls="dataTable"
                                                         rowspan="1" colspan="1"
                                                         aria-label="Office: activate to sort column ascending"
                                                         style="width: 108px;">Type</th>
-                                                    <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
-                                                        rowspan="1" colspan="1" aria-sort="ascending"
-                                                        aria-label="Name: activate to sort column descending"
-                                                        style="width: 145px;">Action</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="dataTable"
+                                                        rowspan="1" colspan="1"
+                                                        aria-label="Office: activate to sort column ascending"
+                                                        style="width: 108px;">Action</th>
                                             </thead>
 
                                             <tbody>
-                                                <tr role="row" class="odd" *ngFor="let ticket of tickets | paginate: {itemsPerPage:5,currentPage:p};"
+                                                <tr role="row" class="odd"
+                                                    *ngFor="let ticket of tickets | paginate: {itemsPerPage:5,currentPage:p};"
                                                     [hidden]="ticket.attribuea !== user.id || ticket.statut =='Resolu'">
                                                     <td>{{ticket.titre}}</td>
                                                     <td>{{ticket.date_creation}}</td>
@@ -210,8 +212,9 @@
                                             </thead>
 
                                             <tbody>
-                                                
-                                                <tr role="row" class="odd" *ngFor="let ticket of tickets | paginate: {itemsPerPage:5,currentPage:p};"
+
+                                                <tr role="row" class="odd"
+                                                    *ngFor="let ticket of tickets | paginate: {itemsPerPage:5,currentPage:p};"
                                                     [hidden]="ticket.statut !=='Resolu'">
                                                     <td>{{ticket.titre}}</td>
                                                     <td>{{ticket.date_creation}}</td>

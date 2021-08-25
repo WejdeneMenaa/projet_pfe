@@ -228,3 +228,19 @@ exports.findTicketByDate = (req, res) => {
       });
     });
 };
+
+exports.findTicketByDateAndStatut = (req, res) => {
+  const user_id = req.params.user_id;
+  const statut = req.params.statut;
+  const attribuea = req.params.attribuea;
+  pool.query('select * FROM tickets where EXTRACT(MONTH FROM date_creation)=EXTRACT(MONTH FROM Now()) and tickets.statut =$1 and tickets.attribuea =$2 order by date_creation asc', [statut, attribuea]).then(data => {
+    res.send(data);
+
+  })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving tickets with status and attribuea." + attribuea
+      });
+    });
+};

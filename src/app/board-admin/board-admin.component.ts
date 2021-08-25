@@ -12,14 +12,15 @@ import { TicketService } from '../_service/ticket.service';
   styleUrls: ['./board-admin.component.css']
 })
 export class BoardAdminComponent implements OnInit {
-  public doughnutChartLabels: Label[] = ['Tickets Nouveaux', 'Tickets En cours', 'Tickets Résolus'];
-  public doughnutChartData: MultiDataSet = [[0, 0, 0]];
+  public doughnutChartLabels: Label[] = ['Tickets Nouveaux', 'Tickets En cours', 'Tickets Résolus', 'Tickets Cloturés'];
+  public doughnutChartData: MultiDataSet = [[0, 0, 0,0]];
   public doughnutChartType: ChartType = 'doughnut';
- a=new Date();
+  a = new Date();
   nouveaux;
   encours;
   resolus;
-  dayofthisMonth:any[]=[];
+  clotures
+  dayofthisMonth: any[] = [];
   date;
   options: any = {
     Chart: {
@@ -33,7 +34,7 @@ export class BoardAdminComponent implements OnInit {
       enabled: false
     },
     xAxis: {
-      categories: [0,0,0,0,0,0,0],
+      categories: [0, 0, 0, 0, 0, 0, 0],
       tickmarkPlacement: 'on',
       title: {
         enabled: false
@@ -44,8 +45,8 @@ export class BoardAdminComponent implements OnInit {
       data: [0, 0, 0, 0, 0, 0, 0]
     },]
   }
-  counttiket:any[]=[];
-c=new Date();
+  counttiket: any[] = [];
+  c = new Date();
   content = '';
   private roles: string[];
   isLoggedIn = false;
@@ -74,7 +75,7 @@ c=new Date();
       }
     );
 
-    
+
     this.ticketservice.getTicketByStatut("Nouveau").subscribe(element => {
       this.nouveaux = element['rows'][0]['count'];
 
@@ -84,45 +85,47 @@ c=new Date();
         this.ticketservice.getTicketByStatut("Resolu").subscribe(element2 => {
           this.resolus = element2['rows'][0]['count'];
 
-          this.doughnutChartData = [
-            [Number(this.nouveaux), Number(this.encours), Number(this.resolus)]]
-
+          this.ticketservice.getTicketByStatut("Cloture").subscribe(element3 => {
+            this.clotures = element3['rows'][0]['count'];
+            this.doughnutChartData = [
+              [Number(this.nouveaux), Number(this.encours), Number(this.resolus),Number(this.clotures)]]
+          })
         })
       })
     })
-    for(var i=1;i<=this.getDayOfmonth(this.a.getMonth(),this.a.getFullYear());i++){
+    for (var i = 1; i <= this.getDayOfmonth(this.a.getMonth(), this.a.getFullYear()); i++) {
       this.dayofthisMonth.push(i);
     }
     // for(var i=0;i<this.dayofthisMonth.length;i++){
     //   console.log(this.dayofthisMonth[i])
     // }
 
-    this.ticketservice.getTicketByDate().subscribe(element3 => {
-      this.date = element3;
-      for(var t of this.dayofthisMonth){
-        var u=0;
+    this.ticketservice.getTicketByDate().subscribe(element4 => {
+      this.date = element4;
+      for (var t of this.dayofthisMonth) {
+        var u = 0;
 
-      for(var a of this.date['rows']){
-       this.c=new Date(a['date_creation']);
-      if(this.c.getDate()==t){
-        u++;
+        for (var a of this.date['rows']) {
+          this.c = new Date(a['date_creation']);
+          if (this.c.getDate() == t) {
+            u++;
 
+          }
+        }
+        this.counttiket.push(u);
       }
-    }
-    this.counttiket.push(u);
-  }
-  this.options.xAxis.categories=this.dayofthisMonth;
-    this.options.series= [{
-      name: 'Tikets',
-      data: this.counttiket
-    },]
-    Highcharts.chart('container', this.options);
+      this.options.xAxis.categories = this.dayofthisMonth;
+      this.options.series = [{
+        name: 'Tikets',
+        data: this.counttiket
+      },]
+      Highcharts.chart('container', this.options);
     })
-    
 
-    
+
+
   }
-getDayOfmonth(month,year){
-return new Date(year,month+1,0).getDate();
-}
+  getDayOfmonth(month, year) {
+    return new Date(year, month + 1, 0).getDate();
+  }
 }

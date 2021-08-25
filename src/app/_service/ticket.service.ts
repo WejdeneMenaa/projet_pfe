@@ -31,7 +31,7 @@ export class TicketService {
     return this.http.get(baseUrl);
   }
 
-  get(ticket_id: any){
+  get(ticket_id: any) {
     return this.http.get(`${baseUrl}/${ticket_id}`);
   }
 
@@ -94,8 +94,12 @@ export class TicketService {
     return this.http.get<any>('http://localhost:4200/api/ticket/datecreation/dd/')
   }
 
+  getTicketByDateAndStatut(statut: any) {
+    return this.http.get<any>('http://localhost:4200/api/ticket/datecreation/dd/' + statut + '/' + (Number(localStorage.getItem('id'))))
+  }
+
   getTicketByStatutAndUser(statut: any) {
-    return this.http.get<any>('http://localhost:4200/api/ticket/statut/' + statut +'/'+(Number(localStorage.getItem('id'))))
+    return this.http.get<any>('http://localhost:4200/api/ticket/statut/' + statut + '/' + (Number(localStorage.getItem('id'))))
   }
 
 }
