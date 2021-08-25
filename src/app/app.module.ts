@@ -45,6 +45,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxDonutChartModule } from 'ngx-doughnut-chart';
 import { ChartModule } from 'angular-highcharts';
 import { ChartsModule } from 'ng2-charts';
+import { NgxPaginationModule } from 'ngx-pagination'
 
 
 
@@ -98,7 +99,8 @@ import { ChartsModule } from 'ng2-charts';
     Ng2SearchPipeModule,
     NgxDonutChartModule,
     ChartModule,
-    ChartsModule
+    ChartsModule,
+    NgxPaginationModule
 
 
   ],

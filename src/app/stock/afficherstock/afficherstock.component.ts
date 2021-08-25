@@ -27,6 +27,8 @@ export class AfficherstockComponent implements OnInit {
   isAddMode: boolean;
   categories = null;
   scategories:any[]=[];
+  p: number = 1;
+
 
 
 

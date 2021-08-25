@@ -51,6 +51,7 @@ export class BoardTechnicienComponent implements OnInit {
   ticket_id: number;
   isAddMode: boolean;
   titre: any;
+  p: number = 1;
 
 
   constructor(private TicketService: TicketService,

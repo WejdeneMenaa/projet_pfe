@@ -217,7 +217,7 @@ exports.findTicketAttribuea = (req, res) => {
 
 exports.findTicketByDate = (req, res) => {
 
-  pool.query('select * FROM tickets where EXTRACT(MONTH FROM date_creation)=EXTRACT(MONTH FROM Now()) order by date_creation').then(data => {
+  pool.query('select * FROM tickets where EXTRACT(MONTH FROM date_creation)=EXTRACT(MONTH FROM Now()) order by date_creation asc').then(data => {
     res.send(data);
 
   })

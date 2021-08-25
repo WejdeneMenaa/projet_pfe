@@ -22,11 +22,12 @@ import { DOCUMENT } from '@angular/common';
 })
 export class AfficherutilisateurComponent implements OnInit {
   msgs: Message[] = [];
-  users= null;
+  users = null;
   nom: any;
-  utilisateur : any = {};
+  utilisateur: any = {};
   user_id: number;
   isAddMode: boolean;
+  p: number = 1;
 
   @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
 

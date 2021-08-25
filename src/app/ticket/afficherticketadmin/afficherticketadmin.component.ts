@@ -22,6 +22,7 @@ export class AfficherticketadminComponent implements OnInit {
   ticket_id: number;
   isAddMode: boolean;
   titre: any;
+  p: number = 1;
 
 
 

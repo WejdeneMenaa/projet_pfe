@@ -12,26 +12,28 @@ import { TicketService } from '../_service/ticket.service';
   styleUrls: ['./board-admin.component.css']
 })
 export class BoardAdminComponent implements OnInit {
-  public doughnutChartLabels: Label[] = ['Tickets Nouveaux','Tickets En cours','Tickets Résolus'];
+  public doughnutChartLabels: Label[] = ['Tickets Nouveaux', 'Tickets En cours', 'Tickets Résolus'];
   public doughnutChartData: MultiDataSet = [[0, 0, 0]];
   public doughnutChartType: ChartType = 'doughnut';
-
+ a=new Date();
   nouveaux;
   encours;
   resolus;
-  public options: any = {
+  dayofthisMonth:any[]=[];
+  date;
+  options: any = {
     Chart: {
       type: 'area',
       height: 700
     },
     title: {
-      text: 'Evolution de la population'
+      text: 'Nombre des tikets Par Jour'
     },
     credits: {
       enabled: false
     },
     xAxis: {
-      categories: ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mail', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'],
+      categories: [0,0,0,0,0,0,0],
       tickmarkPlacement: 'on',
       title: {
         enabled: false
@@ -39,10 +41,11 @@ export class BoardAdminComponent implements OnInit {
     },
     series: [{
       name: 'Tikets',
-      data: [502, 635, 809, 947, 1402, 3634, 5268]
+      data: [0, 0, 0, 0, 0, 0, 0]
     },]
   }
-
+  counttiket:any[]=[];
+c=new Date();
   content = '';
   private roles: string[];
   isLoggedIn = false;
@@ -71,7 +74,7 @@ export class BoardAdminComponent implements OnInit {
       }
     );
 
-    Highcharts.chart('container', this.options);
+    
     this.ticketservice.getTicketByStatut("Nouveau").subscribe(element => {
       this.nouveaux = element['rows'][0]['count'];
 
@@ -87,5 +90,39 @@ export class BoardAdminComponent implements OnInit {
         })
       })
     })
+    for(var i=1;i<=this.getDayOfmonth(this.a.getMonth(),this.a.getFullYear());i++){
+      this.dayofthisMonth.push(i);
+    }
+    // for(var i=0;i<this.dayofthisMonth.length;i++){
+    //   console.log(this.dayofthisMonth[i])
+    // }
+
+    this.ticketservice.getTicketByDate().subscribe(element3 => {
+      this.date = element3;
+      for(var t of this.dayofthisMonth){
+        var u=0;
+
+      for(var a of this.date['rows']){
+       this.c=new Date(a['date_creation']);
+      if(this.c.getDate()==t){
+        u++;
+
+      }
+    }
+    this.counttiket.push(u);
   }
+  this.options.xAxis.categories=this.dayofthisMonth;
+    this.options.series= [{
+      name: 'Tikets',
+      data: this.counttiket
+    },]
+    Highcharts.chart('container', this.options);
+    })
+    
+
+    
+  }
+getDayOfmonth(month,year){
+return new Date(year,month+1,0).getDate();
+}
 }

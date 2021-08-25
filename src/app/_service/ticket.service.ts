@@ -20,18 +20,18 @@ export class TicketService {
 
 
   public get ticketValue(): Ticket {
-    if(this.ticketSubject && this.ticketSubject.value) {
+    if (this.ticketSubject && this.ticketSubject.value) {
       return this.ticketSubject.value;
     } else {
       return null
-    } 
+    }
   }
 
   getAll(): Observable<any> {
     return this.http.get(baseUrl);
   }
 
-  get(ticket_id: any): Observable<any> {
+  get(ticket_id: any){
     return this.http.get(`${baseUrl}/${ticket_id}`);
   }
 
@@ -82,16 +82,20 @@ export class TicketService {
     return this.http.post(url, body);
   }
 
-  getTicketByStatut(statut:any){
-    return this.http.get<any>('http://localhost:4200/api/ticket/statut/'+statut)
+  getTicketByStatut(statut: any) {
+    return this.http.get<any>('http://localhost:4200/api/ticket/statut/' + statut)
   }
 
-  getTicketByUser(user_id:string){
-    return this.http.get<any>('http://localhost:4200/api/ticket/user/'+localStorage.getItem('id'))
+  getTicketByUser(user_id: string) {
+    return this.http.get<any>('http://localhost:4200/api/ticket/user/' + localStorage.getItem('id'))
   }
 
-  getTicketByStatutAndUser(statut:any,user_id:string){
-    return this.http.get<any>('http://localhost:4200/api/ticket/statut/'+statut+localStorage.getItem('id'))
+  getTicketByDate() {
+    return this.http.get<any>('http://localhost:4200/api/ticket/datecreation/dd/')
+  }
+
+  getTicketByStatutAndUser(statut: any) {
+    return this.http.get<any>('http://localhost:4200/api/ticket/statut/' + statut +'/'+(Number(localStorage.getItem('id'))))
   }
 
 }

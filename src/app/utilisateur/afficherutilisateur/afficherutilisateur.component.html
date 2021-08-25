@@ -76,7 +76,8 @@
                                     </thead>
 
                                     <tbody>
-                                        <tr role="row" class="odd" *ngFor="let utilisateur of users">
+                                        <tr role="row" class="odd"
+                                            *ngFor="let utilisateur of users | paginate: {itemsPerPage:5,currentPage:p};">
                                             <td>{{utilisateur.nom}}</td>
                                             <td>{{utilisateur.prenom}}</td>
                                             <td>{{utilisateur.phone}}</td>
@@ -85,7 +86,8 @@
                                             <td>{{utilisateur.gender}}</td>
                                             <td>{{utilisateur.status ? "active" : "desactive"}}</td>
 
-                                            <td> <button class="btn btn-sm btn-danger btn-delete-user" *ngIf="utilisateur.status"
+                                            <td> <button class="btn btn-sm btn-danger btn-delete-user"
+                                                    *ngIf="utilisateur.status"
                                                     (click)="updateStatus(false,utilisateur)">
                                                     Bannir
                                                 </button>
@@ -112,6 +114,7 @@
                                             </td>
                                         </tr>
                                     </tbody>
+                                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
                                 </table>
                             </div>
                         </div>

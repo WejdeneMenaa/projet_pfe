@@ -70,7 +70,7 @@
                                                 </thead>
 
                                                 <tbody>
-                                                    <tr role="row" class="odd" *ngFor="let stock of stocks"
+                                                    <tr role="row" class="odd" *ngFor="let stock of stocks | paginate: {itemsPerPage:5,currentPage:p};"
                                                         [hidden]="stock.cat_id == 2 || stock.cat_id == 3 ">
                                                         <td>{{stock.name}}</td>
                                                         <td>
@@ -100,6 +100,8 @@
 
                                                     </tr>
                                                 </tbody>
+                                                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
                                             </table>
                                         </div>
                                     </div>
@@ -139,7 +141,7 @@
                                                 </thead>
 
                                                 <tbody>
-                                                    <tr role="row" class="odd" *ngFor="let stock of stocks"
+                                                    <tr role="row" class="odd" *ngFor="let stock of stocks | paginate: {itemsPerPage:5,currentPage:p};"
                                                         [hidden]="stock.cat_id == 1 || stock.cat_id == 3">
                                                         <td>{{stock.name}}</td>
                                                         <td>{{stock.cat_id}}</td>
@@ -167,6 +169,8 @@
 
                                                     </tr>
                                                 </tbody>
+                                                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
                                             </table>
                                         </div>
                                     </div>
@@ -206,7 +210,7 @@
                                                 </thead>
 
                                                 <tbody>
-                                                    <tr role="row" class="odd" *ngFor="let stock of stocks"
+                                                    <tr role="row" class="odd" *ngFor="let stock of stocks | paginate: {itemsPerPage:5,currentPage:p};"
                                                         [hidden]="stock.cat_id == 1 || stock.cat_id == 2">
                                                         <td>{{stock.name}}</td>
                                                         <td>{{stock.cat_id}}</td>
@@ -234,6 +238,8 @@
 
                                                     </tr>
                                                 </tbody>
+                                                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
                                             </table>
                                         </div>
                                     </div>

@@ -36,6 +36,8 @@ export class BoardUserComponent implements OnInit {
   ticket_id: number;
   isAddMode: boolean;
   titre: any;
+  p: number = 1;
+
 
   constructor(
     private TicketService: TicketService,
@@ -60,13 +62,13 @@ export class BoardUserComponent implements OnInit {
       this.tickets = data
     })
 
-    this.TicketService.getTicketByStatutAndUser("Resolu", localStorage.getItem('id')).subscribe(element => {
+    this.TicketService.getTicketByStatutAndUser("Resolu").subscribe(element => {
       this.resolus = element['rows'][0]['count'];
 
-      this.TicketService.getTicketByStatutAndUser("Cloture", localStorage.getItem('id')).subscribe(element1 => {
+      this.TicketService.getTicketByStatutAndUser("Cloture").subscribe(element1 => {
         this.clotures = element1['rows'][0]['count'];
 
-        this.TicketService.getTicketByUser(localStorage.getItem('id')).subscribe(element2 => {
+        this.TicketService.getTicketByStatutAndUser("En cours").subscribe(element2 => {
           this.encours = element2['rows'][0]['count'];
 
           this.doughnutChartData = [

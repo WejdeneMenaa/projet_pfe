@@ -81,7 +81,7 @@
                                           </thead>
 
                                           <tbody>
-                                              <tr role="row" class="odd" *ngFor="let ticket of tickets"
+                                              <tr role="row" class="odd" *ngFor="let ticket of tickets | paginate: {itemsPerPage:5,currentPage:p};"
                                                   [hidden]="ticket.statut =='Cloture' || ticket.statut =='Resolu' || ticket.user_id !== user.id ">
                                                   <td>{{ticket.titre}}</td>
                                                   <td>{{ticket.date_creation}}</td>
@@ -110,6 +110,8 @@
                                                   </td>
                                               </tr>
                                           </tbody>
+                                          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
                                       </table>
                                   </div>
                               </div>
@@ -154,7 +156,7 @@
                                           </thead>
 
                                           <tbody>
-                                              <tr role="row" class="odd" *ngFor="let ticket of tickets"
+                                              <tr role="row" class="odd" *ngFor="let ticket of tickets | paginate: {itemsPerPage:5,currentPage:p};"
                                                   [hidden]="ticket.statut !=='Resolu' || ticket.user_id !== user.id ">
                                                   <td>{{ticket.titre}}</td>
                                                   <td>{{ticket.date_creation}}</td>
@@ -180,6 +182,8 @@
                                                   </td>
                                               </tr>
                                           </tbody>
+                                          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
                                       </table>
                                   </div>
                               </div>
@@ -216,7 +220,7 @@
                                           </thead>
 
                                           <tbody>
-                                              <tr role="row" class="odd" *ngFor="let ticket of tickets"
+                                              <tr role="row" class="odd" *ngFor="let ticket of tickets | paginate: {itemsPerPage:5,currentPage:p};"
                                                   [hidden]="ticket.statut !=='Cloture' || ticket.user_id !== user.id  ">
                                                   <td>{{ticket.titre}}</td>
                                                   <td>{{ticket.date_creation}}</td>
@@ -225,6 +229,7 @@
                                                   <td>{{ticket.type}}</td>
                                               </tr>
                                           </tbody>
+                                          <pagination-controls (pageChange)="p = $event"></pagination-controls>
                                       </table>
                                   </div>
                               </div>

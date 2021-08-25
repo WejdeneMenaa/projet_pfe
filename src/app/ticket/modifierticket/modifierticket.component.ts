@@ -12,7 +12,20 @@ import { TicketService } from 'src/app/_service/ticket.service';
 })
 export class ModifierticketComponent implements OnInit {
 
-    form: FormGroup;
+    form: FormGroup=this.formBuilder.group({
+        titre: ['', Validators.required],
+        description: ['', Validators.required],
+        date_creation: ['', Validators.required],
+        date_echeance: ['', Validators.required],
+        statut: ['', Validators.required],
+        type: ['', Validators.required],
+        priorite: ['', Validators.required],
+        urgence: ['', Validators.required],
+        impact: ['', Validators.required],
+        image: ['', Validators.required],
+        user_id: ['', Validators.required],
+    });
+
     ticket_id: string;
     isAddMode: boolean;
     loading = false;
@@ -36,24 +49,11 @@ export class ModifierticketComponent implements OnInit {
             console.log("ticket****************" + this.ticket.priorite)
         })
 
-        this.form = this.formBuilder.group({
-            titre: ['', Validators.required],
-            description: ['', Validators.required],
-            date_creation: ['', Validators.required],
-            date_echeance: ['', Validators.required],
-            statut: ['', Validators.required],
-            type: ['', Validators.required],
-            priorite: ['', Validators.required],
-            urgence: ['', Validators.required],
-            impact: ['', Validators.required],
-            image: ['', Validators.required],
-            user_id: ['', Validators.required],
-        });
-
+        
         if (!this.isAddMode) {
-            this.TicketService.get(this.ticket_id)
-                .pipe(first())
-                .subscribe(x => this.form.patchValue(x));
+            this.TicketService.get(this.ticket_id).subscribe(x => {
+                this.form.patchValue(x);
+            });
         }
         }
 
