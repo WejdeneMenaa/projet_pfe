@@ -47,14 +47,6 @@
                                                             rowspan="1" colspan="1" aria-sort="ascending"
                                                             aria-label="Name: activate to sort column descending"
                                                             style="width: 145px;">Name</th>
-                                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
-                                                            rowspan="1" colspan="1" aria-sort="ascending"
-                                                            aria-label="Name: activate to sort column descending"
-                                                            style="width: 145px;">Catégorie</th>
-                                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
-                                                            rowspan="1" colspan="1" aria-sort="ascending"
-                                                            aria-label="Name: activate to sort column descending"
-                                                            style="width: 145px;">Sous Catégorie</th>
                                                         <th class="sorting" tabindex="0" aria-controls="dataTable"
                                                             rowspan="1" colspan="1"
                                                             aria-label="Position: activate to sort column ascending"
@@ -73,10 +65,6 @@
                                                     <tr role="row" class="odd" *ngFor="let stock of stocks | paginate: {itemsPerPage:5,currentPage:p};"
                                                         [hidden]="stock.cat_id == 2 || stock.cat_id == 3 ">
                                                         <td>{{stock.name}}</td>
-                                                        <td>
-                                                            {{stock.cat_id}}
-                                                        </td>
-                                                        <td>{{stock.scat_id}}</td>
                                                         <td>{{stock.quantite}}</td>
                                                         <td>{{stock.modele}}</td>
                                                         <td>
@@ -118,14 +106,6 @@
                                                             rowspan="1" colspan="1" aria-sort="ascending"
                                                             aria-label="Name: activate to sort column descending"
                                                             style="width: 145px;">Name</th>
-                                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
-                                                            rowspan="1" colspan="1" aria-sort="ascending"
-                                                            aria-label="Name: activate to sort column descending"
-                                                            style="width: 145px;">Catégorie</th>
-                                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
-                                                            rowspan="1" colspan="1" aria-sort="ascending"
-                                                            aria-label="Name: activate to sort column descending"
-                                                            style="width: 145px;">Sous Catégorie</th>
                                                         <th class="sorting" tabindex="0" aria-controls="dataTable"
                                                             rowspan="1" colspan="1"
                                                             aria-label="Position: activate to sort column ascending"
@@ -144,8 +124,6 @@
                                                     <tr role="row" class="odd" *ngFor="let stock of stocks | paginate: {itemsPerPage:5,currentPage:p};"
                                                         [hidden]="stock.cat_id == 1 || stock.cat_id == 3">
                                                         <td>{{stock.name}}</td>
-                                                        <td>{{stock.cat_id}}</td>
-                                                        <td>{{stock.scat_id}}</td>
                                                         <td>{{stock.quantite}}</td>
                                                         <td>{{stock.modele}}</td>
                                                         <td>
@@ -187,14 +165,6 @@
                                                             rowspan="1" colspan="1" aria-sort="ascending"
                                                             aria-label="Name: activate to sort column descending"
                                                             style="width: 145px;">Name</th>
-                                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
-                                                            rowspan="1" colspan="1" aria-sort="ascending"
-                                                            aria-label="Name: activate to sort column descending"
-                                                            style="width: 145px;">Catégorie</th>
-                                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable"
-                                                            rowspan="1" colspan="1" aria-sort="ascending"
-                                                            aria-label="Name: activate to sort column descending"
-                                                            style="width: 145px;">Sous Catégorie</th>
                                                         <th class="sorting" tabindex="0" aria-controls="dataTable"
                                                             rowspan="1" colspan="1"
                                                             aria-label="Position: activate to sort column ascending"
@@ -213,8 +183,6 @@
                                                     <tr role="row" class="odd" *ngFor="let stock of stocks | paginate: {itemsPerPage:5,currentPage:p};"
                                                         [hidden]="stock.cat_id == 1 || stock.cat_id == 2">
                                                         <td>{{stock.name}}</td>
-                                                        <td>{{stock.cat_id}}</td>
-                                                        <td>{{stock.scat_id}}</td>
                                                         <td>{{stock.quantite}}</td>
                                                         <td>{{stock.modele}}</td>
                                                         <td>

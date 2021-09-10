@@ -72,7 +72,8 @@
 
                                             <tbody>
                                                 <tr role="row" class="odd"
-                                                    *ngFor="let ticket of tickets | paginate: {itemsPerPage:5,currentPage:p};">
+                                                    *ngFor="let ticket of tickets | paginate: {itemsPerPage:5,currentPage:p};"
+                                                    [hidden]="ticket.statut =='Cloture'">
                                                     <td>{{ticket.titre}}</td>
                                                     <td>{{ticket.date_creation}}</td>
                                                     <td>{{ticket.description}}</td>
@@ -88,7 +89,7 @@
                                                             </a>
                                                             <div class="dropdown-menu"
                                                                 aria-labelledby="dropdownMenuLink">
-                                                                <a class="dropdown-item" mat-button
+                                                                <a class="dropdown-item" mat-button *ngIf="ticket.statut.includes('Cloture')"
                                                                     (click)="deleteTicket(ticket.ticket_id)">Delete</a>
                                                                 <a class="dropdown-item" mat-button
                                                                     routerLink="/detailsticket/{{ ticket.ticket_id }}"
