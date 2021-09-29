@@ -1,12 +1,12 @@
 FROM node:14.15-alpine AS ui-build
 WORKDIR /usr/src/app
-COPY ang-node/ ./ang-node/
+COPY app/ ./app/
 RUN cd ang-node && npm install @angular/cli && npm install && npm run build
 
 
 FROM node:14.15-alpine AS build
 WORKDIR /usr/src/app
-COPY --from=ui-build /usr/src/app/ang-node/dist ./ang-node/dist
+COPY --from=ui-build /usr/src/app/dist/ang-node ./dist/ang-node
 COPY package*.json ./
 RUN npm install
 COPY server.js .
