@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { ScategorieService } from 'src/app/_service/scategorie.service';
+import { StockService } from 'src/app/_service/stock.service';
 import { TicketService } from 'src/app/_service/ticket.service';
 import { TokenStorageService } from 'src/app/_service/token-storage.service';
 
@@ -19,10 +20,11 @@ export class ResoudreticketComponent implements OnInit {
   isAddMode: boolean;
   loading = false;
   submitted = false;
-  ticket : any;
+  ticket: any;
   tickets: any;
   solution: string;
-  scategories = null;
+ // scategories = null;
+  stocks = null;
   id: string;
   private roles: string[];
   isLoggedIn = false;
@@ -34,6 +36,7 @@ export class ResoudreticketComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
+    private stockservice :StockService,
     private scategorieservice: ScategorieService,
     private TicketService: TicketService,
     private tokenStorageService: TokenStorageService,
@@ -74,7 +77,7 @@ export class ResoudreticketComponent implements OnInit {
       image: ['', [Validators.required]],
       user_id: ['', [Validators.required]],
       solution: ['', Validators.required],
-      attribuea :['', [Validators.required]]
+      attribuea: ['', [Validators.required]]
     });
 
     if (!this.isAddMode) {
@@ -83,9 +86,14 @@ export class ResoudreticketComponent implements OnInit {
         .subscribe(x => this.form.patchValue(x));
     }
 
-    this.scategorieservice.getAll().subscribe((data) => {
-      this.scategories = data
-      console.log("sous_categories" + this.scategories)
+  //  this.scategorieservice.getAll().subscribe((data) => {
+     // this.scategories = data
+   //   console.log("sous_categories" + this.scategories)
+   // })
+
+    this.stockservice.getAll().subscribe((data) => {
+      this.stocks = data
+      console.log("stocks" + this.stocks)
     })
   }
 
@@ -95,16 +103,22 @@ export class ResoudreticketComponent implements OnInit {
     this.ticket.solution = this.solution;
     this.ticket.solution = this.form.controls.solution.value;
     console.log('test', this.ticket.solution)
-    this.TicketService.update(this.ticket_id, this.ticket).subscribe((data) => {
-      //this.TicketService.sendEmail(`http://localhost:4200/api/utilisateur/sendmail/${this.ticket.user_id}`, { solution: this.ticket.solution }).subscribe(
-        //res => {
-          //console.log(res)
-          this.router.navigate([`/ticketadmin`])
-        //},
-        //err => {
-         // console.log(err);
-        //})
+    
+    this.TicketService.update(ticket_id, this.ticket).subscribe((data) => {
+      this.ticket = data
+      console.log('id', this.ticket.ticket_id)
     })
+
+    this.TicketService.sendEmail(`http://localhost:4200/api/utilisateur/sendmail/${this.ticket.user_id}`,
+      { solution: this.ticket.solution }).subscribe(
+        res => {
+          console.log(res)
+          this.router.navigate([`/ticketadmin`])
+        },
+        err => {
+          console.log(err);
+        })
+
 
   }
 

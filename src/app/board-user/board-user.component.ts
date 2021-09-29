@@ -16,13 +16,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class BoardUserComponent implements OnInit {
 
-  public doughnutChartLabels: Label[] = ['Tickets Résolus', 'Tickets Cloturés', 'Tickets En cours'];
-  public doughnutChartData: MultiDataSet = [[0, 0, 0]];
+  public doughnutChartLabels: Label[] = ['Tickets Nouveaux', 'Tickets En cours', 'Tickets Résolus', 'Tickets Cloturés'];
+  public doughnutChartData: MultiDataSet = [[0, 0, 0,0]];
   public doughnutChartType: ChartType = 'doughnut';
 
   resolus;
   clotures;
   encours;
+  nouveaux;
 
 
   users = null;
@@ -62,23 +63,26 @@ export class BoardUserComponent implements OnInit {
       this.tickets = data
     })
 
-    this.TicketService.getTicketByStatutAndUser("Resolu").subscribe(element => {
-      this.resolus = element['rows'][0]['count'];
+    this.TicketService.getTicketByStatutAndUser("Nouveau").subscribe(element => {
+      this.nouveaux = element['rows'][0]['count'];
 
-      this.TicketService.getTicketByStatutAndUser("Cloture").subscribe(element1 => {
-        this.clotures = element1['rows'][0]['count'];
+      this.TicketService.getTicketByStatutAndUser("En cours").subscribe(element1 => {
+        this.encours = element1['rows'][0]['count'];
 
-        this.TicketService.getTicketByStatutAndUser("En cours").subscribe(element2 => {
-          this.encours = element2['rows'][0]['count'];
+        this.TicketService.getTicketByStatutAndUser("Resolu").subscribe(element2 => {
+          this.resolus = element2['rows'][0]['count'];
 
-          this.doughnutChartData = [
-            [Number(this.resolus), Number(this.clotures), Number(this.encours)],]
-
+          this.TicketService.getTicketByStatutAndUser("Cloture").subscribe(element3 => {
+            this.clotures = element3['rows'][0]['count'];
+            this.doughnutChartData = [
+              [Number(this.nouveaux), Number(this.encours), Number(this.resolus),Number(this.clotures)]]
+          })
         })
       })
     })
   }
 
+  
   updateStatus2(ticket_id: string) {
     const link = ['/user'];
     console.log('**********************here')

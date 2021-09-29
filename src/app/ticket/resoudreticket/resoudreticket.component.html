@@ -70,8 +70,8 @@
                             <div class="input-group">
                                 <div class="rs-select2 js-select-simple select--no-search">
                                     <select name="solution" [(ngModel)]="solution">
-                                        <option *ngFor="let sous_cat of scategories" [value]="sous_cat.name">
-                                            {{sous_cat.name}}
+                                        <option *ngFor="let stock of stocks" [value]="stock.name">
+                                            {{stock.name}}
                                         </option>
                                     </select>
                                     <div class="select-dropdown"></div>

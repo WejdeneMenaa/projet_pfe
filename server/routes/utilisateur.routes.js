@@ -64,11 +64,11 @@ module.exports = function (app) {
     console.log('************', req.params.id)
     Utilisateur.findByPk(user_id)
       .then(data => {
-        const subject = "Bienvenue chez Wimbee !";
-        const html = `<h3>Bonjour cher(e) client(e)</h3>
+        const subject = "Résolution de votre ticket !";
+        const html = `<h3>Bonjour cher utilisateur </h3>
       <h3>Par le présent, nous vous informons que votre ticket a été résolu avec succées ! </h3>
       <h3>Et voici la solution pour votre probléme :
-       ${req.body.solution}! </h3>
+       ${req.body.solution} ! </h3>
       <h3>Merci pour votre confiance !</h3>`;
         sendMail(data, subject, html, info => {
           console.log(`The mail has beed send 😃 and the id is ${info.messageId}`);

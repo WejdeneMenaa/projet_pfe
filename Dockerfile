@@ -1,8 +1,15 @@
-### STAGE 1: Build ###
+FROM node:14.15-alpine AS ui-build
+WORKDIR /usr/src/app
+COPY ang-node/ ./ang-node/
+RUN cd ang-node && npm install @angular/cli && npm install && npm run build
+
+
 FROM node:14.15-alpine AS build
 WORKDIR /usr/src/app
-COPY package.json package-lock.json ./
+COPY --from=ui-build /usr/src/app/ang-node/dist ./ang-node/dist
+COPY package*.json ./
 RUN npm install
+COPY server.js .
 COPY . .
 RUN npm run build
 
@@ -10,3 +17,7 @@ RUN npm run build
 FROM nginx:1.17.1-alpine
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY --from=build /usr/src/app/dist/ang-node /usr/share/nginx/html
+
+EXPOSE 3080
+
+CMD ["node", "server.js"]
