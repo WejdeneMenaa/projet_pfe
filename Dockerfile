@@ -1,7 +1,7 @@
 FROM node:14.15-alpine AS ui-build
 WORKDIR /usr/src/app
-COPY src/ ./src/
-RUN cd src && npm install @angular/cli && npm install && npm run build
+COPY ang-node/ ./ang-node/
+RUN cd ang-node && npm install @angular/cli && npm install && npm run build
 
 
 FROM node:14.15-alpine AS build
