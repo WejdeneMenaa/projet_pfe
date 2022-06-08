@@ -50,14 +50,14 @@ pipeline {
                 }
             }
         }
-      stage('Remove Unused docker image') {
-      steps{
-        sh "docker rmi $registry1:$BUILD_NUMBER"
-        sh "docker rmi $registry1:latest"
-        sh "docker rmi $registry2:$BUILD_NUMBER"
-        sh "docker rmi $registry2:latest"
-      }
-      }
+     // stage('Remove Unused docker image') {
+     // steps{
+        //sh "docker rmi $registry1:$BUILD_NUMBER"
+        //sh "docker rmi $registry1:latest"
+         // sh "docker rmi $registry2:$BUILD_NUMBER"
+        //sh "docker rmi $registry2:latest"
+    //  }
+     // }
                 
     }
 }
