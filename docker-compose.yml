@@ -10,11 +10,17 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_DB: projet_pfe
       PGDATA: /var/lib/postgresql/data/some_name/
-    volumes: 
+    volumes:
     - /var/lib/docker/volumes:/var/lib/postgresql/data
 
-  adminer:
-    image: adminer
+  my_app:
+    image: wejdenemenaa/projet_pfe
     restart: always
     ports:
-      - 8083:8080
+      - 80:80
+    depends_on:
+      - db
+
+networks:
+    default:
+        driver: bridge
