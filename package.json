@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "sonar-scanner": "/node_modules/sonar-scanner/bin/sonar-scanner.bat"
+    "sonar-scanner": "node_modules/sonar-scanner/bin/sonar-scanner"
   },
   "keywords": [
     "nodejs",
